@@ -1,0 +1,111 @@
+{
+  "analysis_timestamp": "2026-02-18T23:29:37.985613",
+  "total_records_analyzed": 2758,
+  "clean_records": 2756,
+  "anomalies_detected": 3,
+  "anomaly_breakdown": {
+    "critical": 1,
+    "high": 1,
+    "medium": 0,
+    "low": 1
+  },
+  "detailed_issues": [
+    {
+      "type": "SCORE_EXCEEDS_MAXIMUM",
+      "severity": "CRITICAL",
+      "count": 2,
+      "description": "Found 2 records with scores > 100 (logical impossibility)",
+      "records": [
+        {
+          "outcome_id": 85,
+          "student_key": 7,
+          "indicator_name": "'Ike K\u016bpuna",
+          "raw_score": 125.0
+        },
+        {
+          "outcome_id": 2241,
+          "student_key": 161,
+          "indicator_name": "'Ike K\u016bpuna",
+          "raw_score": 103.0
+        }
+      ]
+    },
+    {
+      "type": "FUTURE_DATE",
+      "severity": "HIGH",
+      "count": 3,
+      "description": "Found 3 records with future assessment dates",
+      "records": [
+        {
+          "outcome_id": 939,
+          "student_key": 68,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 2241,
+          "student_key": 161,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 2605,
+          "student_key": 187,
+          "assessment_date": "2027-06-15 00:00:00"
+        }
+      ]
+    },
+    {
+      "type": "STATISTICAL_OUTLIER",
+      "severity": "LOW",
+      "count": 8,
+      "description": "Found 8 statistical outliers (|Z| > 3)",
+      "records": [
+        {
+          "outcome_id": 85,
+          "student_key": 7,
+          "raw_score": 125.0
+        },
+        {
+          "outcome_id": 794,
+          "student_key": 57,
+          "raw_score": 28.04
+        },
+        {
+          "outcome_id": 840,
+          "student_key": 60,
+          "raw_score": 27.26
+        },
+        {
+          "outcome_id": 1174,
+          "student_key": 84,
+          "raw_score": 26.95
+        },
+        {
+          "outcome_id": 1219,
+          "student_key": 88,
+          "raw_score": 29.71
+        },
+        {
+          "outcome_id": 1703,
+          "student_key": 122,
+          "raw_score": 31.83
+        },
+        {
+          "outcome_id": 2112,
+          "student_key": 151,
+          "raw_score": 28.69
+        },
+        {
+          "outcome_id": 2505,
+          "student_key": 179,
+          "raw_score": 27.13
+        }
+      ]
+    }
+  ],
+  "recommendations": [
+    "Implement data validation at entry point to prevent scores > 100",
+    "Add date validation to reject future assessment dates",
+    "Review proficiency level calculation logic",
+    "Set up automated anomaly detection alerts"
+  ]
+}

@@ -1,0 +1,198 @@
+student_key,student_uuid,grade_level,gender,ethnicity,base_score,program_bonus,wellbeing_adjustment,final_score,proficiency_level,calculation_logic
+1,d8129765-eb89-4da0-92e8-d36432e29596,10,Non-binary,White,91.05,5,7.65,75.78,Proficient,91.0×0.6 + 5×2.5 + 57.7×0.15
+2,d185428c-86f3-47ba-86ed-d791474fa243,3,Male,Native Hawaiian and Other Pacific Islander,69.75,0,8.38,50.61,Below,69.8×0.6 + 0×2.5 + 58.4×0.15
+3,57ee7d65-ec2a-4f29-8267-9dc2ac2db645,3,Male,White,81.23,0,9.84,57.71,Below,81.2×0.6 + 0×2.5 + 59.8×0.15
+4,2f8775cc-581e-47aa-a0fa-17ae85d031be,8,Female,Native Hawaiian and Other Pacific Islander,69.6,8,7.01,70.31,Approaching,69.6×0.6 + 8×2.5 + 57.0×0.15
+5,797ba79a-4cfe-4c1f-a58a-81d1ef16a605,11,Male,Native Hawaiian,78.05,3,8.69,63.13,Approaching,78.0×0.6 + 3×2.5 + 58.7×0.15
+6,ccb25b43-ee5a-4800-b28f-d694f50c8bde,4,Male,Native Hawaiian,84.45,0,1.9,58.46,Below,84.5×0.6 + 0×2.5 + 51.9×0.15
+7,eea500fe-ccfa-4039-9de8-833205870f9b,6,Male,Native Hawaiian and Other Pacific Islander,81.67,8,9.39,77.91,Proficient,81.7×0.6 + 8×2.5 + 59.4×0.15
+8,89e72ca9-8f9d-41f4-a36b-5af010c89bfc,8,Male,Native Hawaiian and Other Pacific Islander,72.69,5,2.51,63.99,Approaching,72.7×0.6 + 5×2.5 + 52.5×0.15
+9,3aaf96ca-5352-4a62-a301-d3e52b1e8570,8,Female,Native Hawaiian,77.92,8,3.32,74.75,Approaching,77.9×0.6 + 8×2.5 + 53.3×0.15
+10,f89e7ceb-3fb7-4d25-b0f5-9dc3d6dd4ae1,12,Male,Native Hawaiian and Other Pacific Islander,75.61,0,2.22,53.2,Below,75.6×0.6 + 0×2.5 + 52.2×0.15
+11,2ff7977d-d217-478d-8313-5a78c90caa23,6,Male,Native Hawaiian,71.48,8,5.18,71.16,Approaching,71.5×0.6 + 8×2.5 + 55.2×0.15
+12,ea30695a-1d3e-4824-85a0-a32bba887004,1,Male,White,73.12,8,8.12,72.59,Approaching,73.1×0.6 + 8×2.5 + 58.1×0.15
+13,b95244cb-59eb-4850-9380-51d9efd5185d,3,Male,Asian,63.21,0,6.89,46.46,Below,63.2×0.6 + 0×2.5 + 56.9×0.15
+14,74dd8153-2087-4f5a-ac98-cfed4b9176ef,12,Female,Native Hawaiian and Other Pacific Islander,85.57,0,10.0,60.34,Approaching,85.6×0.6 + 0×2.5 + 60.0×0.15
+15,cad9e3af-1b8e-4e26-804c-13574b690668,2,Male,Native Hawaiian,96.82,0,7.16,66.67,Approaching,96.8×0.6 + 0×2.5 + 57.2×0.15
+16,56d2ce11-5b56-4de5-99ac-eef9df6ee777,8,Male,Native Hawaiian,75.54,5,5.57,66.16,Approaching,75.5×0.6 + 5×2.5 + 55.6×0.15
+17,6111c27e-eabd-4c50-b623-e2502fce830c,4,Female,Native Hawaiian,75.45,8,5.04,73.53,Approaching,75.5×0.6 + 8×2.5 + 55.0×0.15
+18,d0c1fdb0-65f4-45a9-a386-a96825864270,10,Male,Asian,85.11,0,1.74,58.83,Below,85.1×0.6 + 0×2.5 + 51.7×0.15
+19,f3d7e77d-2209-4062-af07-16b905c729ef,8,Male,Native Hawaiian,80.11,5,5.45,68.88,Approaching,80.1×0.6 + 5×2.5 + 55.4×0.15
+20,d26f8bb5-6dd5-4915-b60d-f1295bd4e45a,10,Male,Native Hawaiian,82.08,5,4.56,69.93,Approaching,82.1×0.6 + 5×2.5 + 54.6×0.15
+21,59ab3ea6-28a0-4851-82a5-30db6c42cc1d,1,Female,Native Hawaiian,68.51,5,7.05,62.16,Approaching,68.5×0.6 + 5×2.5 + 57.0×0.15
+22,ed5a5363-31df-4d56-b983-296ecd0e745c,12,Male,Native Hawaiian,70.73,8,6.59,70.93,Approaching,70.7×0.6 + 8×2.5 + 56.6×0.15
+23,a0286e1e-05cf-480a-83db-afdf847e1ff3,2,Female,Native Hawaiian,78.28,5,8.61,68.26,Approaching,78.3×0.6 + 5×2.5 + 58.6×0.15
+24,836cedc3-1839-4c6d-a4d4-987e8555c020,8,Female,Native Hawaiian,72.83,3,5.71,59.55,Below,72.8×0.6 + 3×2.5 + 55.7×0.15
+25,7efe1f9f-f5a6-405b-9885-144625facdd3,8,Prefer not to say,Native Hawaiian,66.77,8,4.49,68.24,Approaching,66.8×0.6 + 8×2.5 + 54.5×0.15
+26,264dc79f-5368-49e8-b7d2-e27df8a9aca6,7,Male,Native Hawaiian,71.87,5,7.27,64.21,Approaching,71.9×0.6 + 5×2.5 + 57.3×0.15
+27,ff0861c9-05cb-438f-b81f-d7c45228c2cd,11,Non-binary,Asian,83.84,5,5.51,71.13,Approaching,83.8×0.6 + 5×2.5 + 55.5×0.15
+28,af76219d-a993-4b67-a3fc-48d9af3ceddd,4,Male,Native Hawaiian and Other Pacific Islander,84.45,0,4.55,58.85,Below,84.5×0.6 + 0×2.5 + 54.5×0.15
+29,6be9b967-0c23-4742-ad20-dc95d97dcf26,5,Male,Native Hawaiian,72.45,0,7.38,52.08,Below,72.5×0.6 + 0×2.5 + 57.4×0.15
+30,a97809f9-8eae-467b-8da2-a21bd89c521e,4,Female,White,65.48,8,6.93,67.83,Approaching,65.5×0.6 + 8×2.5 + 56.9×0.15
+31,85b023cf-2df0-4127-9951-a5ff89f1aac1,3,Female,Asian,73.54,5,5.0,64.87,Approaching,73.5×0.6 + 5×2.5 + 55.0×0.15
+32,eb624ee6-adae-4f85-82b5-41236f35ec5d,9,Male,Native Hawaiian,95.98,8,8.35,86.34,Proficient,96.0×0.6 + 8×2.5 + 58.4×0.15
+33,ab8532ab-e591-4155-bca7-c3ab92b47751,10,Male,Native Hawaiian,74.8,8,7.23,73.47,Approaching,74.8×0.6 + 8×2.5 + 57.2×0.15
+34,41e7f4aa-2726-4890-8c01-7ce5754857de,8,Female,Native Hawaiian,94.84,8,3.22,84.89,Proficient,94.8×0.6 + 8×2.5 + 53.2×0.15
+35,f1b8db8a-e4fd-4f33-b186-378fb72966dc,8,Female,Native Hawaiian,89.49,0,1.6,61.43,Approaching,89.5×0.6 + 0×2.5 + 51.6×0.15
+36,d0cb6773-7a76-448a-870f-e5e472c581d7,3,Male,Native Hawaiian,81.82,8,7.79,77.76,Proficient,81.8×0.6 + 8×2.5 + 57.8×0.15
+37,f7b8c019-1634-4383-8a84-89d0ed1afaa6,1,Female,Native Hawaiian,84.13,5,9.51,71.9,Approaching,84.1×0.6 + 5×2.5 + 59.5×0.15
+38,484d82a6-ef4c-423d-8df9-c409cb502ab5,7,Male,Native Hawaiian,77.36,0,5.3,54.71,Below,77.4×0.6 + 0×2.5 + 55.3×0.15
+39,c1e7b6aa-1df1-4085-8058-0da0066bca23,8,Female,Native Hawaiian and Other Pacific Islander,68.09,8,10.0,69.85,Approaching,68.1×0.6 + 8×2.5 + 60.0×0.15
+40,0860f8ab-e42f-433d-b395-b3740c5dc9bf,2,Male,Native Hawaiian,79.04,3,3.08,62.89,Approaching,79.0×0.6 + 3×2.5 + 53.1×0.15
+41,514e2cfc-b357-40e7-8985-d980dafd3722,11,Male,Native Hawaiian and Other Pacific Islander,62.07,8,5.39,65.55,Approaching,62.1×0.6 + 8×2.5 + 55.4×0.15
+42,d86a27d6-37b1-4599-a52e-c3d3feebf272,12,Female,Asian,71.27,5,2.09,63.08,Approaching,71.3×0.6 + 5×2.5 + 52.1×0.15
+43,52766dd8-72f2-404f-8569-f926e0e5bd23,8,Female,Native Hawaiian,83.69,0,2.01,58.02,Below,83.7×0.6 + 0×2.5 + 52.0×0.15
+44,7acd9e82-051f-40eb-b189-d22c1d2dad4e,3,Male,Native Hawaiian and Other Pacific Islander,83.58,3,8.05,66.36,Approaching,83.6×0.6 + 3×2.5 + 58.1×0.15
+45,39445034-d25a-4bb0-956e-d9dfe0068abb,6,Female,Native Hawaiian and Other Pacific Islander,85.08,5,6.77,72.06,Approaching,85.1×0.6 + 5×2.5 + 56.8×0.15
+46,e20a7219-b58b-4881-b7d7-de895504bd94,8,Female,Native Hawaiian,83.37,3,3.88,65.6,Approaching,83.4×0.6 + 3×2.5 + 53.9×0.15
+47,ef3848ff-bdbe-45bf-90bf-ddc56922b1bd,11,Male,Two or More Races,68.61,0,5.73,49.52,Below,68.6×0.6 + 0×2.5 + 55.7×0.15
+48,3b7960ee-c19b-4d34-9fca-9627602cbdda,6,Female,Native Hawaiian,64.33,3,4.08,54.21,Below,64.3×0.6 + 3×2.5 + 54.1×0.15
+49,e9747eed-1222-49fd-857a-d8c9257f645f,7,Female,Asian,76.27,5,7.36,66.87,Approaching,76.3×0.6 + 5×2.5 + 57.4×0.15
+50,dc414373-9769-4fcf-a689-fbecf52a6804,7,Female,Native Hawaiian,98.13,5,4.96,79.62,Proficient,98.1×0.6 + 5×2.5 + 55.0×0.15
+51,ca4be78b-f65d-468b-bea4-3b8882085a16,11,Female,Native Hawaiian,71.56,3,4.51,58.61,Below,71.6×0.6 + 3×2.5 + 54.5×0.15
+52,146350c5-ebb6-44f9-8c2c-7339bcee2107,4,Male,Native Hawaiian and Other Pacific Islander,75.51,5,8.74,66.62,Approaching,75.5×0.6 + 5×2.5 + 58.7×0.15
+53,8cc71df5-8747-4d79-aa07-bbf8fce17ea9,2,Male,Hispanic/Latino,90.9,0,5.16,62.81,Approaching,90.9×0.6 + 0×2.5 + 55.2×0.15
+54,5a37a149-db1c-48d1-b3e9-f4ddb136d466,5,Male,Asian,85.22,5,10.0,72.63,Approaching,85.2×0.6 + 5×2.5 + 60.0×0.15
+55,623c2fbb-d2f6-44c9-8958-aca8de9a9fe3,9,Male,Native Hawaiian and Other Pacific Islander,69.82,8,9.44,70.81,Approaching,69.8×0.6 + 8×2.5 + 59.4×0.15
+56,b4abb0cf-bf89-4b56-827a-b063bb26230f,7,Male,Hispanic/Latino,74.28,5,-1.54,64.34,Approaching,74.3×0.6 + 5×2.5 + 48.5×0.15
+57,e4aca568-9562-4ea2-a318-2ad8f34dc051,8,Female,Native Hawaiian,68.02,3,4.16,56.44,Below,68.0×0.6 + 3×2.5 + 54.2×0.15
+58,fa638d2b-dceb-436e-a870-bd1fe6067f07,10,Male,Native Hawaiian and Other Pacific Islander,62.37,5,3.47,57.94,Below,62.4×0.6 + 5×2.5 + 53.5×0.15
+59,76764b24-40ac-4878-b60a-4a3785da7482,3,Female,Native Hawaiian and Other Pacific Islander,67.28,5,2.91,60.8,Approaching,67.3×0.6 + 5×2.5 + 52.9×0.15
+60,8e3dc150-5d19-4ef4-a3b0-52a53775e70d,12,Male,Native Hawaiian,86.83,8,6.55,80.58,Proficient,86.8×0.6 + 8×2.5 + 56.6×0.15
+61,9464a6d2-597d-46f1-ad48-4c0bcc776cb5,6,Female,Native Hawaiian and Other Pacific Islander,74.65,5,10.0,66.29,Approaching,74.7×0.6 + 5×2.5 + 60.0×0.15
+62,9b04817a-0991-4df4-9104-646af0d08a55,5,Female,Native Hawaiian and Other Pacific Islander,79.68,8,4.34,75.96,Proficient,79.7×0.6 + 8×2.5 + 54.3×0.15
+63,5b73fac3-dab6-4043-bdb6-1e7e0bfd4c72,3,Female,Native Hawaiian,87.98,0,4.99,61.04,Approaching,88.0×0.6 + 0×2.5 + 55.0×0.15
+64,02d9eb0c-2756-4e37-87ab-0a285976e341,7,Female,White,81.51,5,4.18,69.53,Approaching,81.5×0.6 + 5×2.5 + 54.2×0.15
+65,770f534c-3410-4d39-90df-3c8b7afe97de,10,Female,Asian,85.39,0,1.58,58.97,Below,85.4×0.6 + 0×2.5 + 51.6×0.15
+66,90ed277d-bac1-48fe-b73f-80c35b5c2fb7,1,Male,Native Hawaiian,68.73,5,10.0,62.74,Approaching,68.7×0.6 + 5×2.5 + 60.0×0.15
+67,29674cce-a12a-4aea-91df-55d5c3da61fb,12,Female,Native Hawaiian and Other Pacific Islander,99.71,3,2.45,75.19,Proficient,99.7×0.6 + 3×2.5 + 52.5×0.15
+68,84d69242-ab3e-44e5-93df-1174e95812ea,2,Female,Native Hawaiian,81.19,3,1.56,63.95,Approaching,81.2×0.6 + 3×2.5 + 51.6×0.15
+69,4fac0c6a-609f-44b2-a8f2-4ce107e9edb2,3,Female,Asian,73.17,8,6.44,72.37,Approaching,73.2×0.6 + 8×2.5 + 56.4×0.15
+70,4dc9c755-10e0-481a-ad61-f0e0dd204c57,6,Female,Native Hawaiian,87.53,0,6.55,61.0,Approaching,87.5×0.6 + 0×2.5 + 56.5×0.15
+71,0770f33c-9c70-49e1-b048-4b23921a8de7,3,Male,Native Hawaiian and Other Pacific Islander,88.01,0,2.56,60.69,Approaching,88.0×0.6 + 0×2.5 + 52.6×0.15
+72,3916749e-60ae-42f2-aa60-e7f809f891bc,1,Female,Native Hawaiian,72.38,3,6.5,59.4,Below,72.4×0.6 + 3×2.5 + 56.5×0.15
+73,66c51dbd-30ba-49a2-8208-4306640dbcb3,2,Male,Asian,83.61,8,7.48,78.79,Proficient,83.6×0.6 + 8×2.5 + 57.5×0.15
+74,49ff9acf-473e-470a-9394-c9d7ba1a01ae,11,Female,Native Hawaiian and Other Pacific Islander,58.21,5,8.28,56.17,Below,58.2×0.6 + 5×2.5 + 58.3×0.15
+75,c1ddeb5f-ed43-41d9-a884-2ab252a15b2f,5,Male,Asian,80.69,5,6.15,69.34,Approaching,80.7×0.6 + 5×2.5 + 56.1×0.15
+76,9a0ef419-3cde-4dad-bb83-ed5265a376a1,9,Male,Native Hawaiian,83.56,8,4.51,78.31,Proficient,83.6×0.6 + 8×2.5 + 54.5×0.15
+77,72deedab-2a43-485e-8a76-9b982ca5cb4d,5,Female,Native Hawaiian,85.25,5,3.82,71.72,Approaching,85.2×0.6 + 5×2.5 + 53.8×0.15
+78,9205d01d-685e-4c6b-aa2e-3f893ad0597c,6,Female,Native Hawaiian and Other Pacific Islander,84.59,8,6.03,79.16,Proficient,84.6×0.6 + 8×2.5 + 56.0×0.15
+79,3262693c-af93-4a7c-bc80-0fcb658be20b,8,Female,Native Hawaiian,86.07,3,5.55,67.47,Approaching,86.1×0.6 + 3×2.5 + 55.5×0.15
+80,672fb5a8-9638-4101-9089-f777c7a9a950,3,Female,Native Hawaiian,71.42,0,0.31,50.4,Below,71.4×0.6 + 0×2.5 + 50.3×0.15
+81,262a78f3-3cd8-4eae-b973-47a3182f5e47,9,Male,Native Hawaiian,71.82,0,6.82,51.61,Below,71.8×0.6 + 0×2.5 + 56.8×0.15
+82,48f96499-134c-4fa4-b7e0-c9ea4542d8f8,8,Male,Native Hawaiian,84.7,0,4.05,58.93,Below,84.7×0.6 + 0×2.5 + 54.1×0.15
+83,00c189e2-82c2-4efe-a1e3-d43d7166154b,5,Female,Two or More Races,52.38,8,7.69,60.08,Approaching,52.4×0.6 + 8×2.5 + 57.7×0.15
+84,ec8ed085-2413-4d92-87ae-ea1ad46648a8,5,Male,Two or More Races,79.65,5,1.89,68.07,Approaching,79.7×0.6 + 5×2.5 + 51.9×0.15
+85,ca265951-e2d8-41c2-bc91-d2bd3deaee1a,4,Female,Native Hawaiian and Other Pacific Islander,82.98,8,2.48,77.66,Proficient,83.0×0.6 + 8×2.5 + 52.5×0.15
+86,f766018f-988f-473a-91f7-55e099d2f211,2,Female,Native Hawaiian,55.88,5,4.9,54.26,Below,55.9×0.6 + 5×2.5 + 54.9×0.15
+87,3ff58a1e-3796-40e8-84f2-6b137b7b2dbf,2,Female,Native Hawaiian,92.84,0,3.65,63.75,Approaching,92.8×0.6 + 0×2.5 + 53.6×0.15
+88,e043743f-507c-4a70-86bb-91106b2c8ecc,9,Male,Native Hawaiian,59.33,0,6.85,44.13,Below,59.3×0.6 + 0×2.5 + 56.9×0.15
+89,ae3f67e6-9461-4a7a-9ef2-5593a48a36f2,11,Female,Native Hawaiian,76.72,5,8.67,67.33,Approaching,76.7×0.6 + 5×2.5 + 58.7×0.15
+90,b48ab655-736e-4260-b1bf-88e0bc68a7ed,10,Male,Two or More Races,71.24,5,6.56,63.73,Approaching,71.2×0.6 + 5×2.5 + 56.6×0.15
+91,135d656e-fb3b-4b06-95ab-f9f020f64f3b,3,Male,Native Hawaiian and Other Pacific Islander,69.7,8,7.89,70.5,Approaching,69.7×0.6 + 8×2.5 + 57.9×0.15
+92,631d211b-95ea-4702-8575-9bb682e3173f,3,Male,Two or More Races,86.39,8,4.7,80.04,Proficient,86.4×0.6 + 8×2.5 + 54.7×0.15
+93,fc872f76-bc96-4a07-8c6e-55ae13329401,4,Female,Native Hawaiian,78.07,5,4.58,67.53,Approaching,78.1×0.6 + 5×2.5 + 54.6×0.15
+94,32058904-2657-4096-9bd5-2e8eb095f4c1,9,Female,Native Hawaiian,67.71,5,9.95,62.12,Approaching,67.7×0.6 + 5×2.5 + 60.0×0.15
+95,63f023c4-9121-4e94-8cbc-b18664e0e8cb,3,Male,Native Hawaiian,81.44,5,1.95,69.16,Approaching,81.4×0.6 + 5×2.5 + 52.0×0.15
+96,71b82b1d-17ef-40fc-9c8d-e97af613de2a,5,Male,Native Hawaiian and Other Pacific Islander,94.73,3,4.06,72.45,Approaching,94.7×0.6 + 3×2.5 + 54.1×0.15
+97,e37db600-6257-4d2e-82c8-189a1401423a,9,Female,Hispanic/Latino,83.72,5,10.0,71.73,Approaching,83.7×0.6 + 5×2.5 + 60.0×0.15
+98,56416215-9d30-4bb7-b486-89d0ee72532d,8,Male,Native Hawaiian,70.16,8,4.38,70.25,Approaching,70.2×0.6 + 8×2.5 + 54.4×0.15
+99,b3cc2053-9632-4b6b-b496-34488b824503,12,Female,White,88.73,8,5.68,81.59,Proficient,88.7×0.6 + 8×2.5 + 55.7×0.15
+100,873bb6b7-8b52-4153-b7df-356ad930ddf8,9,Female,Native Hawaiian,73.07,8,10.0,72.84,Approaching,73.1×0.6 + 8×2.5 + 60.0×0.15
+101,9a9b8ba1-cd5b-4741-b292-5cc2f598ad0f,13,Male,Asian,76.75,5,7.7,67.21,Approaching,76.8×0.6 + 5×2.5 + 57.7×0.15
+102,c65b4075-2974-4497-bea9-ddd6f6bd6caa,10,Prefer not to say,Native Hawaiian,87.76,0,-0.78,60.04,Approaching,87.8×0.6 + 0×2.5 + 49.2×0.15
+103,8a4a1b90-8378-438b-88d7-9d8fafe3c541,12,Female,Native Hawaiian,81.28,8,4.72,76.98,Proficient,81.3×0.6 + 8×2.5 + 54.7×0.15
+104,e8bb21c3-ab83-4d3e-b46e-34a40a0cb3af,5,Male,Native Hawaiian,81.72,5,3.5,69.56,Approaching,81.7×0.6 + 5×2.5 + 53.5×0.15
+105,3308d5a4-1035-4f79-9d30-6c1a1c2e9a8b,12,Male,Native Hawaiian and Other Pacific Islander,71.65,0,4.06,51.1,Below,71.7×0.6 + 0×2.5 + 54.1×0.15
+106,58fbb1f1-5948-4e37-b210-c8b0a1a88639,6,Female,Native Hawaiian,82.1,0,3.97,57.36,Below,82.1×0.6 + 0×2.5 + 54.0×0.15
+107,292c856a-f2bf-41e6-bde9-e399eacb5fb5,5,Female,Native Hawaiian and Other Pacific Islander,74.29,8,1.62,72.32,Approaching,74.3×0.6 + 8×2.5 + 51.6×0.15
+108,efe3ccc2-41d1-4750-b79e-93181372afcf,3,Female,Native Hawaiian,83.52,0,5.91,58.5,Below,83.5×0.6 + 0×2.5 + 55.9×0.15
+109,bad2ce75-93ec-4972-8e83-60eebb154211,1,Female,Native Hawaiian and Other Pacific Islander,67.83,5,7.57,61.83,Approaching,67.8×0.6 + 5×2.5 + 57.6×0.15
+110,60417b43-847d-4326-80f3-43ce249483a0,9,Female,Native Hawaiian,83.0,0,9.57,58.74,Below,83.0×0.6 + 0×2.5 + 59.6×0.15
+111,c4330862-06e0-4a85-a90a-e94a9b4e663f,2,Male,Native Hawaiian and Other Pacific Islander,97.87,8,5.85,87.1,Proficient,97.9×0.6 + 8×2.5 + 55.8×0.15
+112,34b6af44-f14a-4fb4-89d9-87252735db14,7,Male,Native Hawaiian and Other Pacific Islander,79.95,0,3.79,56.04,Below,80.0×0.6 + 0×2.5 + 53.8×0.15
+113,466c55f8-81fe-4426-b955-d098cbe713e4,1,Female,Native Hawaiian and Other Pacific Islander,77.38,5,3.09,66.89,Approaching,77.4×0.6 + 5×2.5 + 53.1×0.15
+114,8e509aaf-5105-4a05-acf1-873449c53b44,2,Non-binary,Two or More Races,79.84,3,10.0,64.4,Approaching,79.8×0.6 + 3×2.5 + 60.0×0.15
+115,fe3b7450-e2b2-41ba-bd3c-79e0d62648d4,11,Female,White,77.51,8,10.0,75.51,Proficient,77.5×0.6 + 8×2.5 + 60.0×0.15
+116,9761c327-96bb-4b4d-9362-fd87545b449d,8,Male,Native Hawaiian,80.17,5,8.07,69.31,Approaching,80.2×0.6 + 5×2.5 + 58.1×0.15
+117,878ca213-5201-4eb0-b54c-29800716cf1c,4,Male,Native Hawaiian,69.61,5,-2.47,61.4,Approaching,69.6×0.6 + 5×2.5 + 47.5×0.15
+118,14306f2d-60a3-49c6-913b-37843dffa974,2,Female,White,74.15,5,4.79,65.21,Approaching,74.2×0.6 + 5×2.5 + 54.8×0.15
+119,51a85806-042c-4e7d-a45f-6d3e3e5c02fd,2,Male,Native Hawaiian and Other Pacific Islander,72.65,8,5.99,71.99,Approaching,72.7×0.6 + 8×2.5 + 56.0×0.15
+120,f41abbc2-6621-4132-848f-05676e6f96fa,9,Female,White,69.11,5,0.78,61.58,Approaching,69.1×0.6 + 5×2.5 + 50.8×0.15
+121,6c777e19-5f1a-47e4-a698-b21da0df957c,7,Male,Asian,68.51,0,2.19,48.93,Below,68.5×0.6 + 0×2.5 + 52.2×0.15
+122,33267099-3606-429b-a938-ed4976d484cb,4,Male,Native Hawaiian,90.64,0,9.4,63.29,Approaching,90.6×0.6 + 0×2.5 + 59.4×0.15
+123,99790399-3f3f-40c6-9cc5-e851ddffa90f,5,Female,Native Hawaiian and Other Pacific Islander,81.34,5,0.59,68.89,Approaching,81.3×0.6 + 5×2.5 + 50.6×0.15
+124,131ef9d9-d044-4f4e-956a-09bab543c71d,4,Female,Native Hawaiian and Other Pacific Islander,90.0,0,6.23,62.43,Approaching,90.0×0.6 + 0×2.5 + 56.2×0.15
+125,6623d19b-9f82-4527-bbf7-6ed3d0a5d0be,3,Female,Native Hawaiian and Other Pacific Islander,72.13,5,4.62,63.97,Approaching,72.1×0.6 + 5×2.5 + 54.6×0.15
+126,b5142ee6-4a3f-48f6-aef9-7af917d1d45e,1,Female,Native Hawaiian and Other Pacific Islander,62.86,5,5.47,58.54,Below,62.9×0.6 + 5×2.5 + 55.5×0.15
+127,0e5ff464-7275-4769-bd54-ff89a862f124,6,Female,Native Hawaiian,77.43,5,5.36,67.26,Approaching,77.4×0.6 + 5×2.5 + 55.4×0.15
+128,9058648e-8975-445e-aba2-6451d21d0741,9,Male,Asian,82.51,5,5.81,70.38,Approaching,82.5×0.6 + 5×2.5 + 55.8×0.15
+129,20bd8235-f2c7-40a2-b30e-e4b790a38997,5,Female,White,77.11,0,7.02,54.82,Below,77.1×0.6 + 0×2.5 + 57.0×0.15
+130,f6041bfd-fc1b-4d4f-95c0-21e08e767914,6,Female,Two or More Races,48.93,3,4.87,45.09,Below,48.9×0.6 + 3×2.5 + 54.9×0.15
+131,161551ef-56cd-4058-9488-3fc4840f7f52,11,Male,Asian,67.98,0,10.0,49.79,Below,68.0×0.6 + 0×2.5 + 60.0×0.15
+132,d5d5ad49-a473-4c70-8d3d-717cfa2009be,10,Female,Native Hawaiian,85.13,8,5.88,79.46,Proficient,85.1×0.6 + 8×2.5 + 55.9×0.15
+133,0886015f-0627-4629-b959-012f2f405c14,3,Male,Native Hawaiian and Other Pacific Islander,70.65,0,6.32,50.84,Below,70.7×0.6 + 0×2.5 + 56.3×0.15
+134,5482ab47-18cf-4794-91fd-bdae4300e83b,8,Male,Native Hawaiian and Other Pacific Islander,78.12,8,6.37,75.33,Proficient,78.1×0.6 + 8×2.5 + 56.4×0.15
+135,82961a58-0e60-475f-8c06-44f88434ee50,6,Male,Native Hawaiian,68.95,5,7.96,62.56,Approaching,69.0×0.6 + 5×2.5 + 58.0×0.15
+136,ae3d9cc8-48e6-4e94-80bb-a1174e14d213,3,Male,Native Hawaiian,62.39,8,4.91,65.67,Approaching,62.4×0.6 + 8×2.5 + 54.9×0.15
+137,3019594b-2ff2-4cc3-b1dc-95f23a32ab3a,2,Non-binary,Native Hawaiian,83.32,0,4.35,58.14,Below,83.3×0.6 + 0×2.5 + 54.3×0.15
+138,9b43280e-325d-4eb8-9e86-f2366b5a82e9,5,Female,Asian,67.08,3,5.32,56.05,Below,67.1×0.6 + 3×2.5 + 55.3×0.15
+139,093d6bc2-9f80-46a8-87e3-889bd5135124,3,Male,Two or More Races,72.81,5,7.11,64.75,Approaching,72.8×0.6 + 5×2.5 + 57.1×0.15
+140,a872d096-5b25-468c-a28e-62c69d2aa3b3,6,Male,Native Hawaiian,92.51,8,3.89,83.59,Proficient,92.5×0.6 + 8×2.5 + 53.9×0.15
+141,1de5265e-5c8e-4c4e-9861-8a5b51c047f8,6,Male,White,97.73,0,8.23,67.37,Approaching,97.7×0.6 + 0×2.5 + 58.2×0.15
+142,d60e6278-10a5-4d9c-9ed7-f7f318d56971,4,Female,Native Hawaiian,86.41,8,8.49,80.62,Proficient,86.4×0.6 + 8×2.5 + 58.5×0.15
+143,87664019-a8c3-454e-aa84-3516a8a3ce49,5,Male,White,65.12,5,4.25,59.71,Below,65.1×0.6 + 5×2.5 + 54.2×0.15
+144,6aae1482-51e5-43bf-b7b1-ee824ac2f232,7,Female,White,94.96,8,1.91,84.76,Proficient,95.0×0.6 + 8×2.5 + 51.9×0.15
+145,8ba7caa9-5b8f-4ba8-a994-29f9c29ddf58,11,Male,Native Hawaiian,74.39,0,6.95,53.18,Below,74.4×0.6 + 0×2.5 + 57.0×0.15
+146,dd34f47f-0ecc-4f8e-858a-5748281f39e6,7,Male,Native Hawaiian,72.98,5,4.41,64.45,Approaching,73.0×0.6 + 5×2.5 + 54.4×0.15
+147,7764241b-262f-4dbc-8147-07b4d619b349,10,Male,Asian,76.02,5,8.38,66.87,Approaching,76.0×0.6 + 5×2.5 + 58.4×0.15
+148,202f9a04-08cf-4e6e-ba8d-7cd3bf2d5f5c,4,Male,Asian,66.88,3,2.93,55.57,Below,66.9×0.6 + 3×2.5 + 52.9×0.15
+149,55b07392-590f-4b01-b8b2-3c6854d825e2,12,Female,Asian,75.03,0,3.47,53.04,Below,75.0×0.6 + 0×2.5 + 53.5×0.15
+150,001ccb1f-995d-4e06-8527-1df3163b9687,3,Female,White,100.0,5,5.57,80.84,Proficient,100.0×0.6 + 5×2.5 + 55.6×0.15
+151,2f46c263-194e-4645-9de5-28a79b438a7a,3,Female,Hispanic/Latino,84.93,0,1.3,58.65,Below,84.9×0.6 + 0×2.5 + 51.3×0.15
+152,e4484dd1-d40a-42e9-8e6d-a18fa45864f5,1,Female,Native Hawaiian,74.61,3,7.1,60.83,Approaching,74.6×0.6 + 3×2.5 + 57.1×0.15
+153,04d899f7-9354-4293-912d-e292e004352c,1,Male,Native Hawaiian,79.6,8,4.43,75.92,Proficient,79.6×0.6 + 8×2.5 + 54.4×0.15
+154,44b961e0-c766-4c82-9df1-66610f85d7d5,12,Female,Native Hawaiian,66.8,0,6.64,48.58,Below,66.8×0.6 + 0×2.5 + 56.6×0.15
+155,280fd7e4-4bd4-448d-a07a-1195c6f310dc,10,Female,Native Hawaiian and Other Pacific Islander,68.84,8,10.0,70.3,Approaching,68.8×0.6 + 8×2.5 + 60.0×0.15
+156,e2ef77cd-cf61-48eb-b2e8-c11f827244b0,9,Male,Two or More Races,71.78,5,2.5,63.44,Approaching,71.8×0.6 + 5×2.5 + 52.5×0.15
+157,ef25c11a-2037-459e-a596-1c7cf36026ff,3,Female,Two or More Races,56.23,3,6.03,49.64,Below,56.2×0.6 + 3×2.5 + 56.0×0.15
+158,04675c4d-3ef6-4fd6-bb27-a7ded353265b,5,Female,White,84.65,5,1.44,71.01,Approaching,84.7×0.6 + 5×2.5 + 51.4×0.15
+159,f373ed19-f1a7-43ed-84ee-2d26051df512,7,Male,Native Hawaiian,83.86,3,4.44,65.98,Approaching,83.9×0.6 + 3×2.5 + 54.4×0.15
+160,aaefec73-a7c4-4e0b-adbe-d3affff5fe0c,12,Non-binary,Native Hawaiian,69.44,5,3.83,62.24,Approaching,69.4×0.6 + 5×2.5 + 53.8×0.15
+161,50cb7bca-b851-4aed-984d-c0cd4de4b33b,9,Male,Two or More Races,68.3,5,2.81,61.4,Approaching,68.3×0.6 + 5×2.5 + 52.8×0.15
+162,85535b0b-7bd1-453c-94a8-4b826ac9e3ec,5,Male,Native Hawaiian,64.04,8,2.87,66.35,Approaching,64.0×0.6 + 8×2.5 + 52.9×0.15
+163,a34de086-879a-43d1-8ada-afde6dd21ccd,5,Male,Native Hawaiian,62.67,5,0.75,57.71,Below,62.7×0.6 + 5×2.5 + 50.7×0.15
+164,2f64b372-d73d-4e2d-a9f7-3239fb6b5074,10,Female,Asian,72.44,0,2.26,51.3,Below,72.4×0.6 + 0×2.5 + 52.3×0.15
+165,a269b62a-ab1d-49b5-b876-b069574f1b2f,8,Female,Native Hawaiian and Other Pacific Islander,74.54,3,5.77,60.59,Approaching,74.5×0.6 + 3×2.5 + 55.8×0.15
+166,d8b57a02-7ebb-4f06-8b74-e71ffd1bea8d,6,Male,Native Hawaiian,73.88,3,7.93,60.52,Approaching,73.9×0.6 + 3×2.5 + 57.9×0.15
+167,9a046f80-8c17-4fd4-99d0-12b1f01bf860,2,Female,Asian,81.11,5,10.0,70.17,Approaching,81.1×0.6 + 5×2.5 + 60.0×0.15
+168,67cc8233-2e75-49aa-b5ee-3284ea3aa0c9,9,Male,Native Hawaiian and Other Pacific Islander,97.23,8,6.19,86.77,Proficient,97.2×0.6 + 8×2.5 + 56.2×0.15
+169,9b81f7de-e69b-4c96-9717-f7a87b146e30,2,Female,Native Hawaiian,78.23,5,3.53,67.47,Approaching,78.2×0.6 + 5×2.5 + 53.5×0.15
+170,062da831-7cf7-4578-8eb8-ca28ab5cc92a,3,Male,Native Hawaiian and Other Pacific Islander,66.49,0,10.0,48.89,Below,66.5×0.6 + 0×2.5 + 60.0×0.15
+171,53dd91fd-7961-4435-8e0f-3620db1a7fe7,8,Male,White,67.8,0,4.71,48.89,Below,67.8×0.6 + 0×2.5 + 54.7×0.15
+172,697d4865-7ac1-469f-856b-489a49db476a,12,Female,Asian,74.37,8,5.48,72.94,Approaching,74.4×0.6 + 8×2.5 + 55.5×0.15
+173,7a4c009e-f0d8-4634-b0dc-f00d1e255390,5,Male,Native Hawaiian and Other Pacific Islander,76.68,5,6.07,66.92,Approaching,76.7×0.6 + 5×2.5 + 56.1×0.15
+174,1d8c9d27-2978-4277-b9cc-bd02fbdd2ce6,11,Female,Native Hawaiian,71.92,0,4.56,51.34,Below,71.9×0.6 + 0×2.5 + 54.6×0.15
+175,2faf90a6-5b0c-4103-8610-3130317d5873,7,Male,Native Hawaiian,81.81,0,5.69,57.44,Below,81.8×0.6 + 0×2.5 + 55.7×0.15
+176,b67c45de-4dbc-4347-90be-e132a1b59b60,3,Non-binary,White,73.67,8,8.48,72.97,Approaching,73.7×0.6 + 8×2.5 + 58.5×0.15
+177,a2d1188b-bb4e-45ba-a804-d320756d8055,8,Male,Native Hawaiian,100.0,0,4.14,68.12,Approaching,100.0×0.6 + 0×2.5 + 54.1×0.15
+178,4d29e117-89d5-4484-8aa9-5678a428c35c,11,Female,Asian,69.43,5,7.27,62.75,Approaching,69.4×0.6 + 5×2.5 + 57.3×0.15
+179,6cbff3de-bed8-4e7a-8e68-94a8e0b89254,1,Female,Asian,62.29,5,2.98,57.82,Below,62.3×0.6 + 5×2.5 + 53.0×0.15
+180,8a5bdc16-da51-42a5-b60c-949f4abe0f83,2,Male,Native Hawaiian,80.1,0,2.79,55.98,Below,80.1×0.6 + 0×2.5 + 52.8×0.15
+181,f6a7bd8b-ecd5-4601-9903-7455e0eeaf9c,8,Male,White,57.78,3,9.39,51.08,Below,57.8×0.6 + 3×2.5 + 59.4×0.15
+182,11998eb5-8d6f-45e1-9c32-c4919dbeb8e2,3,Male,Native Hawaiian,67.45,3,2.7,55.87,Below,67.5×0.6 + 3×2.5 + 52.7×0.15
+183,e1c80fa6-3a7f-45b0-a865-458c9cd030d5,9,Female,Native Hawaiian and Other Pacific Islander,79.54,3,7.23,63.81,Approaching,79.5×0.6 + 3×2.5 + 57.2×0.15
+184,437dfd32-6a91-43df-b828-c6fbe6ce3abe,10,Female,Native Hawaiian,87.41,5,7.35,73.55,Approaching,87.4×0.6 + 5×2.5 + 57.4×0.15
+185,9eac22ec-071d-461b-b975-e13af53b24c7,11,Female,Asian,80.77,8,3.92,76.55,Proficient,80.8×0.6 + 8×2.5 + 53.9×0.15
+186,b3e34f64-ca90-4cd2-9434-d3956d99bc3c,11,Female,Native Hawaiian,71.93,5,9.07,64.52,Approaching,71.9×0.6 + 5×2.5 + 59.1×0.15
+187,5e80aac0-bb60-4234-aeac-cd3674c51f57,8,Male,Asian,76.85,8,6.4,74.57,Approaching,76.8×0.6 + 8×2.5 + 56.4×0.15
+188,a14beaaf-3e1b-44d5-a9b5-28ee926a1c98,5,Female,Native Hawaiian,79.02,8,7.59,76.05,Proficient,79.0×0.6 + 8×2.5 + 57.6×0.15
+189,1b8a1388-02d9-45fc-b51b-79cdc297c8ce,2,Female,Asian,73.05,5,2.39,64.19,Approaching,73.0×0.6 + 5×2.5 + 52.4×0.15
+190,664eb16b-1d14-4517-8001-848caf2789ed,11,Female,Asian,90.95,3,5.32,70.37,Approaching,91.0×0.6 + 3×2.5 + 55.3×0.15
+191,70ad9e61-2718-4c50-8c1d-3247243591d9,6,Male,Native Hawaiian,86.57,5,6.6,72.93,Approaching,86.6×0.6 + 5×2.5 + 56.6×0.15
+192,ddaefaaa-30c3-4483-9a5b-23390c257fee,11,Male,Native Hawaiian,73.83,5,7.25,65.39,Approaching,73.8×0.6 + 5×2.5 + 57.2×0.15
+193,b177b211-fb0c-4586-af2c-23caf95bb912,4,Female,White,75.81,0,5.6,53.83,Below,75.8×0.6 + 0×2.5 + 55.6×0.15
+194,44aee9fd-20e5-41af-8ee7-611289b65c91,12,Male,Two or More Races,67.3,8,3.55,68.41,Approaching,67.3×0.6 + 8×2.5 + 53.5×0.15
+195,bcc78f4e-b233-4a2f-b3d5-d0732b6d27f6,6,Female,Native Hawaiian,77.94,8,6.91,75.3,Proficient,77.9×0.6 + 8×2.5 + 56.9×0.15
+196,fb1d75df-72d4-405a-9917-8eedc5567122,10,Male,Native Hawaiian and Other Pacific Islander,67.08,5,5.2,61.03,Approaching,67.1×0.6 + 5×2.5 + 55.2×0.15
+197,9d7444c2-4cc8-4797-b9db-26b80b43e32b,2,Female,Native Hawaiian,71.33,5,7.23,63.88,Approaching,71.3×0.6 + 5×2.5 + 57.2×0.15

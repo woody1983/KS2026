@@ -1,0 +1,44 @@
+{
+  "analysis_timestamp": "2026-02-18T23:29:37.985869",
+  "total_indicators_configured": 1,
+  "total_weight_records": 3,
+  "weight_configurations": [
+    {
+      "weight_id": 1,
+      "indicator_key": 1,
+      "indicator_name": "'Ike K\u016bpuna",
+      "indicator_code": "ROOT_IKE",
+      "weight_name": "base_score",
+      "weight_value": 0.6,
+      "version_number": 1,
+      "effective_start_date": "1900-01-01",
+      "effective_end_date": "9999-12-31",
+      "is_current": 1
+    },
+    {
+      "weight_id": 2,
+      "indicator_key": 1,
+      "indicator_name": "'Ike K\u016bpuna",
+      "indicator_code": "ROOT_IKE",
+      "weight_name": "program_bonus",
+      "weight_value": 0.25,
+      "version_number": 1,
+      "effective_start_date": "1900-01-01",
+      "effective_end_date": "9999-12-31",
+      "is_current": 1
+    },
+    {
+      "weight_id": 3,
+      "indicator_key": 1,
+      "indicator_name": "'Ike K\u016bpuna",
+      "indicator_code": "ROOT_IKE",
+      "weight_name": "wellbeing_adjustment",
+      "weight_value": 0.15,
+      "version_number": 1,
+      "effective_start_date": "1900-01-01",
+      "effective_end_date": "9999-12-31",
+      "is_current": 1
+    }
+  ],
+  "validation_status": "VALID"
+}

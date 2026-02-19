@@ -1,0 +1,1984 @@
+{
+  "analysis_timestamp": "2026-02-18T22:53:07.992964",
+  "total_records_analyzed": 197,
+  "clean_records": 197,
+  "anomalies_detected": 197,
+  "anomaly_breakdown": {
+    "critical": 0,
+    "high": 0,
+    "medium": 197,
+    "low": 0
+  },
+  "detailed_issues": [
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 1: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 1,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 2: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 2,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 3: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 3,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 4: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 4,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 5: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 5,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 6: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 6,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 7: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 7,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 8: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 8,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 9: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 9,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 10: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 10,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 11: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 11,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 12: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 12,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 13: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 13,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 14: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 14,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 15: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 15,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 16: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 16,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 17: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 17,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 18: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 18,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 19: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 19,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 20: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 20,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 21: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 21,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 22: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 22,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 23: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 23,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 24: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 24,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 25: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 25,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 26: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 26,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 27: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 27,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 28: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 28,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 29: Grade 5 but entry year 2020 (expected ~2016)",
+      "student_key": 29,
+      "grade": 5,
+      "entry_year": 2020,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 30: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 30,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 31: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 31,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 32: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 32,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 33: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 33,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 34: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 34,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 35: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 35,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 36: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 36,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 37: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 37,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 38: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 38,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 39: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 39,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 40: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 40,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 41: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 41,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 42: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 42,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 43: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 43,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 44: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 44,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 45: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 45,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 46: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 46,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 47: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 47,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 48: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 48,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 49: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 49,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 50: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 50,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 51: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 51,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 52: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 52,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 53: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 53,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 54: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 54,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 55: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 55,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 56: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 56,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 57: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 57,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 58: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 58,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 59: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 59,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 60: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 60,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 61: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 61,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 62: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 62,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 63: Grade 3 but entry year 2027 (expected ~2018)",
+      "student_key": 63,
+      "grade": 3,
+      "entry_year": 2027,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 64: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 64,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 65: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 65,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 66: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 66,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 67: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 67,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 68: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 68,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 69: Grade 3 but entry year 2027 (expected ~2018)",
+      "student_key": 69,
+      "grade": 3,
+      "entry_year": 2027,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 70: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 70,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 71: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 71,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 72: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 72,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 73: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 73,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 74: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 74,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 75: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 75,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 76: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 76,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 77: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 77,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 78: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 78,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 79: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 79,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 80: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 80,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 81: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 81,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 82: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 82,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 83: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 83,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 84: Grade 5 but entry year 2020 (expected ~2016)",
+      "student_key": 84,
+      "grade": 5,
+      "entry_year": 2020,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 85: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 85,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 86: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 86,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 87: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 87,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 88: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 88,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 89: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 89,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 90: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 90,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 91: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 91,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 92: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 92,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 93: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 93,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 94: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 94,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 95: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 95,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 96: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 96,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 97: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 97,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 98: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 98,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 99: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 99,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 100: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 100,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 101: Grade 13 but entry year 2020 (expected ~2008)",
+      "student_key": 101,
+      "grade": 13,
+      "entry_year": 2020,
+      "expected_year": 2008
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 102: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 102,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 103: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 103,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 104: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 104,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 105: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 105,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 106: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 106,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 107: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 107,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 108: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 108,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 109: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 109,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 110: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 110,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 111: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 111,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 112: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 112,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 113: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 113,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 114: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 114,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 115: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 115,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 116: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 116,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 117: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 117,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 118: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 118,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 119: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 119,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 120: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 120,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 121: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 121,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 122: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 122,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 123: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 123,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 124: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 124,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 125: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 125,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 126: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 126,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 127: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 127,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 128: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 128,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 129: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 129,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 130: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 130,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 131: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 131,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 132: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 132,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 133: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 133,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 134: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 134,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 135: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 135,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 136: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 136,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 137: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 137,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 138: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 138,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 139: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 139,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 140: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 140,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 141: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 141,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 142: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 142,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 143: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 143,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 144: Grade 7 but entry year 2027 (expected ~2014)",
+      "student_key": 144,
+      "grade": 7,
+      "entry_year": 2027,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 145: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 145,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 146: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 146,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 147: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 147,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 148: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 148,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 149: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 149,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 150: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 150,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 151: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 151,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 152: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 152,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 153: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 153,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 154: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 154,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 155: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 155,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 156: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 156,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 157: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 157,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 158: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 158,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 159: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 159,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 160: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 160,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 161: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 161,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 162: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 162,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 163: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 163,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 164: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 164,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 165: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 165,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 166: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 166,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 167: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 167,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 168: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 168,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 169: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 169,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 170: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 170,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 171: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 171,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 172: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 172,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 173: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 173,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 174: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 174,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 175: Grade 7 but entry year 2019 (expected ~2014)",
+      "student_key": 175,
+      "grade": 7,
+      "entry_year": 2019,
+      "expected_year": 2014
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 176: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 176,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 177: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 177,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 178: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 178,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 179: Grade 1 but entry year 2025 (expected ~2020)",
+      "student_key": 179,
+      "grade": 1,
+      "entry_year": 2025,
+      "expected_year": 2020
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 180: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 180,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 181: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 181,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 182: Grade 3 but entry year 2023 (expected ~2018)",
+      "student_key": 182,
+      "grade": 3,
+      "entry_year": 2023,
+      "expected_year": 2018
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 183: Grade 9 but entry year 2017 (expected ~2012)",
+      "student_key": 183,
+      "grade": 9,
+      "entry_year": 2017,
+      "expected_year": 2012
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 184: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 184,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 185: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 185,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 186: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 186,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 187: Grade 8 but entry year 2018 (expected ~2013)",
+      "student_key": 187,
+      "grade": 8,
+      "entry_year": 2018,
+      "expected_year": 2013
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 188: Grade 5 but entry year 2021 (expected ~2016)",
+      "student_key": 188,
+      "grade": 5,
+      "entry_year": 2021,
+      "expected_year": 2016
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 189: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 189,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 190: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 190,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 191: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 191,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 192: Grade 11 but entry year 2015 (expected ~2010)",
+      "student_key": 192,
+      "grade": 11,
+      "entry_year": 2015,
+      "expected_year": 2010
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 193: Grade 4 but entry year 2022 (expected ~2017)",
+      "student_key": 193,
+      "grade": 4,
+      "entry_year": 2022,
+      "expected_year": 2017
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 194: Grade 12 but entry year 2014 (expected ~2009)",
+      "student_key": 194,
+      "grade": 12,
+      "entry_year": 2014,
+      "expected_year": 2009
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 195: Grade 6 but entry year 2020 (expected ~2015)",
+      "student_key": 195,
+      "grade": 6,
+      "entry_year": 2020,
+      "expected_year": 2015
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 196: Grade 10 but entry year 2016 (expected ~2011)",
+      "student_key": 196,
+      "grade": 10,
+      "entry_year": 2016,
+      "expected_year": 2011
+    },
+    {
+      "type": "DATE_GRADE_MISMATCH",
+      "severity": "MEDIUM",
+      "count": 1,
+      "description": "Student 197: Grade 2 but entry year 2024 (expected ~2019)",
+      "student_key": 197,
+      "grade": 2,
+      "entry_year": 2024,
+      "expected_year": 2019
+    }
+  ]
+}

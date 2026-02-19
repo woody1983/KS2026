@@ -1,0 +1,40 @@
+{
+  "model_name": "IkeKupunaScoreEngine_v1",
+  "timestamp": "2026-02-18T22:53:07.993809",
+  "formula": "Score = w\u2081\u00d7Base + w\u2082\u00d7Program_Bonus + w\u2083\u00d7Wellbeing_Adj",
+  "weights": {
+    "base_score": 0.6,
+    "program_bonus": 0.25,
+    "wellbeing_adjustment": 0.15
+  },
+  "components": {
+    "base_score": {
+      "description": "Normalized assessment score from fact_e_ola_outcomes",
+      "weight": 0.6,
+      "range": "0-100"
+    },
+    "program_bonus": {
+      "description": "Cultural program participation bonus",
+      "weight": 0.25,
+      "calculation": "Hawaiian language (+5) + Hula (+3), capped at 10",
+      "scaled_range": "0-25"
+    },
+    "wellbeing_adjustment": {
+      "description": "Cultural well-being correlation adjustment",
+      "weight": 0.15,
+      "calculation": "((cultural_score - 50) / 50) \u00d7 10",
+      "range": "-10 to +10"
+    }
+  },
+  "proficiency_thresholds": {
+    "Advanced": 90,
+    "Proficient": 75,
+    "Approaching": 60,
+    "Below": 0
+  },
+  "statistics": {
+    "mean_score": 65.1978847715736,
+    "std_dev": 8.967821032365801,
+    "sample_size": 197
+  }
+}
