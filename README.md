@@ -2,11 +2,11 @@
 
 > **"Hear my words and bear witness to my vow. Night gathers, and now my watch begins."**
 
-A comprehensive data platform for Kamehameha Schools that transforms educational measurement through Native Hawaiian values, privacy-first design, and the power of the Native Hawaiian Forest metaphor.
+A comprehensive data platform that transforms educational measurement through cultural values, privacy-first design, and the power of the Forest metaphor.
 
 ## 🎯 Project Overview
 
-The **E Ola! Learner Analytics System** represents a transformative initiative designed to operationalize Kamehameha Schools' distinctive educational philosophy through data-informed practice. This comprehensive web-based platform enables systematic collection, analysis, and visualization of student progress across **14 interconnected learner outcomes** that constitute the E Ola! framework.
+The **E Ola! Learner Analytics System** represents a transformative initiative designed to operationalize distinctive educational philosophy through data-informed practice. This comprehensive web-based platform enables systematic collection, analysis, and visualization of student progress across **14 interconnected learner outcomes** that constitute the E Ola! framework.
 
 ### Three Critical Outputs
 
@@ -349,16 +349,8 @@ agent_test1/
 
 ## 📄 License
 
-This project is proprietary and confidential, developed for Kamehameha Schools.
-
-## 🙏 Acknowledgments
-
-- JoAnn Wong-Kam, Ed.D. - Strategic oversight and educational vision
-- Dr. Waiʻaleʻale Arroyo - Campus leadership support
-- KS Office of Teaching and Learning Innovations - Project sponsorship
+This project is proprietary and confidential.
 
 ---
 
 > **"E Ola!"** - May you live (and thrive)!
-
-*Built with Aloha in Hawaiʻi* 🌺
