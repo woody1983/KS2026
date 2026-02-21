@@ -354,3 +354,5 @@ This project is proprietary and confidential.
 ---
 
 > **"E Ola!"** - May you live (and thrive)!
+
+*Built with Aloha in Hawaiʻi* 🌺
