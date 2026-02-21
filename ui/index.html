@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E Ola! - Learner Analytics System</title>
+    <style>
+        /* ==========================================================================
+           KALO GROWTH DESIGN SYSTEM
+           Native Hawaiian Forest-inspired Color Palette
+           ========================================================================== */
+        :root {
+            /* Primary Brand Colors */
+            --ks-navy: #00204E;
+            --forest-root: #0A594E;
+            --growth-mid: #46AA8F;
+            --community: #70D75C;
+            --new-sprout: #D0ED35;
+            --royal-gold: #FFB003;
+            
+            /* Extended Palette */
+            --navy-light: #003366;
+            --navy-dark: #001833;
+            --forest-light: #0D6B5A;
+            --forest-dark: #074038;
+            
+            /* Semantic Colors */
+            --text-primary: rgba(255, 255, 255, 0.95);
+            --text-secondary: rgba(255, 255, 255, 0.70);
+            --text-muted: rgba(255, 255, 255, 0.50);
+            --glass-bg: rgba(10, 89, 78, 0.15);
+            --glass-border: rgba(70, 170, 143, 0.25);
+            --shadow-soft: 0 8px 32px rgba(0, 32, 78, 0.4);
+            
+            /* Typography Scale (Golden Ratio) */
+            --font-xs: 0.75rem;
+            --font-sm: 0.875rem;
+            --font-base: 1rem;
+            --font-lg: 1.25rem;
+            --font-xl: 1.618rem;
+            --font-2xl: 2.618rem;
+            --font-3xl: 4.236rem;
+            
+            /* Spacing (8pt Grid) */
+            --space-1: 0.5rem;
+            --space-2: 1rem;
+            --space-3: 1.5rem;
+            --space-4: 2rem;
+            --space-6: 3rem;
+            --space-8: 4rem;
+            --space-12: 6rem;
+            
+            /* Animation */
+            --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --duration-fast: 150ms;
+            --duration-normal: 300ms;
+            --duration-slow: 600ms;
+        }
+
+        /* ==========================================================================
+           BASE STYLES
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--ks-navy);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================================================
+           GLASSMORPHISM COMPONENTS
+           ========================================================================== */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            transition: all var(--duration-normal) var(--ease-smooth);
+        }
+
+        .glass-panel:hover {
+            border-color: rgba(70, 170, 143, 0.4);
+            box-shadow: 0 12px 48px rgba(0, 32, 78, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           NAVIGATION
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--space-3) var(--space-6);
+            background: linear-gradient(180deg, rgba(0, 32, 78, 0.95) 0%, rgba(0, 32, 78, 0.8) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--growth-mid), var(--new-sprout));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-xl);
+            box-shadow: 0 4px 16px rgba(70, 170, 143, 0.3);
+        }
+
+        .brand-text h1 {
+            font-size: var(--font-lg);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+
+        .brand-text span {
+            font-size: var(--font-xs);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            gap: var(--space-1);
+            background: rgba(10, 89, 78, 0.3);
+            padding: 4px;
+            border-radius: 100px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .lang-btn {
+            padding: var(--space-1) var(--space-2);
+            border-radius: 100px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: var(--font-sm);
+            cursor: pointer;
+            transition: all var(--duration-fast) var(--ease-smooth);
+        }
+
+        .lang-btn.active {
+            background: var(--growth-mid);
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
+        /* Login Button */
+        .btn-login {
+            padding: var(--space-2) var(--space-4);
+            background: linear-gradient(135deg, var(--royal-gold), var(--royal-gold));
+            color: var(--ks-navy);
+            border: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: var(--font-sm);
+            cursor: pointer;
+            transition: all var(--duration-fast) var(--ease-smooth);
+            box-shadow: 0 4px 16px rgba(255, 176, 3, 0.3);
+        }
+
+        .btn-login:hover {
+            background: linear-gradient(135deg, #FFC133, #FFB003);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 176, 3, 0.4);
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: calc(var(--space-12) + 80px) var(--space-6) var(--space-12);
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(10, 89, 78, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(0, 32, 78, 0.5) 0%, transparent 50%),
+                var(--ks-navy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2346AA8F' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-1) var(--space-3);
+            background: rgba(70, 170, 143, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            font-size: var(--font-sm);
+            color: var(--growth-mid);
+            margin-bottom: var(--space-4);
+        }
+
+        .hero-badge::before {
+            content: '🌺';
+        }
+
+        .hero h2 {
+            font-size: var(--font-3xl);
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: var(--space-4);
+            background: linear-gradient(135deg, var(--text-primary), var(--growth-mid));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: var(--font-xl);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto var(--space-6);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           FEATURES SECTION
+           ========================================================================== */
+        .features {
+            padding: var(--space-12) var(--space-6);
+            background: linear-gradient(180deg, var(--ks-navy) 0%, var(--navy-dark) 100%);
+        }
+
+        .features-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-8);
+        }
+
+        .section-header h3 {
+            font-size: var(--font-2xl);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-2);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: var(--font-lg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+        }
+
+        .feature-card {
+            padding: var(--space-6);
+            text-align: left;
+        }
+
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-2xl);
+            margin-bottom: var(--space-4);
+            background: linear-gradient(135deg, var(--growth-mid), var(--community));
+            box-shadow: 0 8px 24px rgba(70, 170, 143, 0.3);
+        }
+
+        .feature-card h4 {
+            font-size: var(--font-xl);
+            font-weight: 500;
+            margin-bottom: var(--space-2);
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: var(--font-base);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           DASHBOARD PREVIEW SECTION
+           ========================================================================== */
+        .preview {
+            padding: var(--space-12) var(--space-6);
+            background: linear-gradient(180deg, var(--navy-dark) 0%, var(--ks-navy) 100%);
+        }
+
+        .preview-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .preview-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-1) var(--space-3);
+            background: rgba(255, 176, 3, 0.15);
+            border: 1px solid rgba(255, 176, 3, 0.3);
+            border-radius: 100px;
+            font-size: var(--font-sm);
+            color: var(--royal-gold);
+            margin-bottom: var(--space-4);
+        }
+
+        .preview h3 {
+            font-size: var(--font-2xl);
+            font-weight: 300;
+            margin-bottom: var(--space-6);
+        }
+
+        .preview-frame {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+        }
+
+        .preview-frame::before {
+            content: 'Cultural Journey Dashboard - DEMO DATA (NOT REAL)';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: var(--space-3) var(--space-4);
+            background: linear-gradient(180deg, rgba(0, 32, 78, 0.9) 0%, transparent 100%);
+            font-size: var(--font-sm);
+            color: var(--royal-gold);
+            z-index: 10;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: linear-gradient(135deg, var(--forest-root), var(--ks-navy));
+            min-height: 500px;
+            position: relative;
+        }
+
+        /* Mock Dashboard Content */
+        .mock-dashboard {
+            padding: 80px var(--space-6) var(--space-6);
+            background: var(--ks-navy);
+            min-height: 500px;
+        }
+
+        .mock-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-6);
+        }
+
+        .mock-title {
+            font-size: var(--font-xl);
+            font-weight: 300;
+        }
+
+        .mock-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
+        }
+
+        .mock-metric {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: var(--space-4);
+            text-align: left;
+        }
+
+        .mock-metric-value {
+            font-size: var(--font-2xl);
+            font-weight: 300;
+            background: linear-gradient(135deg, var(--text-primary), var(--growth-mid));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mock-metric-label {
+            font-size: var(--font-sm);
+            color: var(--text-muted);
+            margin-top: var(--space-1);
+        }
+
+        .mock-journey {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: var(--space-6);
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .mock-journey-path {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--forest-root), var(--growth-mid), var(--new-sprout));
+            border-radius: 2px;
+        }
+
+        .mock-milestone {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--growth-mid);
+            border: 3px solid var(--ks-navy);
+            box-shadow: 0 0 20px rgba(70, 170, 143, 0.5);
+        }
+
+        .mock-waa {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ==========================================================================
+           CTA SECTION
+           ========================================================================== */
+        .cta {
+            padding: var(--space-12) var(--space-6);
+            background: linear-gradient(135deg, var(--forest-root) 0%, var(--ks-navy) 100%);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h3 {
+            font-size: var(--font-2xl);
+            font-weight: 300;
+            margin-bottom: var(--space-4);
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: var(--font-lg);
+            margin-bottom: var(--space-6);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-3);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: var(--space-3) var(--space-6);
+            background: linear-gradient(135deg, var(--royal-gold), var(--royal-gold));
+            color: var(--ks-navy);
+            border: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: var(--font-base);
+            cursor: pointer;
+            transition: all var(--duration-fast) var(--ease-smooth);
+            box-shadow: 0 4px 16px rgba(255, 176, 3, 0.3);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #FFC133, #FFB003);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 176, 3, 0.4);
+        }
+
+        .btn-secondary {
+            padding: var(--space-3) var(--space-6);
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: var(--font-base);
+            cursor: pointer;
+            transition: all var(--duration-fast) var(--ease-smooth);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(70, 170, 143, 0.1);
+            border-color: var(--growth-mid);
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        .footer {
+            padding: var(--space-6);
+            background: var(--navy-dark);
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .footer p {
+            color: var(--text-muted);
+            font-size: var(--font-sm);
+        }
+
+        .footer .aloha {
+            color: var(--growth-mid);
+            font-size: var(--font-lg);
+            margin-top: var(--space-2);
+        }
+
+        /* ==========================================================================
+           RESPONSIVE DESIGN
+           ========================================================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: var(--space-2) var(--space-4);
+            }
+
+            .brand-text h1 {
+                font-size: var(--font-base);
+            }
+
+            .lang-switcher {
+                display: none;
+            }
+
+            .hero h2 {
+                font-size: var(--font-2xl);
+            }
+
+            .hero p {
+                font-size: var(--font-lg);
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mock-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        /* ==========================================================================
+           ANIMATIONS
+           ========================================================================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s var(--ease-smooth) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="#" class="brand">
+                <div class="brand-icon">🌿</div>
+                <div class="brand-text">
+                    <h1 data-i18n="brand.name">E Ola!</h1>
+                    <span data-i18n="brand.tagline">Learner Analytics</span>
+                </div>
+            </a>
+            <div class="nav-actions">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="haw">HAW</button>
+                </div>
+                <button class="btn-login" data-i18n="nav.login">Login</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge animate-in">
+                <span data-i18n="hero.badge">Native Hawaiian Education Analytics</span>
+            </div>
+            <h2 class="animate-in delay-1" data-i18n="hero.title">
+                Cultivating Future Leaders Through Data
+            </h2>
+            <p class="animate-in delay-2" data-i18n="hero.subtitle">
+                E Ola! empowers Kamehameha Schools with privacy-first analytics, 
+                tracking 14 learner outcomes across the Native Hawaiian Forest framework.
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-content">
+            <div class="section-header">
+                <h3 data-i18n="features.title">Powerful Features</h3>
+                <p data-i18n="features.subtitle">Designed for educators, by educators</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card glass-panel">
+                    <div class="feature-icon">🎯</div>
+                    <h4 data-i18n="features.indicators.title">14 E Ola! Indicators</h4>
+                    <p data-i18n="features.indicators.desc">
+                        Track cultural identity, servant leadership, and well-being through 
+                        our comprehensive framework rooted in Native Hawaiian values.
+                    </p>
+                </div>
+
+                <div class="feature-card glass-panel">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #70D75C, #D0ED35);">📊</div>
+                    <h4 data-i18n="features.analytics.title">Real-time Analytics</h4>
+                    <p data-i18n="features.analytics.desc">
+                        Visualize student growth journeys with interactive dashboards, 
+                        cultural journey maps, and predictive insights.
+                    </p>
+                </div>
+
+                <div class="feature-card glass-panel">
+                    <div class="feature-icon" style="background: linear-gradient(135deg, #FFB003, #FFC133);">🔒</div>
+                    <h4 data-i18n="features.privacy.title">FERPA Compliant</h4>
+                    <p data-i18n="features.privacy.desc">
+                        Privacy-first design with dynamic data masking, complete audit trails, 
+                        and role-based access control.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <section class="preview">
+        <div class="preview-content">
+            <div class="preview-badge">
+                <span>📸</span>
+                <span data-i18n="preview.badge">Feature Preview</span>
+            </div>
+            <h3 data-i18n="preview.title">Cultural Journey Dashboard</h3>
+            
+            <div class="preview-frame">
+                <div class="preview-image">
+                    <div class="mock-dashboard">
+                        <div class="mock-header">
+                            <div class="mock-title">Cultural Journey Map</div>
+                            <div style="color: var(--text-muted);">Demo: Student Kaleo K. (Sample Data)</div>
+                        </div>
+                        
+                        <div class="mock-metrics">
+                            <div class="mock-metric">
+                                <div class="mock-metric-value">78.5</div>
+                                <div class="mock-metric-label">'Ike Kūpuna Score</div>
+                            </div>
+                            <div class="mock-metric">
+                                <div class="mock-metric-value">72.3</div>
+                                <div class="mock-metric-label">Well-being</div>
+                            </div>
+                            <div class="mock-metric">
+                                <div class="mock-metric-value">12</div>
+                                <div class="mock-metric-label">Milestones</div>
+                            </div>
+                            <div class="mock-metric">
+                                <div class="mock-metric-value">156</div>
+                                <div class="mock-metric-label">Community Hours</div>
+                            </div>
+                        </div>
+                        
+                        <div class="mock-journey">
+                            <div class="mock-journey-path"></div>
+                            <div class="mock-milestone" style="left: 10%;"></div>
+                            <div class="mock-milestone" style="left: 30%; background: var(--royal-gold);"></div>
+                            <div class="mock-milestone" style="left: 50%; background: var(--royal-gold);"></div>
+                            <div class="mock-milestone" style="left: 70%; background: var(--new-sprout); box-shadow: 0 0 30px rgba(208, 237, 53, 0.6);"></div>
+                            <div class="mock-milestone" style="left: 90%;"></div>
+                            <div class="mock-waa" style="left: 75%;">🛶</div>
+                            <div style="position: absolute; bottom: 20px; color: var(--text-muted); font-size: var(--font-sm);">
+                                Your Waʻa Journey - Track progress across the E Ola! framework
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h3 data-i18n="cta.title">Ready to Transform Education?</h3>
+            <p data-i18n="cta.subtitle">
+                Join Kamehameha Schools in leveraging data to nurture culturally-grounded, 
+                service-oriented leaders of tomorrow.
+            </p>
+            <div class="cta-buttons">
+                <a href="cultural_journey.html" class="btn-primary">
+                    <span>🚀</span>
+                    <span data-i18n="cta.getStarted">Get Started</span>
+                </a>
+                <a href="#" class="btn-secondary">
+                    <span>📖</span>
+                    <span data-i18n="cta.learnMore">Learn More</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p data-i18n="footer.copyright">© 2026 Kamehameha Schools. All rights reserved.</p>
+        <p class="aloha">Built with Aloha in Hawaiʻi 🌺</p>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Language Switcher
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const translations = {
+            en: {
+                'brand.name': 'E Ola!',
+                'brand.tagline': 'Learner Analytics',
+                'nav.login': 'Login',
+                'hero.badge': 'Native Hawaiian Education Analytics',
+                'hero.title': 'Cultivating Future Leaders Through Data',
+                'hero.subtitle': 'E Ola! empowers Kamehameha Schools with privacy-first analytics, tracking 14 learner outcomes across the Native Hawaiian Forest framework.',
+                'features.title': 'Powerful Features',
+                'features.subtitle': 'Designed for educators, by educators',
+                'features.indicators.title': '14 E Ola! Indicators',
+                'features.indicators.desc': 'Track cultural identity, servant leadership, and well-being through our comprehensive framework rooted in Native Hawaiian values.',
+                'features.analytics.title': 'Real-time Analytics',
+                'features.analytics.desc': 'Visualize student growth journeys with interactive dashboards, cultural journey maps, and predictive insights.',
+                'features.privacy.title': 'FERPA Compliant',
+                'features.privacy.desc': 'Privacy-first design with dynamic data masking, complete audit trails, and role-based access control.',
+                'preview.badge': 'Feature Preview',
+                'preview.title': 'Cultural Journey Dashboard',
+                'cta.title': 'Ready to Transform Education?',
+                'cta.subtitle': 'Join Kamehameha Schools in leveraging data to nurture culturally-grounded, service-oriented leaders of tomorrow.',
+                'cta.getStarted': 'Get Started',
+                'cta.learnMore': 'Learn More',
+                'footer.copyright': '© 2026 Kamehameha Schools. All rights reserved.'
+            },
+            haw: {
+                'brand.name': 'E Ola!',
+                'brand.tagline': 'Hōʻike ʻike',
+                'nav.login': 'Komo',
+                'hero.badge': 'Hōʻike ʻike Hoʻonaʻauao Hawaiʻi',
+                'hero.title': 'Hoʻomākaukau ka ʻIako no ka Mua',
+                'hero.subtitle': 'Hoʻomaikaʻi ʻo E Ola! i nā Kula Kamehameha me ka mālama ʻike mua, hahai i nā hopena ʻōpio 14 ma ka ulu ulu Hawaiʻi.',
+                'features.title': 'Nā Hana Mana',
+                'features.subtitle': 'Hana no nā kumu, e nā kumu',
+                'features.indicators.title': '14 E Ola! Indicators',
+                'features.indicators.desc': 'Hahai i ka ʻike kūpuna, alakaʻi lawelawe, a me ka pono ma ka ulu ulu Hawaiʻi.',
+                'features.analytics.title': 'Hōʻike ʻike',
+                'features.analytics.desc': 'Hōʻike i ka ulu ʻana o ka ʻōpio me nā papa hōʻike, nā palapala hele kūloko, a me nā ʻike wānana.',
+                'features.privacy.title': 'Mālama ʻIke',
+                'features.privacy.desc': 'Hoʻolālā mua no ka mālama ʻike, me ka hūnā ʻike, a me ka ʻaoʻao komo.',
+                'preview.badge': 'Hōʻike Hana',
+                'preview.title': 'Papa Hōʻike Hele Kūloko',
+                'cta.title': 'Mākaukau no ka Hoʻololi?',
+                'cta.subtitle': 'E komo me nā Kula Kamehameha i ka hoʻohana ʻike e mālama i nā ʻiako kūloko o ka lā ʻapōpō.',
+                'cta.getStarted': 'E Hoʻomaka',
+                'cta.learnMore': 'E Aʻo Hou',
+                'footer.copyright': '© 2026 Nā Kula Kamehameha. Nā pono a pau.'
+            }
+        };
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                langButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Get selected language
+                const lang = btn.dataset.lang;
+                
+                // Update all translatable elements
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.dataset.i18n;
+                    if (translations[lang] && translations[lang][key]) {
+                        el.textContent = translations[lang][key];
+                    }
+                });
+            });
+        });
+
+        // Login Button Alert (placeholder functionality)
+        document.querySelector('.btn-login').addEventListener('click', () => {
+            alert('Login functionality coming soon! 🚀\n\nThis will integrate with Kamehameha Schools SSO.');
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .preview-frame').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
