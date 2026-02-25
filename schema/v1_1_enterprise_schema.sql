@@ -255,7 +255,7 @@ CREATE TABLE dim_e_ola_indicators (
         ON DELETE SET NULL ON UPDATE CASCADE
 );
 
-CREATE INDEX idx_indicators_tier ON dim_indicators_tier(tier_level, tier_order);
+CREATE INDEX idx_indicators_tier ON dim_e_ola_indicators(tier_level, tier_order);
 CREATE INDEX idx_indicators_active ON dim_e_ola_indicators(is_active);
 CREATE INDEX idx_indicators_ui ON dim_e_ola_indicators(ui_display_order) WHERE is_active = 1;
 
