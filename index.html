@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E Ola! — Phase 0: Inception</title>
+    <style>
+        /* ============================================================
+           KALO GROWTH DESIGN SYSTEM — Phase 0 Inception Portal
+           ============================================================ */
+        :root {
+            --ks-navy:      #00204E;
+            --forest-root:  #0A594E;
+            --growth-mid:   #46AA8F;
+            --community:    #70D75C;
+            --new-sprout:   #D0ED35;
+            --royal-gold:   #FFB003;
+
+            --navy-light:   #003366;
+            --navy-dark:    #001833;
+            --forest-dark:  #074038;
+
+            --text-primary:   rgba(255,255,255,0.95);
+            --text-secondary: rgba(255,255,255,0.70);
+            --text-muted:     rgba(255,255,255,0.45);
+            --glass-bg:       rgba(10,89,78,0.18);
+            --glass-border:   rgba(70,170,143,0.25);
+            --shadow-soft:    0 8px 32px rgba(0,32,78,0.45);
+
+            --font-xs:   0.72rem;
+            --font-sm:   0.875rem;
+            --font-base: 1rem;
+            --font-lg:   1.25rem;
+            --font-xl:   1.618rem;
+            --font-2xl:  2.618rem;
+            --font-3xl:  4.236rem;
+
+            --space-1: 0.5rem;
+            --space-2: 1rem;
+            --space-3: 1.5rem;
+            --space-4: 2rem;
+            --space-6: 3rem;
+            --space-8: 4rem;
+            --space-12: 6rem;
+
+            --ease: cubic-bezier(0.4,0,0.2,1);
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--ks-navy);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ---- Glassmorphism ---- */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--shadow-soft);
+            transition: transform 300ms var(--ease), box-shadow 300ms var(--ease), border-color 300ms var(--ease);
+        }
+        .glass:hover {
+            transform: translateY(-3px);
+            border-color: rgba(70,170,143,0.45);
+            box-shadow: 0 16px 56px rgba(0,32,78,0.55);
+        }
+
+        /* ============================================================
+           NAV
+           ============================================================ */
+        .nav {
+            position: fixed; top:0; left:0; right:0; z-index:100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: var(--space-2) var(--space-6);
+            background: rgba(0,32,78,0.88);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .nav-brand { display:flex; align-items:center; gap:var(--space-2); text-decoration:none; color:var(--text-primary); }
+        .nav-brand-icon {
+            width:44px; height:44px; border-radius:12px;
+            background: linear-gradient(135deg, var(--growth-mid), var(--new-sprout));
+            display:flex; align-items:center; justify-content:center;
+            font-size:1.4rem;
+            box-shadow: 0 4px 16px rgba(70,170,143,0.35);
+        }
+        .nav-brand-text { display:flex; flex-direction:column; }
+        .nav-brand-text strong { font-size:var(--font-base); font-weight:700; letter-spacing:-0.01em; }
+        .nav-brand-text span   { font-size:var(--font-xs); color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase; }
+
+        .nav-links { display:flex; align-items:center; gap:var(--space-3); }
+        .nav-link {
+            font-size:var(--font-sm); color:var(--text-secondary); text-decoration:none;
+            transition: color 150ms;
+        }
+        .nav-link:hover { color:var(--text-primary); }
+
+        .phase-badge {
+            padding: 5px 14px;
+            background: rgba(208,237,53,0.15);
+            border: 1px solid rgba(208,237,53,0.4);
+            border-radius:100px;
+            font-size:var(--font-xs);
+            font-weight:700;
+            color:var(--new-sprout);
+            letter-spacing:0.08em;
+            text-transform:uppercase;
+        }
+
+        /* ============================================================
+           HERO
+           ============================================================ */
+        .hero {
+            min-height:100vh;
+            display:flex; flex-direction:column;
+            align-items:center; justify-content:center;
+            padding: calc(var(--space-12) + 64px) var(--space-6) var(--space-12);
+            text-align:center;
+            position:relative; overflow:hidden;
+            background:
+                radial-gradient(ellipse 70% 60% at 15% 90%, rgba(10,89,78,0.35) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 85% 10%, rgba(70,170,143,0.12) 0%, transparent 55%),
+                var(--ks-navy);
+        }
+
+        /* subtle grid overlay */
+        .hero::before {
+            content:'';
+            position:absolute; inset:0;
+            background-image: linear-gradient(rgba(70,170,143,0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(70,170,143,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events:none;
+        }
+
+        /* floating particles */
+        .particles { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+        .particle {
+            position:absolute;
+            border-radius:50%;
+            animation: drift linear infinite;
+            opacity:0;
+        }
+
+        @keyframes drift {
+            0%   { transform: translateY(110vh) scale(0); opacity:0; }
+            10%  { opacity:1; }
+            90%  { opacity:0.6; }
+            100% { transform: translateY(-10vh) scale(1); opacity:0; }
+        }
+
+        .hero-eyebrow {
+            display:inline-flex; align-items:center; gap:var(--space-2);
+            padding: 6px 18px;
+            background: rgba(70,170,143,0.15);
+            border: 1px solid rgba(70,170,143,0.3);
+            border-radius:100px;
+            font-size:var(--font-sm); color:var(--growth-mid); font-weight:600;
+            letter-spacing:0.04em; margin-bottom:var(--space-4);
+            animation: fadeUp 0.8s var(--ease) both;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, var(--font-3xl));
+            font-weight:200; letter-spacing:-0.04em; line-height:1.1;
+            margin-bottom:var(--space-4);
+            background: linear-gradient(135deg, #fff 30%, var(--growth-mid) 100%);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+            animation: fadeUp 0.8s 0.1s var(--ease) both;
+        }
+
+        .hero-title em { font-style:normal; color:var(--new-sprout); -webkit-text-fill-color:var(--new-sprout); }
+
+        .hero-sub {
+            font-size:var(--font-lg); color:var(--text-secondary);
+            max-width:640px; margin:0 auto var(--space-6);
+            animation: fadeUp 0.8s 0.2s var(--ease) both;
+        }
+
+        .hero-actions {
+            display:flex; gap:var(--space-3); justify-content:center; flex-wrap:wrap;
+            animation: fadeUp 0.8s 0.3s var(--ease) both;
+        }
+
+        .btn-gold {
+            display:inline-flex; align-items:center; gap:var(--space-1);
+            padding: var(--space-2) var(--space-6);
+            background: var(--royal-gold); color:var(--ks-navy);
+            border:none; border-radius:100px; font-weight:700; font-size:var(--font-base);
+            cursor:pointer; text-decoration:none;
+            box-shadow: 0 4px 20px rgba(255,176,3,0.4);
+            transition: transform 150ms var(--ease), box-shadow 150ms var(--ease);
+        }
+        .btn-gold:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,176,3,0.5); }
+
+        .btn-ghost {
+            display:inline-flex; align-items:center; gap:var(--space-1);
+            padding: var(--space-2) var(--space-6);
+            background:transparent; color:var(--text-primary);
+            border:1px solid var(--glass-border); border-radius:100px;
+            font-weight:500; font-size:var(--font-base);
+            cursor:pointer; text-decoration:none;
+            transition: border-color 150ms, background 150ms;
+        }
+        .btn-ghost:hover { border-color:var(--growth-mid); background:rgba(70,170,143,0.1); }
+
+        .hero-scroll {
+            position:absolute; bottom:var(--space-4); left:50%; transform:translateX(-50%);
+            display:flex; flex-direction:column; align-items:center; gap:var(--space-1);
+            color:var(--text-muted); font-size:var(--font-xs); letter-spacing:0.1em;
+            text-transform:uppercase; animation: bounce 2s ease-in-out infinite;
+        }
+        .hero-scroll::after {
+            content:''; display:block; width:1px; height:40px;
+            background:linear-gradient(var(--glass-border), transparent);
+        }
+        @keyframes bounce { 0%,100%{ transform:translateX(-50%) translateY(0); } 50%{ transform:translateX(-50%) translateY(6px); } }
+
+        /* ============================================================
+           PHASE TIMELINE
+           ============================================================ */
+        .section {
+            padding: var(--space-12) var(--space-6);
+        }
+        .section-inner { max-width:1200px; margin:0 auto; }
+
+        .section-label {
+            display:inline-block; font-size:var(--font-xs); font-weight:700;
+            letter-spacing:0.15em; text-transform:uppercase; color:var(--growth-mid);
+            margin-bottom:var(--space-2);
+        }
+        .section-title {
+            font-size:var(--font-2xl); font-weight:200; letter-spacing:-0.03em;
+            margin-bottom:var(--space-2);
+        }
+        .section-sub { color:var(--text-muted); font-size:var(--font-base); margin-bottom:var(--space-8); }
+
+        /* Timeline */
+        .timeline {
+            display:grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: var(--space-3);
+        }
+
+        .timeline-node {
+            position:relative; padding:var(--space-4) var(--space-3);
+            border-radius:20px; text-align:center;
+            background:rgba(255,255,255,0.03);
+            border:1px solid rgba(255,255,255,0.07);
+            transition: transform 300ms var(--ease);
+        }
+        .timeline-node:hover { transform:translateY(-4px); }
+
+        .timeline-node.active {
+            background:rgba(70,170,143,0.12);
+            border-color:rgba(70,170,143,0.4);
+            box-shadow: 0 0 40px rgba(70,170,143,0.15);
+        }
+        .timeline-node.done {
+            background:rgba(10,89,78,0.2);
+            border-color:rgba(70,170,143,0.2);
+        }
+        .timeline-node.upcoming {
+            opacity:0.45;
+        }
+
+        .timeline-num {
+            font-size:var(--font-xs); font-weight:700; letter-spacing:0.1em;
+            text-transform:uppercase; margin-bottom:var(--space-1);
+        }
+        .timeline-node.active .timeline-num { color:var(--new-sprout); }
+        .timeline-node.done   .timeline-num { color:var(--growth-mid); }
+        .timeline-node.upcoming .timeline-num { color:var(--text-muted); }
+
+        .timeline-icon { font-size:1.8rem; margin-bottom:var(--space-1); }
+
+        .timeline-name {
+            font-size:var(--font-sm); font-weight:600; margin-bottom:4px;
+        }
+        .timeline-weeks {
+            font-size:var(--font-xs); color:var(--text-muted);
+        }
+        .timeline-status {
+            display:inline-block; margin-top:var(--space-1);
+            font-size:9px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+            padding:3px 10px; border-radius:100px;
+        }
+        .timeline-node.active  .timeline-status { background:rgba(208,237,53,0.2); color:var(--new-sprout); border:1px solid rgba(208,237,53,0.4); }
+        .timeline-node.done    .timeline-status { background:rgba(70,170,143,0.2); color:var(--growth-mid); border:1px solid rgba(70,170,143,0.35); }
+        .timeline-node.upcoming .timeline-status { background:rgba(255,255,255,0.05); color:var(--text-muted); border:1px solid rgba(255,255,255,0.1); }
+
+        /* connector line */
+        .timeline-connector {
+            display:none; /* handled via grid gap */
+        }
+
+        /* ============================================================
+           MISSION SECTION — 3 pillars
+           ============================================================ */
+        .pillars {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-4);
+        }
+        .pillar {
+            padding:var(--space-6) var(--space-4);
+        }
+        .pillar-num {
+            font-size:var(--font-3xl); font-weight:200; line-height:1;
+            background:linear-gradient(135deg, var(--growth-mid), var(--new-sprout));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+            margin-bottom:var(--space-2);
+        }
+        .pillar h4 { font-size:var(--font-xl); font-weight:500; margin-bottom:var(--space-2); }
+        .pillar p  { color:var(--text-secondary); font-size:var(--font-sm); line-height:1.7; }
+
+        /* ============================================================
+           AGENTS SECTION
+           ============================================================ */
+        .agents-grid {
+            display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-4);
+        }
+        .agent-card { padding:var(--space-6) var(--space-4); position:relative; overflow:hidden; }
+        .agent-card::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:3px;
+            background:var(--agent-color, var(--growth-mid));
+        }
+        .agent-glyph {
+            font-size:2.8rem; margin-bottom:var(--space-3); display:block;
+        }
+        .agent-tag {
+            display:inline-block; font-size:var(--font-xs); font-weight:700;
+            letter-spacing:0.1em; text-transform:uppercase;
+            padding:3px 10px; border-radius:100px; margin-bottom:var(--space-2);
+            background:rgba(70,170,143,0.15); color:var(--growth-mid);
+            border:1px solid rgba(70,170,143,0.25);
+        }
+        .agent-card h4 { font-size:var(--font-base); font-weight:700; margin-bottom:4px; }
+        .agent-card .agent-zh { font-size:var(--font-sm); color:var(--text-muted); margin-bottom:var(--space-2); }
+        .agent-card p  { font-size:var(--font-sm); color:var(--text-secondary); line-height:1.65; }
+
+        /* ============================================================
+           FOREST FRAMEWORK
+           ============================================================ */
+        .forest-section {
+            background:linear-gradient(180deg, var(--navy-dark) 0%, var(--ks-navy) 100%);
+        }
+        .forest-grid {
+            display:grid; grid-template-columns:1fr 1.4fr; gap:var(--space-8); align-items:center;
+        }
+        .forest-tiers { display:flex; flex-direction:column; gap:var(--space-3); }
+        .tier {
+            padding:var(--space-3) var(--space-4);
+            border-left:3px solid var(--tier-color, var(--growth-mid));
+        }
+        .tier-label {
+            font-size:var(--font-xs); font-weight:700; letter-spacing:0.1em;
+            text-transform:uppercase; color:var(--tier-color, var(--growth-mid));
+            margin-bottom:4px;
+        }
+        .tier-name { font-size:var(--font-base); font-weight:600; margin-bottom:2px; }
+        .tier-desc { font-size:var(--font-sm); color:var(--text-muted); }
+
+        /* SVG Forest vis */
+        .forest-vis { position:relative; }
+        .forest-diagram {
+            width:100%; max-width:460px; margin:0 auto;
+            display:block;
+        }
+
+        /* ============================================================
+           DELIVERABLES
+           ============================================================ */
+        .deliverables-grid {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-4);
+        }
+        .deliverable-card { padding:var(--space-4) var(--space-4); }
+        .deliverable-icon {
+            width:52px; height:52px; border-radius:16px;
+            background:linear-gradient(135deg, var(--forest-root), var(--growth-mid));
+            display:flex; align-items:center; justify-content:center;
+            font-size:1.4rem; margin-bottom:var(--space-3);
+            box-shadow:0 6px 20px rgba(70,170,143,0.25);
+        }
+        .deliverable-card h4 { font-size:var(--font-base); font-weight:700; margin-bottom:var(--space-1); }
+        .deliverable-card p  { font-size:var(--font-sm); color:var(--text-secondary); line-height:1.65; }
+        .deliverable-link {
+            display:inline-flex; align-items:center; gap:6px;
+            margin-top:var(--space-2); font-size:var(--font-sm);
+            color:var(--growth-mid); text-decoration:none; font-weight:600;
+            transition: gap 150ms;
+        }
+        .deliverable-link:hover { gap:10px; }
+
+        /* ============================================================
+           STATS STRIP
+           ============================================================ */
+        .stats {
+            display:grid; grid-template-columns:repeat(4,1fr);
+            gap:0;
+            border-top:1px solid var(--glass-border);
+            border-bottom:1px solid var(--glass-border);
+        }
+        .stat {
+            padding:var(--space-6) var(--space-4); text-align:center;
+            border-right:1px solid var(--glass-border);
+        }
+        .stat:last-child { border-right:none; }
+        .stat-value {
+            font-size:var(--font-2xl); font-weight:200; line-height:1;
+            background:linear-gradient(135deg, var(--text-primary), var(--growth-mid));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+            margin-bottom:var(--space-1);
+        }
+        .stat-label { font-size:var(--font-sm); color:var(--text-muted); }
+
+        /* ============================================================
+           CTA
+           ============================================================ */
+        .cta-section {
+            padding:var(--space-12) var(--space-6);
+            background:linear-gradient(135deg, var(--forest-root) 0%, var(--ks-navy) 100%);
+            text-align:center;
+        }
+        .cta-section h2 {
+            font-size:var(--font-2xl); font-weight:200; letter-spacing:-0.03em;
+            margin-bottom:var(--space-3);
+        }
+        .cta-section p { color:var(--text-secondary); font-size:var(--font-lg); max-width:600px; margin:0 auto var(--space-6); }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        footer {
+            padding:var(--space-6);
+            background:var(--navy-dark);
+            border-top:1px solid var(--glass-border);
+            text-align:center;
+        }
+        .footer-inner { max-width:1200px; margin:0 auto; }
+        .footer-top {
+            display:flex; justify-content:space-between; align-items:center;
+            margin-bottom:var(--space-4); padding-bottom:var(--space-4);
+            border-bottom:1px solid rgba(70,170,143,0.1);
+            flex-wrap:wrap; gap:var(--space-3);
+        }
+        .footer-brand { display:flex; align-items:center; gap:var(--space-2); }
+        .footer-links { display:flex; gap:var(--space-4); }
+        .footer-links a { font-size:var(--font-sm); color:var(--text-muted); text-decoration:none; transition:color 150ms; }
+        .footer-links a:hover { color:var(--growth-mid); }
+        .footer-copy { font-size:var(--font-sm); color:var(--text-muted); }
+        .footer-aloha { color:var(--growth-mid); margin-top:4px; font-size:var(--font-sm); }
+
+        /* ============================================================
+           ANIMATIONS
+           ============================================================ */
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(28px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        .reveal {
+            opacity:0; transform:translateY(24px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media(max-width:1024px) {
+            .timeline { grid-template-columns:repeat(3,1fr); }
+            .agents-grid { grid-template-columns:repeat(2,1fr); }
+            .forest-grid { grid-template-columns:1fr; }
+            .forest-vis { display:none; }
+        }
+        @media(max-width:768px) {
+            .nav-links .nav-link { display:none; }
+            .pillars, .deliverables-grid { grid-template-columns:1fr; }
+            .timeline { grid-template-columns:repeat(2,1fr); }
+            .agents-grid { grid-template-columns:1fr; }
+            .stats { grid-template-columns:repeat(2,1fr); }
+            .stat { border-right:none; border-bottom:1px solid var(--glass-border); }
+            .footer-top { flex-direction:column; text-align:center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="#" class="nav-brand">
+            <div class="nav-brand-icon">🌿</div>
+            <div class="nav-brand-text">
+                <strong>E Ola!</strong>
+                <span>Learner Analytics</span>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="#roadmap"     class="nav-link">Roadmap</a>
+            <a href="#agents"      class="nav-link">Agents</a>
+            <a href="#framework"   class="nav-link">Framework</a>
+            <a href="#deliverables" class="nav-link">Deliverables</a>
+            <span class="phase-badge">⬡ Phase 0 — Active</span>
+        </div>
+    </nav>
+
+    <!-- PARTICLES -->
+    <div class="particles" id="particles"></div>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════════ -->
+    <section class="hero">
+        <div class="hero-eyebrow">🌺 &nbsp; Phase 0 · Inception &amp; Foundation</div>
+
+        <h1 class="hero-title">
+            E Ola! —<br>
+            <em>The Watch Begins.</em>
+        </h1>
+
+        <p class="hero-sub">
+            A privacy-first learner analytics platform rooted in Native Hawaiian culture.
+            Tracking 14 interconnected outcomes through the Forest metaphor —
+            from Roots to Fruits &amp; Seeds.
+        </p>
+
+        <div class="hero-actions">
+            <a href="ui/cultural_journey.html" class="btn-gold">
+                🚀 &nbsp; Open Dashboard
+            </a>
+            <a href="doc/Requirements.html" class="btn-ghost">
+                📖 &nbsp; Requirements Doc
+            </a>
+        </div>
+
+        <div class="hero-scroll">Scroll</div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         STATS STRIP
+    ════════════════════════════════════════════ -->
+    <div class="stats">
+        <div class="stat reveal">
+            <div class="stat-value">14</div>
+            <div class="stat-label">E Ola! Indicators</div>
+        </div>
+        <div class="stat reveal reveal-delay-1">
+            <div class="stat-value">197</div>
+            <div class="stat-label">Synthetic Students</div>
+        </div>
+        <div class="stat reveal reveal-delay-2">
+            <div class="stat-value">99.9%</div>
+            <div class="stat-label">Data Purity</div>
+        </div>
+        <div class="stat reveal reveal-delay-3">
+            <div class="stat-value">4</div>
+            <div class="stat-label">Specialist Agents</div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         PHASE ROADMAP
+    ════════════════════════════════════════════ -->
+    <section class="section" id="roadmap" style="background:linear-gradient(180deg,var(--navy-dark) 0%,var(--ks-navy) 100%);">
+        <div class="section-inner">
+            <span class="section-label">Roadmap</span>
+            <h2 class="section-title">Development Phases</h2>
+            <p class="section-sub">18-week programme — Phase 0 marks the true inception point.</p>
+
+            <div class="timeline">
+
+                <div class="timeline-node active reveal">
+                    <div class="timeline-num">Phase 0</div>
+                    <div class="timeline-icon">🏹</div>
+                    <div class="timeline-name">Inception</div>
+                    <div class="timeline-weeks">Foundation</div>
+                    <span class="timeline-status">Active</span>
+                </div>
+
+                <div class="timeline-node done reveal reveal-delay-1">
+                    <div class="timeline-num">Phase 1</div>
+                    <div class="timeline-icon">📋</div>
+                    <div class="timeline-name">Planning &amp; Analysis</div>
+                    <div class="timeline-weeks">Weeks 1–3</div>
+                    <span class="timeline-status">Complete</span>
+                </div>
+
+                <div class="timeline-node done reveal reveal-delay-2">
+                    <div class="timeline-num">Phase 2</div>
+                    <div class="timeline-icon">🎨</div>
+                    <div class="timeline-name">Design &amp; Prototyping</div>
+                    <div class="timeline-weeks">Weeks 4–5</div>
+                    <span class="timeline-status">Complete</span>
+                </div>
+
+                <div class="timeline-node done reveal reveal-delay-3">
+                    <div class="timeline-num">Phase 3</div>
+                    <div class="timeline-icon">⚙️</div>
+                    <div class="timeline-name">Core Development</div>
+                    <div class="timeline-weeks">Weeks 6–13</div>
+                    <span class="timeline-status">Complete</span>
+                </div>
+
+                <div class="timeline-node upcoming reveal">
+                    <div class="timeline-num">Phase 4</div>
+                    <div class="timeline-icon">🔬</div>
+                    <div class="timeline-name">Testing &amp; Refinement</div>
+                    <div class="timeline-weeks">Weeks 14–15</div>
+                    <span class="timeline-status">Upcoming</span>
+                </div>
+
+                <div class="timeline-node upcoming reveal reveal-delay-1">
+                    <div class="timeline-num">Phase 5</div>
+                    <div class="timeline-icon">🚀</div>
+                    <div class="timeline-name">Deployment &amp; Training</div>
+                    <div class="timeline-weeks">Weeks 16–18</div>
+                    <span class="timeline-status">Upcoming</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         MISSION PILLARS
+    ════════════════════════════════════════════ -->
+    <section class="section">
+        <div class="section-inner">
+            <span class="section-label">Mission</span>
+            <h2 class="section-title">Three Critical Outputs</h2>
+            <p class="section-sub">What the system is built to achieve.</p>
+
+            <div class="pillars">
+                <div class="pillar glass reveal">
+                    <div class="pillar-num">01</div>
+                    <h4>Quantify the Intangible</h4>
+                    <p>Multi-method measurement of cultural identity, servant leadership, and holistic well-being through triangulated data — turning lived values into trackable indicators.</p>
+                </div>
+                <div class="pillar glass reveal reveal-delay-1">
+                    <div class="pillar-num">02</div>
+                    <h4>Innovation Adoption Analytics</h4>
+                    <p>Implementation fidelity tracking, barrier identification, and outcome correlation for PBL-by-Design — closing the loop between pedagogy and data.</p>
+                </div>
+                <div class="pillar glass reveal reveal-delay-2">
+                    <div class="pillar-num">03</div>
+                    <h4>Stakeholder Communication</h4>
+                    <p>Automated brief and white paper generation with narrative-driven visualisations — giving teachers, leaders and researchers the story, not just the numbers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         AGENTS
+    ════════════════════════════════════════════ -->
+    <section class="section" id="agents" style="background:var(--navy-dark);">
+        <div class="section-inner">
+            <span class="section-label">The Team</span>
+            <h2 class="section-title">Four Specialist Agents</h2>
+            <p class="section-sub">Each agent owns a domain. Together they form the engine.</p>
+
+            <div class="agents-grid">
+
+                <div class="agent-card glass reveal" style="--agent-color:var(--growth-mid)">
+                    <span class="agent-glyph">🛡️</span>
+                    <span class="agent-tag">Database &amp; Security</span>
+                    <h4>The Night's Watch</h4>
+                    <p class="agent-zh">守夜人</p>
+                    <p>Senior DBA · 15+ years experience. Owns Star Schema design, FERPA compliance, Dynamic Data Masking, and all audit trails. The Wall never falls.</p>
+                </div>
+
+                <div class="agent-card glass reveal reveal-delay-1" style="--agent-color:var(--royal-gold)">
+                    <span class="agent-glyph">⛏️</span>
+                    <span class="agent-tag">Data Generation</span>
+                    <h4>The Ironforge Miner</h4>
+                    <p class="agent-zh">铁炉堡矿工</p>
+                    <p>Synthetic data expert &amp; statistical modeller. Generates 200 culturally-authentic Hawaiian student profiles with power-law distributions and injected edge cases.</p>
+                </div>
+
+                <div class="agent-card glass reveal reveal-delay-2" style="--agent-color:var(--new-sprout)">
+                    <span class="agent-glyph">🔮</span>
+                    <span class="agent-tag">Data Science &amp; NLP</span>
+                    <h4>The Archmage</h4>
+                    <p class="agent-zh">肯瑞托大法师</p>
+                    <p>Executes the OSEMN protocol. Converts raw data into 14 standardised E Ola! scores. NLP-based sentiment analysis on cultural reflections. Zero black-box logic.</p>
+                </div>
+
+                <div class="agent-card glass reveal reveal-delay-3" style="--agent-color:var(--community)">
+                    <span class="agent-glyph">🎨</span>
+                    <span class="agent-tag">UI/UX Design</span>
+                    <h4>Lord of Rivendell</h4>
+                    <p class="agent-zh">幽谷领主</p>
+                    <p>Jony Ive minimalism. Kalo Growth palette. Glassmorphism. Turns the Archmage's JSON insights into a dashboard that feels like a digital forest.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOREST FRAMEWORK
+    ════════════════════════════════════════════ -->
+    <section class="section forest-section" id="framework">
+        <div class="section-inner">
+            <div class="forest-grid">
+
+                <div>
+                    <span class="section-label">Framework</span>
+                    <h2 class="section-title">The Native Hawaiian Forest</h2>
+                    <p class="section-sub" style="margin-bottom:var(--space-6)">
+                        14 interconnected outcomes organised across four tiers — each tier a layer of the forest, each layer building on the one below.
+                    </p>
+
+                    <div class="forest-tiers">
+                        <div class="tier glass reveal" style="--tier-color:#8B4513">
+                            <div class="tier-label">🌱 Roots</div>
+                            <div class="tier-name">Cultural Foundation</div>
+                            <div class="tier-desc">ʻIke Kūpuna · Aloha ʻĀina · Kūpono</div>
+                        </div>
+                        <div class="tier glass reveal reveal-delay-1" style="--tier-color:var(--forest-root)">
+                            <div class="tier-label">🌲 Trunk &amp; Branches</div>
+                            <div class="tier-name">Identity Formation</div>
+                            <div class="tier-desc">Mālama &amp; Kuleana · Alakaʻi Lawelawe · Kūlia</div>
+                        </div>
+                        <div class="tier glass reveal reveal-delay-2" style="--tier-color:var(--growth-mid)">
+                            <div class="tier-label">🌿 Leaves</div>
+                            <div class="tier-name">Action &amp; Skills</div>
+                            <div class="tier-desc">Academic · Mindset · Self-efficacy · Problem Solving · Innovation · Collaboration · Global Competence</div>
+                        </div>
+                        <div class="tier glass reveal reveal-delay-3" style="--tier-color:var(--royal-gold)">
+                            <div class="tier-label">🍎 Fruits &amp; Seeds</div>
+                            <div class="tier-name">Ultimate Well-Being</div>
+                            <div class="tier-desc">Holistic Well-Being — 7 Dimensions</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SVG Forest Diagram -->
+                <div class="forest-vis">
+                    <svg class="forest-diagram" viewBox="0 0 420 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background glow -->
+                        <defs>
+                            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%"   stop-color="#46AA8F" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="#46AA8F" stop-opacity="0"/>
+                            </radialGradient>
+                            <filter id="blur">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="6"/>
+                            </filter>
+                        </defs>
+                        <ellipse cx="210" cy="240" rx="200" ry="220" fill="url(#glow)"/>
+
+                        <!-- Roots -->
+                        <path d="M210 390 Q160 420 120 440" stroke="#8B4513" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+                        <path d="M210 390 Q210 430 210 450" stroke="#8B4513" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+                        <path d="M210 390 Q260 420 300 440" stroke="#8B4513" stroke-width="6" stroke-linecap="round" opacity="0.8"/>
+                        <circle cx="120" cy="440" r="10" fill="#8B4513" opacity="0.7"/>
+                        <circle cx="210" cy="452" r="10" fill="#8B4513" opacity="0.7"/>
+                        <circle cx="300" cy="440" r="10" fill="#8B4513" opacity="0.7"/>
+                        <text x="210" y="472" text-anchor="middle" fill="#8B451399" font-size="11" font-weight="700" letter-spacing="2" font-family="system-ui">ROOTS</text>
+
+                        <!-- Trunk -->
+                        <rect x="190" y="280" width="40" height="115" rx="8" fill="#0A594E" opacity="0.9"/>
+                        <!-- Trunk glow -->
+                        <rect x="190" y="280" width="40" height="115" rx="8" fill="#46AA8F" opacity="0.1" filter="url(#blur)"/>
+
+                        <!-- Branches -->
+                        <path d="M210 310 Q150 290 100 270" stroke="#0A594E" stroke-width="10" stroke-linecap="round"/>
+                        <path d="M210 330 Q270 310 320 290" stroke="#0A594E" stroke-width="10" stroke-linecap="round"/>
+                        <path d="M210 350 Q145 340 90 340" stroke="#0A594E" stroke-width="7" stroke-linecap="round"/>
+                        <path d="M210 355 Q275 345 330 345" stroke="#0A594E" stroke-width="7" stroke-linecap="round"/>
+
+                        <!-- Leaves clusters -->
+                        <!-- Left cluster -->
+                        <ellipse cx="100" cy="255" rx="38" ry="28" fill="#46AA8F" opacity="0.85"/>
+                        <ellipse cx="78"  cy="268" rx="24" ry="18" fill="#70D75C" opacity="0.7"/>
+                        <ellipse cx="88"  cy="235" rx="20" ry="16" fill="#70D75C" opacity="0.6"/>
+                        <!-- Right cluster -->
+                        <ellipse cx="320" cy="275" rx="38" ry="28" fill="#46AA8F" opacity="0.85"/>
+                        <ellipse cx="342" cy="288" rx="24" ry="18" fill="#70D75C" opacity="0.7"/>
+                        <ellipse cx="332" cy="255" rx="20" ry="16" fill="#70D75C" opacity="0.6"/>
+                        <!-- Left lower -->
+                        <ellipse cx="90"  cy="332" rx="30" ry="22" fill="#46AA8F" opacity="0.6"/>
+                        <!-- Right lower -->
+                        <ellipse cx="330" cy="337" rx="30" ry="22" fill="#46AA8F" opacity="0.6"/>
+
+                        <!-- Canopy / fruits -->
+                        <ellipse cx="210" cy="170" rx="90" ry="75" fill="#0A594E" opacity="0.75"/>
+                        <ellipse cx="210" cy="155" rx="70" ry="60" fill="#46AA8F" opacity="0.6"/>
+                        <!-- Fruit dots -->
+                        <circle cx="185" cy="148" r="9" fill="#FFB003" opacity="0.9"/>
+                        <circle cx="215" cy="136" r="9" fill="#FFB003" opacity="0.9"/>
+                        <circle cx="240" cy="152" r="9" fill="#FFB003" opacity="0.9"/>
+                        <circle cx="200" cy="170" r="7" fill="#D0ED35" opacity="0.85"/>
+                        <circle cx="228" cy="172" r="7" fill="#D0ED35" opacity="0.85"/>
+                        <!-- Glow on fruits -->
+                        <circle cx="215" cy="136" r="16" fill="#FFB003" opacity="0.12" filter="url(#blur)"/>
+
+                        <!-- Labels -->
+                        <text x="210" y="116" text-anchor="middle" fill="#FFB003" font-size="10" font-weight="700" letter-spacing="1.5" font-family="system-ui">FRUITS &amp; SEEDS</text>
+                        <text x="210" y="270" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700" letter-spacing="1.5" font-family="system-ui" opacity="0.5">LEAVES</text>
+                        <text x="210" y="320" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700" letter-spacing="1.5" font-family="system-ui" opacity="0.7">TRUNK</text>
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PHASE 0 DELIVERABLES
+    ════════════════════════════════════════════ -->
+    <section class="section" id="deliverables">
+        <div class="section-inner">
+            <span class="section-label">Phase 0 · Now</span>
+            <h2 class="section-title">Foundation Deliverables</h2>
+            <p class="section-sub">What we're establishing in this inception phase.</p>
+
+            <div class="deliverables-grid">
+
+                <div class="deliverable-card glass reveal">
+                    <div class="deliverable-icon">📐</div>
+                    <h4>Technical Requirements</h4>
+                    <p>Comprehensive SRS covering stakeholders, FERPA compliance framework, 14 indicator definitions, and the E Ola! measurement model.</p>
+                    <a href="doc/Requirements.html" class="deliverable-link">View Document →</a>
+                </div>
+
+                <div class="deliverable-card glass reveal reveal-delay-1">
+                    <div class="deliverable-icon">🗄️</div>
+                    <h4>Enterprise Schema v1.1</h4>
+                    <p>Star Schema with PII isolation wall, SCD Type 2 temporal tracking, DDM views, and FERPA-compliant audit trail tables.</p>
+                    <a href="schema/v1_1_enterprise_schema.sql" class="deliverable-link">View Schema →</a>
+                </div>
+
+                <div class="deliverable-card glass reveal reveal-delay-2">
+                    <div class="deliverable-icon">🎯</div>
+                    <h4>Score Engine v1</h4>
+                    <p>ʻIke Kūpuna composite scoring: Base (0.6) × Program Bonus (0.25) × Well-being Adjustment (0.15). Transparent, reproducible, auditable.</p>
+                    <a href="scripts/score_engine.py" class="deliverable-link">View Script →</a>
+                </div>
+
+                <div class="deliverable-card glass reveal">
+                    <div class="deliverable-icon">🧬</div>
+                    <h4>Synthetic Dataset</h4>
+                    <p>197 culturally-authentic Hawaiian student profiles, 2,758 E Ola! outcome records, and 986 cultural reflection texts with NLP annotations.</p>
+                    <a href="output/anomaly_report_enterprise.json" class="deliverable-link">View Report →</a>
+                </div>
+
+                <div class="deliverable-card glass reveal reveal-delay-1">
+                    <div class="deliverable-icon">🌊</div>
+                    <h4>Cultural Journey Dashboard</h4>
+                    <p>Glassmorphism UI with Waʻa journey map, radar charts, and the complete Kalo Growth palette implemented in pure CSS.</p>
+                    <a href="ui/cultural_journey.html" class="deliverable-link">Open Dashboard →</a>
+                </div>
+
+                <div class="deliverable-card glass reveal reveal-delay-2">
+                    <div class="deliverable-icon">🤖</div>
+                    <h4>Agent Profiles</h4>
+                    <p>Four specialist AI agents with defined roles, core laws, forbidden actions, and initial directive sets governing all system development.</p>
+                    <a href="agents/nights_watch.md" class="deliverable-link">View Agents →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CTA
+    ════════════════════════════════════════════ -->
+    <section class="cta-section">
+        <span class="section-label" style="display:block;margin-bottom:var(--space-2);">E Ola!</span>
+        <h2>Night gathers.<br>Now our watch begins.</h2>
+        <p>Phase 0 is the foundation. Every decision made here shapes every line of code, every insight, every student outcome tracked in the system above.</p>
+        <div style="display:flex;gap:var(--space-3);justify-content:center;flex-wrap:wrap;">
+            <a href="ui/cultural_journey.html" class="btn-gold">🛶 &nbsp; Launch Dashboard</a>
+            <a href="ui/index.html"             class="btn-ghost">🌿 &nbsp; Product Home</a>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ════════════════════════════════════════════ -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="nav-brand-icon" style="width:36px;height:36px;font-size:1.1rem;">🌿</div>
+                    <div>
+                        <div style="font-weight:700;font-size:var(--font-sm);">E Ola! Learner Analytics</div>
+                        <div style="font-size:var(--font-xs);color:var(--text-muted);">Phase 0 · Inception Build · 2026</div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="ui/cultural_journey.html">Dashboard</a>
+                    <a href="ui/index.html">Product</a>
+                    <a href="doc/Requirements.html">Requirements</a>
+                    <a href="schema/v1_1_enterprise_schema.sql">Schema</a>
+                </div>
+            </div>
+            <div class="footer-copy">© 2026 Kamehameha Schools. All rights reserved.</div>
+            <div class="footer-aloha">Built with Aloha in Hawaiʻi 🌺</div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════
+         JS — particles + reveal
+    ════════════════════════════════════════════ -->
+    <script>
+        // Particles
+        const container = document.getElementById('particles');
+        const colors = ['#46AA8F','#70D75C','#D0ED35','#FFB003'];
+        for (let i = 0; i < 28; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 5 + 2;
+            p.style.cssText = `
+                width:${size}px; height:${size}px;
+                left:${Math.random()*100}%;
+                background:${colors[Math.floor(Math.random()*colors.length)]};
+                animation-duration:${Math.random()*18+12}s;
+                animation-delay:${Math.random()*10}s;
+            `;
+            container.appendChild(p);
+        }
+
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(el => io.observe(el));
+    </script>
+</body>
+</html>
