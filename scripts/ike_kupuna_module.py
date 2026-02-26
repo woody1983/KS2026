@@ -122,7 +122,7 @@ class IkeKupunaAnalyzer:
     # -----------------------------------------------------------------------
 
     def obtain(self) -> "IkeKupunaAnalyzer":
-        """Extract 'Ike Kūpuna data from enterprise database."""
+        """Extract 'Ike Kūpuna data from enterprise database, including wellbeing scores."""
         conn = sqlite3.connect(self.db_path)
 
         query = """
@@ -145,10 +145,15 @@ class IkeKupunaAnalyzer:
                 o.percentile_rank,
                 o.assessment_date,
                 o.data_quality_flag,
-                o.assessor_type
+                o.assessor_type,
+                w.cultural_score         AS wb_cultural,
+                w.overall_wellbeing_score AS wb_overall,
+                w.wellbeing_category     AS wb_category
             FROM dim_students_masked s
             JOIN fact_e_ola_outcomes o
                 ON s.student_key = o.student_key
+            LEFT JOIN fact_wellbeing_measurements w
+                ON s.student_key = w.student_key
             WHERE o.indicator_key = ?
               AND s.is_current = 1
             ORDER BY s.student_key
@@ -386,8 +391,9 @@ class IkeKupunaAnalyzer:
             w_programme = (bonus_pts / PROGRAMME_POINTS["cap"]) * 100 * WEIGHTS["program_bonus"]
 
             # Component 3 — Wellbeing Adjustment (15%)
-            # fact_wellbeing_measurements is empty; use neutral midpoint (50)
-            wellbeing_mid = 50.0
+            # Use real cultural_score from fact_wellbeing_measurements;
+            # fall back to neutral midpoint (50) if not available.
+            wellbeing_mid = float(row["wb_cultural"]) if pd.notna(row.get("wb_cultural")) else 50.0
             w_wellbeing = wellbeing_mid * WEIGHTS["wellbeing_adjustment"]
 
             final = max(0.0, min(100.0, w_base + w_programme + w_wellbeing))
@@ -417,10 +423,13 @@ class IkeKupunaAnalyzer:
                 "weighted_wellbeing": round(w_wellbeing, 3),
                 "composite_score": round(final, 2),
                 "proficiency":     proficiency(final),
+                "wb_cultural_score":  round(wellbeing_mid, 2),
+                "wb_overall_score":   round(float(row["wb_overall"]), 2) if pd.notna(row.get("wb_overall")) else None,
+                "wb_category":        row.get("wb_category"),
                 "formula_trace":   (
                     f"{base:.1f}×{WEIGHTS['base_score']} "
                     f"+ ({bonus_pts}/{PROGRAMME_POINTS['cap']})×100×{WEIGHTS['program_bonus']} "
-                    f"+ {wellbeing_mid}×{WEIGHTS['wellbeing_adjustment']} "
+                    f"+ {wellbeing_mid:.1f}×{WEIGHTS['wellbeing_adjustment']} "
                     f"= {final:.2f}"
                 ),
             })

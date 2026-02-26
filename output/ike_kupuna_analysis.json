@@ -2,7 +2,7 @@
   "meta": {
     "indicator_code": "ROOT_IKE",
     "indicator_name": "'Ike Kūpuna (Ancestral Wisdom)",
-    "analysis_timestamp": "2026-02-25T07:52:01.112631",
+    "analysis_timestamp": "2026-02-25T20:04:35.340023",
     "db_path": "/Users/jiangxu/agent_test1/e_ola_enterprise.db",
     "formula": "Score = 0.60×Base + 0.25×Programme_Bonus(scaled) + 0.15×Wellbeing_Mid",
     "weights": {
@@ -243,16 +243,16 @@
   "model_output": {
     "scored_students": 197,
     "proficiency_distribution": {
-      "Approaching": 104,
-      "Proficient": 49,
-      "Below": 35,
-      "Advanced": 9
+      "Approaching": 92,
+      "Proficient": 57,
+      "Below": 33,
+      "Advanced": 15
     },
     "score_stats": {
-      "mean": 69.54,
-      "std": 10.57,
-      "min": 42.83,
-      "max": 92.5
+      "mean": 71.32,
+      "std": 12.03,
+      "min": 40.07,
+      "max": 98.37
     },
     "student_scores": [
       {
@@ -268,10 +268,13 @@
         "bonus_points": 10,
         "weighted_base": 44.706,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 77.21,
+        "weighted_wellbeing": 9.972,
+        "composite_score": 79.68,
         "proficiency": "Proficient",
-        "formula_trace": "74.5×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 77.21"
+        "wb_cultural_score": 66.48,
+        "wb_overall_score": 63.25,
+        "wb_category": "Stable",
+        "formula_trace": "74.5×0.6 + (10/10)×100×0.25 + 66.5×0.15 = 79.68"
       },
       {
         "student_key": 2,
@@ -286,10 +289,13 @@
         "bonus_points": 3,
         "weighted_base": 53.424,
         "weighted_programme": 7.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 68.42,
+        "weighted_wellbeing": 9.931,
+        "composite_score": 70.86,
         "proficiency": "Approaching",
-        "formula_trace": "89.0×0.6 + (3/10)×100×0.25 + 50.0×0.15 = 68.42"
+        "wb_cultural_score": 66.21,
+        "wb_overall_score": 68.43,
+        "wb_category": "Flourishing",
+        "formula_trace": "89.0×0.6 + (3/10)×100×0.25 + 66.2×0.15 = 70.86"
       },
       {
         "student_key": 3,
@@ -304,10 +310,13 @@
         "bonus_points": 10,
         "weighted_base": 50.34,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 82.84,
+        "weighted_wellbeing": 11.131,
+        "composite_score": 86.47,
         "proficiency": "Proficient",
-        "formula_trace": "83.9×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 82.84"
+        "wb_cultural_score": 74.21,
+        "wb_overall_score": 69.4,
+        "wb_category": "Flourishing",
+        "formula_trace": "83.9×0.6 + (10/10)×100×0.25 + 74.2×0.15 = 86.47"
       },
       {
         "student_key": 4,
@@ -322,10 +331,13 @@
         "bonus_points": 0,
         "weighted_base": 46.902,
         "weighted_programme": 0.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 54.4,
+        "weighted_wellbeing": 7.83,
+        "composite_score": 54.73,
         "proficiency": "Below",
-        "formula_trace": "78.2×0.6 + (0/10)×100×0.25 + 50.0×0.15 = 54.40"
+        "wb_cultural_score": 52.2,
+        "wb_overall_score": 61.33,
+        "wb_category": "Stable",
+        "formula_trace": "78.2×0.6 + (0/10)×100×0.25 + 52.2×0.15 = 54.73"
       },
       {
         "student_key": 5,
@@ -340,10 +352,13 @@
         "bonus_points": 5,
         "weighted_base": 45.168,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 65.17,
+        "weighted_wellbeing": 9.402,
+        "composite_score": 67.07,
         "proficiency": "Approaching",
-        "formula_trace": "75.3×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 65.17"
+        "wb_cultural_score": 62.68,
+        "wb_overall_score": 68.02,
+        "wb_category": "Flourishing",
+        "formula_trace": "75.3×0.6 + (5/10)×100×0.25 + 62.7×0.15 = 67.07"
       },
       {
         "student_key": 6,
@@ -358,10 +373,13 @@
         "bonus_points": 10,
         "weighted_base": 28.434,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 60.93,
+        "weighted_wellbeing": 7.784,
+        "composite_score": 61.22,
         "proficiency": "Approaching",
-        "formula_trace": "47.4×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 60.93"
+        "wb_cultural_score": 51.89,
+        "wb_overall_score": 59.37,
+        "wb_category": "Stable",
+        "formula_trace": "47.4×0.6 + (10/10)×100×0.25 + 51.9×0.15 = 61.22"
       },
       {
         "student_key": 7,
@@ -376,10 +394,13 @@
         "bonus_points": 10,
         "weighted_base": 60.0,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 92.5,
+        "weighted_wellbeing": 11.851,
+        "composite_score": 96.85,
         "proficiency": "Advanced",
-        "formula_trace": "100.0×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 92.50"
+        "wb_cultural_score": 79.01,
+        "wb_overall_score": 75.56,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (10/10)×100×0.25 + 79.0×0.15 = 96.85"
       },
       {
         "student_key": 8,
@@ -394,10 +415,13 @@
         "bonus_points": 10,
         "weighted_base": 50.694,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 83.19,
+        "weighted_wellbeing": 10.836,
+        "composite_score": 86.53,
         "proficiency": "Proficient",
-        "formula_trace": "84.5×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 83.19"
+        "wb_cultural_score": 72.24,
+        "wb_overall_score": 67.71,
+        "wb_category": "Flourishing",
+        "formula_trace": "84.5×0.6 + (10/10)×100×0.25 + 72.2×0.15 = 86.53"
       },
       {
         "student_key": 9,
@@ -412,10 +436,13 @@
         "bonus_points": 5,
         "weighted_base": 44.37,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 64.37,
+        "weighted_wellbeing": 8.489,
+        "composite_score": 65.36,
         "proficiency": "Approaching",
-        "formula_trace": "74.0×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 64.37"
+        "wb_cultural_score": 56.59,
+        "wb_overall_score": 60.57,
+        "wb_category": "Stable",
+        "formula_trace": "74.0×0.6 + (5/10)×100×0.25 + 56.6×0.15 = 65.36"
       },
       {
         "student_key": 10,
@@ -430,10 +457,13 @@
         "bonus_points": 5,
         "weighted_base": 41.088,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 61.09,
+        "weighted_wellbeing": 8.673,
+        "composite_score": 62.26,
         "proficiency": "Approaching",
-        "formula_trace": "68.5×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 61.09"
+        "wb_cultural_score": 57.82,
+        "wb_overall_score": 63.13,
+        "wb_category": "Stable",
+        "formula_trace": "68.5×0.6 + (5/10)×100×0.25 + 57.8×0.15 = 62.26"
       },
       {
         "student_key": 11,
@@ -448,10 +478,13 @@
         "bonus_points": 5,
         "weighted_base": 45.738,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 65.74,
+        "weighted_wellbeing": 7.834,
+        "composite_score": 66.07,
         "proficiency": "Approaching",
-        "formula_trace": "76.2×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 65.74"
+        "wb_cultural_score": 52.23,
+        "wb_overall_score": 57.58,
+        "wb_category": "Stable",
+        "formula_trace": "76.2×0.6 + (5/10)×100×0.25 + 52.2×0.15 = 66.07"
       },
       {
         "student_key": 12,
@@ -466,10 +499,13 @@
         "bonus_points": 2,
         "weighted_base": 44.688,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 57.19,
+        "weighted_wellbeing": 8.487,
+        "composite_score": 58.18,
         "proficiency": "Below",
-        "formula_trace": "74.5×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 57.19"
+        "wb_cultural_score": 56.58,
+        "wb_overall_score": 61.53,
+        "wb_category": "Stable",
+        "formula_trace": "74.5×0.6 + (2/10)×100×0.25 + 56.6×0.15 = 58.18"
       },
       {
         "student_key": 13,
@@ -484,10 +520,13 @@
         "bonus_points": 8,
         "weighted_base": 39.39,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 66.89,
+        "weighted_wellbeing": 7.364,
+        "composite_score": 66.75,
         "proficiency": "Approaching",
-        "formula_trace": "65.7×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 66.89"
+        "wb_cultural_score": 49.09,
+        "wb_overall_score": 60.14,
+        "wb_category": "Stable",
+        "formula_trace": "65.7×0.6 + (8/10)×100×0.25 + 49.1×0.15 = 66.75"
       },
       {
         "student_key": 14,
@@ -502,10 +541,13 @@
         "bonus_points": 2,
         "weighted_base": 39.486,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 51.99,
+        "weighted_wellbeing": 7.318,
+        "composite_score": 51.8,
         "proficiency": "Below",
-        "formula_trace": "65.8×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 51.99"
+        "wb_cultural_score": 48.79,
+        "wb_overall_score": 51.66,
+        "wb_category": "Stable",
+        "formula_trace": "65.8×0.6 + (2/10)×100×0.25 + 48.8×0.15 = 51.80"
       },
       {
         "student_key": 15,
@@ -520,10 +562,13 @@
         "bonus_points": 2,
         "weighted_base": 60.0,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.5,
-        "proficiency": "Approaching",
-        "formula_trace": "100.0×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 72.50"
+        "weighted_wellbeing": 11.46,
+        "composite_score": 76.46,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 76.4,
+        "wb_overall_score": 70.61,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (2/10)×100×0.25 + 76.4×0.15 = 76.46"
       },
       {
         "student_key": 16,
@@ -538,10 +583,13 @@
         "bonus_points": 7,
         "weighted_base": 43.494,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 68.49,
+        "weighted_wellbeing": 8.694,
+        "composite_score": 69.69,
         "proficiency": "Approaching",
-        "formula_trace": "72.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 68.49"
+        "wb_cultural_score": 57.96,
+        "wb_overall_score": 60.66,
+        "wb_category": "Stable",
+        "formula_trace": "72.5×0.6 + (7/10)×100×0.25 + 58.0×0.15 = 69.69"
       },
       {
         "student_key": 17,
@@ -556,10 +604,13 @@
         "bonus_points": 10,
         "weighted_base": 47.244,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 79.74,
+        "weighted_wellbeing": 9.619,
+        "composite_score": 81.86,
         "proficiency": "Proficient",
-        "formula_trace": "78.7×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 79.74"
+        "wb_cultural_score": 64.13,
+        "wb_overall_score": 65.8,
+        "wb_category": "Flourishing",
+        "formula_trace": "78.7×0.6 + (10/10)×100×0.25 + 64.1×0.15 = 81.86"
       },
       {
         "student_key": 18,
@@ -574,10 +625,13 @@
         "bonus_points": 10,
         "weighted_base": 39.972,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.47,
+        "weighted_wellbeing": 8.63,
+        "composite_score": 73.6,
         "proficiency": "Approaching",
-        "formula_trace": "66.6×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 72.47"
+        "wb_cultural_score": 57.53,
+        "wb_overall_score": 65.3,
+        "wb_category": "Flourishing",
+        "formula_trace": "66.6×0.6 + (10/10)×100×0.25 + 57.5×0.15 = 73.60"
       },
       {
         "student_key": 19,
@@ -592,10 +646,13 @@
         "bonus_points": 5,
         "weighted_base": 50.85,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 70.85,
+        "weighted_wellbeing": 11.37,
+        "composite_score": 74.72,
         "proficiency": "Approaching",
-        "formula_trace": "84.8×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 70.85"
+        "wb_cultural_score": 75.8,
+        "wb_overall_score": 65.77,
+        "wb_category": "Flourishing",
+        "formula_trace": "84.8×0.6 + (5/10)×100×0.25 + 75.8×0.15 = 74.72"
       },
       {
         "student_key": 20,
@@ -610,10 +667,13 @@
         "bonus_points": 7,
         "weighted_base": 48.084,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 73.08,
-        "proficiency": "Approaching",
-        "formula_trace": "80.1×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 73.08"
+        "weighted_wellbeing": 9.505,
+        "composite_score": 75.09,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 63.37,
+        "wb_overall_score": 68.24,
+        "wb_category": "Flourishing",
+        "formula_trace": "80.1×0.6 + (7/10)×100×0.25 + 63.4×0.15 = 75.09"
       },
       {
         "student_key": 21,
@@ -628,10 +688,13 @@
         "bonus_points": 5,
         "weighted_base": 52.566,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.57,
-        "proficiency": "Approaching",
-        "formula_trace": "87.6×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 72.57"
+        "weighted_wellbeing": 10.585,
+        "composite_score": 75.65,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 70.57,
+        "wb_overall_score": 60.6,
+        "wb_category": "Stable",
+        "formula_trace": "87.6×0.6 + (5/10)×100×0.25 + 70.6×0.15 = 75.65"
       },
       {
         "student_key": 22,
@@ -646,10 +709,13 @@
         "bonus_points": 7,
         "weighted_base": 43.014,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 68.01,
+        "weighted_wellbeing": 8.665,
+        "composite_score": 69.18,
         "proficiency": "Approaching",
-        "formula_trace": "71.7×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 68.01"
+        "wb_cultural_score": 57.77,
+        "wb_overall_score": 60.29,
+        "wb_category": "Stable",
+        "formula_trace": "71.7×0.6 + (7/10)×100×0.25 + 57.8×0.15 = 69.18"
       },
       {
         "student_key": 23,
@@ -664,10 +730,13 @@
         "bonus_points": 5,
         "weighted_base": 45.534,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 65.53,
+        "weighted_wellbeing": 8.898,
+        "composite_score": 66.93,
         "proficiency": "Approaching",
-        "formula_trace": "75.9×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 65.53"
+        "wb_cultural_score": 59.32,
+        "wb_overall_score": 62.74,
+        "wb_category": "Stable",
+        "formula_trace": "75.9×0.6 + (5/10)×100×0.25 + 59.3×0.15 = 66.93"
       },
       {
         "student_key": 24,
@@ -682,10 +751,13 @@
         "bonus_points": 7,
         "weighted_base": 39.138,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 64.14,
+        "weighted_wellbeing": 7.441,
+        "composite_score": 64.08,
         "proficiency": "Approaching",
-        "formula_trace": "65.2×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 64.14"
+        "wb_cultural_score": 49.61,
+        "wb_overall_score": 62.51,
+        "wb_category": "Stable",
+        "formula_trace": "65.2×0.6 + (7/10)×100×0.25 + 49.6×0.15 = 64.08"
       },
       {
         "student_key": 25,
@@ -700,10 +772,13 @@
         "bonus_points": 10,
         "weighted_base": 42.684,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 75.18,
+        "weighted_wellbeing": 9.192,
+        "composite_score": 76.88,
         "proficiency": "Proficient",
-        "formula_trace": "71.1×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 75.18"
+        "wb_cultural_score": 61.28,
+        "wb_overall_score": 60.48,
+        "wb_category": "Stable",
+        "formula_trace": "71.1×0.6 + (10/10)×100×0.25 + 61.3×0.15 = 76.88"
       },
       {
         "student_key": 26,
@@ -718,10 +793,13 @@
         "bonus_points": 2,
         "weighted_base": 50.868,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 63.37,
+        "weighted_wellbeing": 9.612,
+        "composite_score": 65.48,
         "proficiency": "Approaching",
-        "formula_trace": "84.8×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 63.37"
+        "wb_cultural_score": 64.08,
+        "wb_overall_score": 70.56,
+        "wb_category": "Flourishing",
+        "formula_trace": "84.8×0.6 + (2/10)×100×0.25 + 64.1×0.15 = 65.48"
       },
       {
         "student_key": 27,
@@ -736,10 +814,13 @@
         "bonus_points": 7,
         "weighted_base": 55.338,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 80.34,
+        "weighted_wellbeing": 10.641,
+        "composite_score": 83.48,
         "proficiency": "Proficient",
-        "formula_trace": "92.2×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 80.34"
+        "wb_cultural_score": 70.94,
+        "wb_overall_score": 70.67,
+        "wb_category": "Flourishing",
+        "formula_trace": "92.2×0.6 + (7/10)×100×0.25 + 70.9×0.15 = 83.48"
       },
       {
         "student_key": 28,
@@ -754,10 +835,13 @@
         "bonus_points": 10,
         "weighted_base": 58.506,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 91.01,
+        "weighted_wellbeing": 13.666,
+        "composite_score": 97.17,
         "proficiency": "Advanced",
-        "formula_trace": "97.5×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 91.01"
+        "wb_cultural_score": 91.11,
+        "wb_overall_score": 76.45,
+        "wb_category": "Flourishing",
+        "formula_trace": "97.5×0.6 + (10/10)×100×0.25 + 91.1×0.15 = 97.17"
       },
       {
         "student_key": 29,
@@ -772,10 +856,13 @@
         "bonus_points": 7,
         "weighted_base": 51.594,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 76.59,
+        "weighted_wellbeing": 10.915,
+        "composite_score": 80.01,
         "proficiency": "Proficient",
-        "formula_trace": "86.0×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 76.59"
+        "wb_cultural_score": 72.77,
+        "wb_overall_score": 70.54,
+        "wb_category": "Flourishing",
+        "formula_trace": "86.0×0.6 + (7/10)×100×0.25 + 72.8×0.15 = 80.01"
       },
       {
         "student_key": 30,
@@ -790,10 +877,13 @@
         "bonus_points": 10,
         "weighted_base": 39.384,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 71.88,
+        "weighted_wellbeing": 9.318,
+        "composite_score": 73.7,
         "proficiency": "Approaching",
-        "formula_trace": "65.6×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 71.88"
+        "wb_cultural_score": 62.12,
+        "wb_overall_score": 57.59,
+        "wb_category": "Stable",
+        "formula_trace": "65.6×0.6 + (10/10)×100×0.25 + 62.1×0.15 = 73.70"
       },
       {
         "student_key": 31,
@@ -808,10 +898,13 @@
         "bonus_points": 10,
         "weighted_base": 59.7,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 92.2,
+        "weighted_wellbeing": 13.221,
+        "composite_score": 97.92,
         "proficiency": "Advanced",
-        "formula_trace": "99.5×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 92.20"
+        "wb_cultural_score": 88.14,
+        "wb_overall_score": 74.89,
+        "wb_category": "Flourishing",
+        "formula_trace": "99.5×0.6 + (10/10)×100×0.25 + 88.1×0.15 = 97.92"
       },
       {
         "student_key": 32,
@@ -826,10 +919,13 @@
         "bonus_points": 5,
         "weighted_base": 42.324,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 62.32,
+        "weighted_wellbeing": 9.572,
+        "composite_score": 64.4,
         "proficiency": "Approaching",
-        "formula_trace": "70.5×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 62.32"
+        "wb_cultural_score": 63.81,
+        "wb_overall_score": 60.94,
+        "wb_category": "Stable",
+        "formula_trace": "70.5×0.6 + (5/10)×100×0.25 + 63.8×0.15 = 64.40"
       },
       {
         "student_key": 33,
@@ -844,10 +940,13 @@
         "bonus_points": 3,
         "weighted_base": 59.778,
         "weighted_programme": 7.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 74.78,
-        "proficiency": "Approaching",
-        "formula_trace": "99.6×0.6 + (3/10)×100×0.25 + 50.0×0.15 = 74.78"
+        "weighted_wellbeing": 11.442,
+        "composite_score": 78.72,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 76.28,
+        "wb_overall_score": 74.75,
+        "wb_category": "Flourishing",
+        "formula_trace": "99.6×0.6 + (3/10)×100×0.25 + 76.3×0.15 = 78.72"
       },
       {
         "student_key": 34,
@@ -862,10 +961,13 @@
         "bonus_points": 3,
         "weighted_base": 51.828,
         "weighted_programme": 7.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 66.83,
+        "weighted_wellbeing": 9.397,
+        "composite_score": 68.73,
         "proficiency": "Approaching",
-        "formula_trace": "86.4×0.6 + (3/10)×100×0.25 + 50.0×0.15 = 66.83"
+        "wb_cultural_score": 62.65,
+        "wb_overall_score": 62.6,
+        "wb_category": "Stable",
+        "formula_trace": "86.4×0.6 + (3/10)×100×0.25 + 62.6×0.15 = 68.73"
       },
       {
         "student_key": 35,
@@ -880,10 +982,13 @@
         "bonus_points": 10,
         "weighted_base": 36.156,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 68.66,
+        "weighted_wellbeing": 7.201,
+        "composite_score": 68.36,
         "proficiency": "Approaching",
-        "formula_trace": "60.3×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 68.66"
+        "wb_cultural_score": 48.01,
+        "wb_overall_score": 55.25,
+        "wb_category": "Stable",
+        "formula_trace": "60.3×0.6 + (10/10)×100×0.25 + 48.0×0.15 = 68.36"
       },
       {
         "student_key": 36,
@@ -898,10 +1003,13 @@
         "bonus_points": 10,
         "weighted_base": 46.098,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 78.6,
+        "weighted_wellbeing": 8.789,
+        "composite_score": 79.89,
         "proficiency": "Proficient",
-        "formula_trace": "76.8×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 78.60"
+        "wb_cultural_score": 58.59,
+        "wb_overall_score": 67.13,
+        "wb_category": "Flourishing",
+        "formula_trace": "76.8×0.6 + (10/10)×100×0.25 + 58.6×0.15 = 79.89"
       },
       {
         "student_key": 37,
@@ -916,10 +1024,13 @@
         "bonus_points": 7,
         "weighted_base": 37.482,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 62.48,
+        "weighted_wellbeing": 9.352,
+        "composite_score": 64.33,
         "proficiency": "Approaching",
-        "formula_trace": "62.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 62.48"
+        "wb_cultural_score": 62.35,
+        "wb_overall_score": 62.61,
+        "wb_category": "Stable",
+        "formula_trace": "62.5×0.6 + (7/10)×100×0.25 + 62.4×0.15 = 64.33"
       },
       {
         "student_key": 38,
@@ -934,10 +1045,13 @@
         "bonus_points": 10,
         "weighted_base": 37.764,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 70.26,
+        "weighted_wellbeing": 7.21,
+        "composite_score": 69.97,
         "proficiency": "Approaching",
-        "formula_trace": "62.9×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 70.26"
+        "wb_cultural_score": 48.07,
+        "wb_overall_score": 59.7,
+        "wb_category": "Stable",
+        "formula_trace": "62.9×0.6 + (10/10)×100×0.25 + 48.1×0.15 = 69.97"
       },
       {
         "student_key": 39,
@@ -952,10 +1066,13 @@
         "bonus_points": 7,
         "weighted_base": 47.106,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.11,
+        "weighted_wellbeing": 9.669,
+        "composite_score": 74.27,
         "proficiency": "Approaching",
-        "formula_trace": "78.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 72.11"
+        "wb_cultural_score": 64.46,
+        "wb_overall_score": 65.36,
+        "wb_category": "Flourishing",
+        "formula_trace": "78.5×0.6 + (7/10)×100×0.25 + 64.5×0.15 = 74.27"
       },
       {
         "student_key": 40,
@@ -970,10 +1087,13 @@
         "bonus_points": 10,
         "weighted_base": 46.524,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 79.02,
+        "weighted_wellbeing": 11.909,
+        "composite_score": 83.43,
         "proficiency": "Proficient",
-        "formula_trace": "77.5×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 79.02"
+        "wb_cultural_score": 79.39,
+        "wb_overall_score": 72.74,
+        "wb_category": "Flourishing",
+        "formula_trace": "77.5×0.6 + (10/10)×100×0.25 + 79.4×0.15 = 83.43"
       },
       {
         "student_key": 41,
@@ -988,10 +1108,13 @@
         "bonus_points": 7,
         "weighted_base": 46.2,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 71.2,
+        "weighted_wellbeing": 9.798,
+        "composite_score": 73.5,
         "proficiency": "Approaching",
-        "formula_trace": "77.0×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 71.20"
+        "wb_cultural_score": 65.32,
+        "wb_overall_score": 63.67,
+        "wb_category": "Stable",
+        "formula_trace": "77.0×0.6 + (7/10)×100×0.25 + 65.3×0.15 = 73.50"
       },
       {
         "student_key": 42,
@@ -1006,10 +1129,13 @@
         "bonus_points": 7,
         "weighted_base": 45.738,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 70.74,
+        "weighted_wellbeing": 9.33,
+        "composite_score": 72.57,
         "proficiency": "Approaching",
-        "formula_trace": "76.2×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 70.74"
+        "wb_cultural_score": 62.2,
+        "wb_overall_score": 62.73,
+        "wb_category": "Stable",
+        "formula_trace": "76.2×0.6 + (7/10)×100×0.25 + 62.2×0.15 = 72.57"
       },
       {
         "student_key": 43,
@@ -1024,10 +1150,13 @@
         "bonus_points": 7,
         "weighted_base": 44.772,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 69.77,
+        "weighted_wellbeing": 8.896,
+        "composite_score": 71.17,
         "proficiency": "Approaching",
-        "formula_trace": "74.6×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 69.77"
+        "wb_cultural_score": 59.31,
+        "wb_overall_score": 63.64,
+        "wb_category": "Stable",
+        "formula_trace": "74.6×0.6 + (7/10)×100×0.25 + 59.3×0.15 = 71.17"
       },
       {
         "student_key": 44,
@@ -1042,10 +1171,13 @@
         "bonus_points": 8,
         "weighted_base": 36.546,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 64.05,
+        "weighted_wellbeing": 6.547,
+        "composite_score": 63.09,
         "proficiency": "Approaching",
-        "formula_trace": "60.9×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 64.05"
+        "wb_cultural_score": 43.65,
+        "wb_overall_score": 56.36,
+        "wb_category": "Stable",
+        "formula_trace": "60.9×0.6 + (8/10)×100×0.25 + 43.6×0.15 = 63.09"
       },
       {
         "student_key": 45,
@@ -1060,10 +1192,13 @@
         "bonus_points": 10,
         "weighted_base": 48.93,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 81.43,
+        "weighted_wellbeing": 10.981,
+        "composite_score": 84.91,
         "proficiency": "Proficient",
-        "formula_trace": "81.5×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 81.43"
+        "wb_cultural_score": 73.21,
+        "wb_overall_score": 77.32,
+        "wb_category": "Flourishing",
+        "formula_trace": "81.5×0.6 + (10/10)×100×0.25 + 73.2×0.15 = 84.91"
       },
       {
         "student_key": 46,
@@ -1078,10 +1213,13 @@
         "bonus_points": 5,
         "weighted_base": 40.086,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 60.09,
+        "weighted_wellbeing": 7.848,
+        "composite_score": 60.43,
         "proficiency": "Approaching",
-        "formula_trace": "66.8×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 60.09"
+        "wb_cultural_score": 52.32,
+        "wb_overall_score": 60.72,
+        "wb_category": "Stable",
+        "formula_trace": "66.8×0.6 + (5/10)×100×0.25 + 52.3×0.15 = 60.43"
       },
       {
         "student_key": 47,
@@ -1096,10 +1234,13 @@
         "bonus_points": 3,
         "weighted_base": 32.652,
         "weighted_programme": 7.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 47.65,
+        "weighted_wellbeing": 7.531,
+        "composite_score": 47.68,
         "proficiency": "Below",
-        "formula_trace": "54.4×0.6 + (3/10)×100×0.25 + 50.0×0.15 = 47.65"
+        "wb_cultural_score": 50.21,
+        "wb_overall_score": 59.71,
+        "wb_category": "Stable",
+        "formula_trace": "54.4×0.6 + (3/10)×100×0.25 + 50.2×0.15 = 47.68"
       },
       {
         "student_key": 48,
@@ -1114,10 +1255,13 @@
         "bonus_points": 7,
         "weighted_base": 45.288,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 70.29,
+        "weighted_wellbeing": 8.736,
+        "composite_score": 71.52,
         "proficiency": "Approaching",
-        "formula_trace": "75.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 70.29"
+        "wb_cultural_score": 58.24,
+        "wb_overall_score": 63.02,
+        "wb_category": "Stable",
+        "formula_trace": "75.5×0.6 + (7/10)×100×0.25 + 58.2×0.15 = 71.52"
       },
       {
         "student_key": 49,
@@ -1132,10 +1276,13 @@
         "bonus_points": 7,
         "weighted_base": 55.674,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 80.67,
+        "weighted_wellbeing": 10.467,
+        "composite_score": 83.64,
         "proficiency": "Proficient",
-        "formula_trace": "92.8×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 80.67"
+        "wb_cultural_score": 69.78,
+        "wb_overall_score": 68.88,
+        "wb_category": "Flourishing",
+        "formula_trace": "92.8×0.6 + (7/10)×100×0.25 + 69.8×0.15 = 83.64"
       },
       {
         "student_key": 50,
@@ -1150,10 +1297,13 @@
         "bonus_points": 7,
         "weighted_base": 58.758,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 83.76,
+        "weighted_wellbeing": 11.998,
+        "composite_score": 88.26,
         "proficiency": "Proficient",
-        "formula_trace": "97.9×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 83.76"
+        "wb_cultural_score": 79.99,
+        "wb_overall_score": 70.25,
+        "wb_category": "Flourishing",
+        "formula_trace": "97.9×0.6 + (7/10)×100×0.25 + 80.0×0.15 = 88.26"
       },
       {
         "student_key": 51,
@@ -1168,10 +1318,13 @@
         "bonus_points": 10,
         "weighted_base": 43.494,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 75.99,
+        "weighted_wellbeing": 9.81,
+        "composite_score": 78.3,
         "proficiency": "Proficient",
-        "formula_trace": "72.5×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 75.99"
+        "wb_cultural_score": 65.4,
+        "wb_overall_score": 69.3,
+        "wb_category": "Flourishing",
+        "formula_trace": "72.5×0.6 + (10/10)×100×0.25 + 65.4×0.15 = 78.30"
       },
       {
         "student_key": 52,
@@ -1186,10 +1339,13 @@
         "bonus_points": 5,
         "weighted_base": 47.778,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 67.78,
+        "weighted_wellbeing": 9.744,
+        "composite_score": 70.02,
         "proficiency": "Approaching",
-        "formula_trace": "79.6×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 67.78"
+        "wb_cultural_score": 64.96,
+        "wb_overall_score": 65.27,
+        "wb_category": "Flourishing",
+        "formula_trace": "79.6×0.6 + (5/10)×100×0.25 + 65.0×0.15 = 70.02"
       },
       {
         "student_key": 53,
@@ -1204,10 +1360,13 @@
         "bonus_points": 5,
         "weighted_base": 60.0,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 80.0,
+        "weighted_wellbeing": 11.588,
+        "composite_score": 84.09,
         "proficiency": "Proficient",
-        "formula_trace": "100.0×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 80.00"
+        "wb_cultural_score": 77.25,
+        "wb_overall_score": 73.03,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (5/10)×100×0.25 + 77.2×0.15 = 84.09"
       },
       {
         "student_key": 54,
@@ -1222,10 +1381,13 @@
         "bonus_points": 7,
         "weighted_base": 60.0,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 85.0,
-        "proficiency": "Proficient",
-        "formula_trace": "100.0×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 85.00"
+        "weighted_wellbeing": 13.045,
+        "composite_score": 90.55,
+        "proficiency": "Advanced",
+        "wb_cultural_score": 86.97,
+        "wb_overall_score": 79.18,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (7/10)×100×0.25 + 87.0×0.15 = 90.55"
       },
       {
         "student_key": 55,
@@ -1240,10 +1402,13 @@
         "bonus_points": 2,
         "weighted_base": 54.216,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 66.72,
+        "weighted_wellbeing": 11.502,
+        "composite_score": 70.72,
         "proficiency": "Approaching",
-        "formula_trace": "90.4×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 66.72"
+        "wb_cultural_score": 76.68,
+        "wb_overall_score": 66.98,
+        "wb_category": "Flourishing",
+        "formula_trace": "90.4×0.6 + (2/10)×100×0.25 + 76.7×0.15 = 70.72"
       },
       {
         "student_key": 56,
@@ -1258,10 +1423,13 @@
         "bonus_points": 3,
         "weighted_base": 44.256,
         "weighted_programme": 7.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 59.26,
+        "weighted_wellbeing": 7.851,
+        "composite_score": 59.61,
         "proficiency": "Below",
-        "formula_trace": "73.8×0.6 + (3/10)×100×0.25 + 50.0×0.15 = 59.26"
+        "wb_cultural_score": 52.34,
+        "wb_overall_score": 57.99,
+        "wb_category": "Stable",
+        "formula_trace": "73.8×0.6 + (3/10)×100×0.25 + 52.3×0.15 = 59.61"
       },
       {
         "student_key": 57,
@@ -1276,10 +1444,13 @@
         "bonus_points": 7,
         "weighted_base": 46.266,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 71.27,
+        "weighted_wellbeing": 8.954,
+        "composite_score": 72.72,
         "proficiency": "Approaching",
-        "formula_trace": "77.1×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 71.27"
+        "wb_cultural_score": 59.69,
+        "wb_overall_score": 67.5,
+        "wb_category": "Flourishing",
+        "formula_trace": "77.1×0.6 + (7/10)×100×0.25 + 59.7×0.15 = 72.72"
       },
       {
         "student_key": 58,
@@ -1294,10 +1465,13 @@
         "bonus_points": 7,
         "weighted_base": 36.012,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 61.01,
+        "weighted_wellbeing": 6.899,
+        "composite_score": 60.41,
         "proficiency": "Approaching",
-        "formula_trace": "60.0×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 61.01"
+        "wb_cultural_score": 45.99,
+        "wb_overall_score": 58.64,
+        "wb_category": "Stable",
+        "formula_trace": "60.0×0.6 + (7/10)×100×0.25 + 46.0×0.15 = 60.41"
       },
       {
         "student_key": 59,
@@ -1312,10 +1486,13 @@
         "bonus_points": 7,
         "weighted_base": 23.184,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 48.18,
+        "weighted_wellbeing": 5.118,
+        "composite_score": 45.8,
         "proficiency": "Below",
-        "formula_trace": "38.6×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 48.18"
+        "wb_cultural_score": 34.12,
+        "wb_overall_score": 43.18,
+        "wb_category": "Struggling",
+        "formula_trace": "38.6×0.6 + (7/10)×100×0.25 + 34.1×0.15 = 45.80"
       },
       {
         "student_key": 60,
@@ -1330,10 +1507,13 @@
         "bonus_points": 10,
         "weighted_base": 38.388,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 70.89,
+        "weighted_wellbeing": 9.234,
+        "composite_score": 72.62,
         "proficiency": "Approaching",
-        "formula_trace": "64.0×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 70.89"
+        "wb_cultural_score": 61.56,
+        "wb_overall_score": 68.6,
+        "wb_category": "Flourishing",
+        "formula_trace": "64.0×0.6 + (10/10)×100×0.25 + 61.6×0.15 = 72.62"
       },
       {
         "student_key": 61,
@@ -1348,10 +1528,13 @@
         "bonus_points": 7,
         "weighted_base": 48.93,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 73.93,
-        "proficiency": "Approaching",
-        "formula_trace": "81.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 73.93"
+        "weighted_wellbeing": 9.94,
+        "composite_score": 76.37,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 66.27,
+        "wb_overall_score": 61.81,
+        "wb_category": "Stable",
+        "formula_trace": "81.5×0.6 + (7/10)×100×0.25 + 66.3×0.15 = 76.37"
       },
       {
         "student_key": 62,
@@ -1366,10 +1549,13 @@
         "bonus_points": 7,
         "weighted_base": 47.91,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.91,
-        "proficiency": "Approaching",
-        "formula_trace": "79.8×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 72.91"
+        "weighted_wellbeing": 11.223,
+        "composite_score": 76.63,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 74.82,
+        "wb_overall_score": 65.51,
+        "wb_category": "Flourishing",
+        "formula_trace": "79.8×0.6 + (7/10)×100×0.25 + 74.8×0.15 = 76.63"
       },
       {
         "student_key": 63,
@@ -1384,10 +1570,13 @@
         "bonus_points": 7,
         "weighted_base": 60.0,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 85.0,
-        "proficiency": "Proficient",
-        "formula_trace": "100.0×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 85.00"
+        "weighted_wellbeing": 12.685,
+        "composite_score": 90.19,
+        "proficiency": "Advanced",
+        "wb_cultural_score": 84.57,
+        "wb_overall_score": 70.36,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (7/10)×100×0.25 + 84.6×0.15 = 90.19"
       },
       {
         "student_key": 64,
@@ -1402,10 +1591,13 @@
         "bonus_points": 7,
         "weighted_base": 45.216,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 70.22,
+        "weighted_wellbeing": 9.484,
+        "composite_score": 72.2,
         "proficiency": "Approaching",
-        "formula_trace": "75.4×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 70.22"
+        "wb_cultural_score": 63.23,
+        "wb_overall_score": 66.32,
+        "wb_category": "Flourishing",
+        "formula_trace": "75.4×0.6 + (7/10)×100×0.25 + 63.2×0.15 = 72.20"
       },
       {
         "student_key": 65,
@@ -1420,10 +1612,13 @@
         "bonus_points": 7,
         "weighted_base": 46.518,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 71.52,
+        "weighted_wellbeing": 10.427,
+        "composite_score": 74.44,
         "proficiency": "Approaching",
-        "formula_trace": "77.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 71.52"
+        "wb_cultural_score": 69.51,
+        "wb_overall_score": 73.11,
+        "wb_category": "Flourishing",
+        "formula_trace": "77.5×0.6 + (7/10)×100×0.25 + 69.5×0.15 = 74.44"
       },
       {
         "student_key": 66,
@@ -1438,10 +1633,13 @@
         "bonus_points": 7,
         "weighted_base": 41.472,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 66.47,
+        "weighted_wellbeing": 8.659,
+        "composite_score": 67.63,
         "proficiency": "Approaching",
-        "formula_trace": "69.1×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 66.47"
+        "wb_cultural_score": 57.73,
+        "wb_overall_score": 62.26,
+        "wb_category": "Stable",
+        "formula_trace": "69.1×0.6 + (7/10)×100×0.25 + 57.7×0.15 = 67.63"
       },
       {
         "student_key": 67,
@@ -1456,10 +1654,13 @@
         "bonus_points": 10,
         "weighted_base": 47.55,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 80.05,
+        "weighted_wellbeing": 8.778,
+        "composite_score": 81.33,
         "proficiency": "Proficient",
-        "formula_trace": "79.2×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 80.05"
+        "wb_cultural_score": 58.52,
+        "wb_overall_score": 61.68,
+        "wb_category": "Stable",
+        "formula_trace": "79.2×0.6 + (10/10)×100×0.25 + 58.5×0.15 = 81.33"
       },
       {
         "student_key": 68,
@@ -1474,10 +1675,13 @@
         "bonus_points": 2,
         "weighted_base": 48.69,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 61.19,
+        "weighted_wellbeing": 8.199,
+        "composite_score": 61.89,
         "proficiency": "Approaching",
-        "formula_trace": "81.2×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 61.19"
+        "wb_cultural_score": 54.66,
+        "wb_overall_score": 62.75,
+        "wb_category": "Stable",
+        "formula_trace": "81.2×0.6 + (2/10)×100×0.25 + 54.7×0.15 = 61.89"
       },
       {
         "student_key": 69,
@@ -1492,10 +1696,13 @@
         "bonus_points": 5,
         "weighted_base": 49.62,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 69.62,
+        "weighted_wellbeing": 10.639,
+        "composite_score": 72.76,
         "proficiency": "Approaching",
-        "formula_trace": "82.7×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 69.62"
+        "wb_cultural_score": 70.93,
+        "wb_overall_score": 70.33,
+        "wb_category": "Flourishing",
+        "formula_trace": "82.7×0.6 + (5/10)×100×0.25 + 70.9×0.15 = 72.76"
       },
       {
         "student_key": 70,
@@ -1510,10 +1717,13 @@
         "bonus_points": 7,
         "weighted_base": 35.514,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 60.51,
+        "weighted_wellbeing": 7.965,
+        "composite_score": 60.98,
         "proficiency": "Approaching",
-        "formula_trace": "59.2×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 60.51"
+        "wb_cultural_score": 53.1,
+        "wb_overall_score": 58.83,
+        "wb_category": "Stable",
+        "formula_trace": "59.2×0.6 + (7/10)×100×0.25 + 53.1×0.15 = 60.98"
       },
       {
         "student_key": 71,
@@ -1528,10 +1738,13 @@
         "bonus_points": 10,
         "weighted_base": 39.114,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 71.61,
+        "weighted_wellbeing": 9.668,
+        "composite_score": 73.78,
         "proficiency": "Approaching",
-        "formula_trace": "65.2×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 71.61"
+        "wb_cultural_score": 64.45,
+        "wb_overall_score": 64.74,
+        "wb_category": "Stable",
+        "formula_trace": "65.2×0.6 + (10/10)×100×0.25 + 64.5×0.15 = 73.78"
       },
       {
         "student_key": 72,
@@ -1546,10 +1759,13 @@
         "bonus_points": 5,
         "weighted_base": 46.11,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 66.11,
+        "weighted_wellbeing": 8.748,
+        "composite_score": 67.36,
         "proficiency": "Approaching",
-        "formula_trace": "76.8×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 66.11"
+        "wb_cultural_score": 58.32,
+        "wb_overall_score": 57.03,
+        "wb_category": "Stable",
+        "formula_trace": "76.8×0.6 + (5/10)×100×0.25 + 58.3×0.15 = 67.36"
       },
       {
         "student_key": 73,
@@ -1564,10 +1780,13 @@
         "bonus_points": 5,
         "weighted_base": 45.744,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 65.74,
+        "weighted_wellbeing": 6.316,
+        "composite_score": 64.56,
         "proficiency": "Approaching",
-        "formula_trace": "76.2×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 65.74"
+        "wb_cultural_score": 42.11,
+        "wb_overall_score": 58.46,
+        "wb_category": "Stable",
+        "formula_trace": "76.2×0.6 + (5/10)×100×0.25 + 42.1×0.15 = 64.56"
       },
       {
         "student_key": 74,
@@ -1582,10 +1801,13 @@
         "bonus_points": 8,
         "weighted_base": 60.0,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 87.5,
-        "proficiency": "Proficient",
-        "formula_trace": "100.0×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 87.50"
+        "weighted_wellbeing": 11.883,
+        "composite_score": 91.88,
+        "proficiency": "Advanced",
+        "wb_cultural_score": 79.22,
+        "wb_overall_score": 73.18,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (8/10)×100×0.25 + 79.2×0.15 = 91.88"
       },
       {
         "student_key": 75,
@@ -1600,10 +1822,13 @@
         "bonus_points": 7,
         "weighted_base": 25.632,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 50.63,
+        "weighted_wellbeing": 6.472,
+        "composite_score": 49.6,
         "proficiency": "Below",
-        "formula_trace": "42.7×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 50.63"
+        "wb_cultural_score": 43.15,
+        "wb_overall_score": 57.74,
+        "wb_category": "Stable",
+        "formula_trace": "42.7×0.6 + (7/10)×100×0.25 + 43.1×0.15 = 49.60"
       },
       {
         "student_key": 76,
@@ -1618,10 +1843,13 @@
         "bonus_points": 7,
         "weighted_base": 53.58,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 78.58,
+        "weighted_wellbeing": 10.296,
+        "composite_score": 81.38,
         "proficiency": "Proficient",
-        "formula_trace": "89.3×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 78.58"
+        "wb_cultural_score": 68.64,
+        "wb_overall_score": 71.14,
+        "wb_category": "Flourishing",
+        "formula_trace": "89.3×0.6 + (7/10)×100×0.25 + 68.6×0.15 = 81.38"
       },
       {
         "student_key": 77,
@@ -1636,10 +1864,13 @@
         "bonus_points": 2,
         "weighted_base": 53.724,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 66.22,
+        "weighted_wellbeing": 9.567,
+        "composite_score": 68.29,
         "proficiency": "Approaching",
-        "formula_trace": "89.5×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 66.22"
+        "wb_cultural_score": 63.78,
+        "wb_overall_score": 63.17,
+        "wb_category": "Stable",
+        "formula_trace": "89.5×0.6 + (2/10)×100×0.25 + 63.8×0.15 = 68.29"
       },
       {
         "student_key": 78,
@@ -1654,10 +1885,13 @@
         "bonus_points": 5,
         "weighted_base": 56.742,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 76.74,
+        "weighted_wellbeing": 10.405,
+        "composite_score": 79.65,
         "proficiency": "Proficient",
-        "formula_trace": "94.6×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 76.74"
+        "wb_cultural_score": 69.37,
+        "wb_overall_score": 65.01,
+        "wb_category": "Flourishing",
+        "formula_trace": "94.6×0.6 + (5/10)×100×0.25 + 69.4×0.15 = 79.65"
       },
       {
         "student_key": 79,
@@ -1672,10 +1906,13 @@
         "bonus_points": 7,
         "weighted_base": 53.682,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 78.68,
+        "weighted_wellbeing": 10.896,
+        "composite_score": 82.08,
         "proficiency": "Proficient",
-        "formula_trace": "89.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 78.68"
+        "wb_cultural_score": 72.64,
+        "wb_overall_score": 71.43,
+        "wb_category": "Flourishing",
+        "formula_trace": "89.5×0.6 + (7/10)×100×0.25 + 72.6×0.15 = 82.08"
       },
       {
         "student_key": 80,
@@ -1690,10 +1927,13 @@
         "bonus_points": 7,
         "weighted_base": 42.672,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 67.67,
+        "weighted_wellbeing": 10.563,
+        "composite_score": 70.73,
         "proficiency": "Approaching",
-        "formula_trace": "71.1×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 67.67"
+        "wb_cultural_score": 70.42,
+        "wb_overall_score": 62.04,
+        "wb_category": "Stable",
+        "formula_trace": "71.1×0.6 + (7/10)×100×0.25 + 70.4×0.15 = 70.73"
       },
       {
         "student_key": 81,
@@ -1708,10 +1948,13 @@
         "bonus_points": 7,
         "weighted_base": 50.742,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 75.74,
+        "weighted_wellbeing": 10.12,
+        "composite_score": 78.36,
         "proficiency": "Proficient",
-        "formula_trace": "84.6×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 75.74"
+        "wb_cultural_score": 67.47,
+        "wb_overall_score": 68.29,
+        "wb_category": "Flourishing",
+        "formula_trace": "84.6×0.6 + (7/10)×100×0.25 + 67.5×0.15 = 78.36"
       },
       {
         "student_key": 82,
@@ -1726,10 +1969,13 @@
         "bonus_points": 8,
         "weighted_base": 54.906,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 82.41,
+        "weighted_wellbeing": 10.646,
+        "composite_score": 85.55,
         "proficiency": "Proficient",
-        "formula_trace": "91.5×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 82.41"
+        "wb_cultural_score": 70.97,
+        "wb_overall_score": 67.33,
+        "wb_category": "Flourishing",
+        "formula_trace": "91.5×0.6 + (8/10)×100×0.25 + 71.0×0.15 = 85.55"
       },
       {
         "student_key": 83,
@@ -1744,10 +1990,13 @@
         "bonus_points": 5,
         "weighted_base": 50.592,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 70.59,
+        "weighted_wellbeing": 10.177,
+        "composite_score": 73.27,
         "proficiency": "Approaching",
-        "formula_trace": "84.3×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 70.59"
+        "wb_cultural_score": 67.85,
+        "wb_overall_score": 67.26,
+        "wb_category": "Flourishing",
+        "formula_trace": "84.3×0.6 + (5/10)×100×0.25 + 67.8×0.15 = 73.27"
       },
       {
         "student_key": 84,
@@ -1762,10 +2011,13 @@
         "bonus_points": 10,
         "weighted_base": 44.508,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 77.01,
+        "weighted_wellbeing": 8.62,
+        "composite_score": 78.13,
         "proficiency": "Proficient",
-        "formula_trace": "74.2×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 77.01"
+        "wb_cultural_score": 57.47,
+        "wb_overall_score": 62.68,
+        "wb_category": "Stable",
+        "formula_trace": "74.2×0.6 + (10/10)×100×0.25 + 57.5×0.15 = 78.13"
       },
       {
         "student_key": 85,
@@ -1780,10 +2032,13 @@
         "bonus_points": 7,
         "weighted_base": 55.116,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 80.12,
+        "weighted_wellbeing": 11.182,
+        "composite_score": 83.8,
         "proficiency": "Proficient",
-        "formula_trace": "91.9×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 80.12"
+        "wb_cultural_score": 74.55,
+        "wb_overall_score": 69.84,
+        "wb_category": "Flourishing",
+        "formula_trace": "91.9×0.6 + (7/10)×100×0.25 + 74.5×0.15 = 83.80"
       },
       {
         "student_key": 86,
@@ -1798,10 +2053,13 @@
         "bonus_points": 7,
         "weighted_base": 55.698,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 80.7,
+        "weighted_wellbeing": 10.695,
+        "composite_score": 83.89,
         "proficiency": "Proficient",
-        "formula_trace": "92.8×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 80.70"
+        "wb_cultural_score": 71.3,
+        "wb_overall_score": 67.55,
+        "wb_category": "Flourishing",
+        "formula_trace": "92.8×0.6 + (7/10)×100×0.25 + 71.3×0.15 = 83.89"
       },
       {
         "student_key": 87,
@@ -1816,10 +2074,13 @@
         "bonus_points": 7,
         "weighted_base": 50.934,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 75.93,
+        "weighted_wellbeing": 11.365,
+        "composite_score": 79.8,
         "proficiency": "Proficient",
-        "formula_trace": "84.9×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 75.93"
+        "wb_cultural_score": 75.77,
+        "wb_overall_score": 68.47,
+        "wb_category": "Flourishing",
+        "formula_trace": "84.9×0.6 + (7/10)×100×0.25 + 75.8×0.15 = 79.80"
       },
       {
         "student_key": 88,
@@ -1834,10 +2095,13 @@
         "bonus_points": 7,
         "weighted_base": 17.826,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 42.83,
+        "weighted_wellbeing": 4.743,
+        "composite_score": 40.07,
         "proficiency": "Below",
-        "formula_trace": "29.7×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 42.83"
+        "wb_cultural_score": 31.62,
+        "wb_overall_score": 46.13,
+        "wb_category": "Struggling",
+        "formula_trace": "29.7×0.6 + (7/10)×100×0.25 + 31.6×0.15 = 40.07"
       },
       {
         "student_key": 89,
@@ -1852,10 +2116,13 @@
         "bonus_points": 5,
         "weighted_base": 38.748,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 58.75,
+        "weighted_wellbeing": 8.367,
+        "composite_score": 59.61,
         "proficiency": "Below",
-        "formula_trace": "64.6×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 58.75"
+        "wb_cultural_score": 55.78,
+        "wb_overall_score": 60.8,
+        "wb_category": "Stable",
+        "formula_trace": "64.6×0.6 + (5/10)×100×0.25 + 55.8×0.15 = 59.61"
       },
       {
         "student_key": 90,
@@ -1870,10 +2137,13 @@
         "bonus_points": 2,
         "weighted_base": 40.716,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 53.22,
+        "weighted_wellbeing": 7.071,
+        "composite_score": 52.79,
         "proficiency": "Below",
-        "formula_trace": "67.9×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 53.22"
+        "wb_cultural_score": 47.14,
+        "wb_overall_score": 55.93,
+        "wb_category": "Stable",
+        "formula_trace": "67.9×0.6 + (2/10)×100×0.25 + 47.1×0.15 = 52.79"
       },
       {
         "student_key": 91,
@@ -1888,10 +2158,13 @@
         "bonus_points": 7,
         "weighted_base": 53.688,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 78.69,
+        "weighted_wellbeing": 12.164,
+        "composite_score": 83.35,
         "proficiency": "Proficient",
-        "formula_trace": "89.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 78.69"
+        "wb_cultural_score": 81.09,
+        "wb_overall_score": 69.47,
+        "wb_category": "Flourishing",
+        "formula_trace": "89.5×0.6 + (7/10)×100×0.25 + 81.1×0.15 = 83.35"
       },
       {
         "student_key": 92,
@@ -1906,10 +2179,13 @@
         "bonus_points": 10,
         "weighted_base": 40.428,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.93,
+        "weighted_wellbeing": 7.924,
+        "composite_score": 73.35,
         "proficiency": "Approaching",
-        "formula_trace": "67.4×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 72.93"
+        "wb_cultural_score": 52.83,
+        "wb_overall_score": 64.33,
+        "wb_category": "Stable",
+        "formula_trace": "67.4×0.6 + (10/10)×100×0.25 + 52.8×0.15 = 73.35"
       },
       {
         "student_key": 93,
@@ -1924,10 +2200,13 @@
         "bonus_points": 3,
         "weighted_base": 37.176,
         "weighted_programme": 7.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 52.18,
+        "weighted_wellbeing": 6.989,
+        "composite_score": 51.66,
         "proficiency": "Below",
-        "formula_trace": "62.0×0.6 + (3/10)×100×0.25 + 50.0×0.15 = 52.18"
+        "wb_cultural_score": 46.59,
+        "wb_overall_score": 57.94,
+        "wb_category": "Stable",
+        "formula_trace": "62.0×0.6 + (3/10)×100×0.25 + 46.6×0.15 = 51.66"
       },
       {
         "student_key": 94,
@@ -1942,10 +2221,13 @@
         "bonus_points": 7,
         "weighted_base": 42.942,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 67.94,
+        "weighted_wellbeing": 8.623,
+        "composite_score": 69.07,
         "proficiency": "Approaching",
-        "formula_trace": "71.6×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 67.94"
+        "wb_cultural_score": 57.49,
+        "wb_overall_score": 63.51,
+        "wb_category": "Stable",
+        "formula_trace": "71.6×0.6 + (7/10)×100×0.25 + 57.5×0.15 = 69.07"
       },
       {
         "student_key": 95,
@@ -1960,10 +2242,13 @@
         "bonus_points": 10,
         "weighted_base": 51.054,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 83.55,
+        "weighted_wellbeing": 11.931,
+        "composite_score": 87.98,
         "proficiency": "Proficient",
-        "formula_trace": "85.1×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 83.55"
+        "wb_cultural_score": 79.54,
+        "wb_overall_score": 66.99,
+        "wb_category": "Flourishing",
+        "formula_trace": "85.1×0.6 + (10/10)×100×0.25 + 79.5×0.15 = 87.98"
       },
       {
         "student_key": 96,
@@ -1978,10 +2263,13 @@
         "bonus_points": 5,
         "weighted_base": 44.07,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 64.07,
+        "weighted_wellbeing": 7.297,
+        "composite_score": 63.87,
         "proficiency": "Approaching",
-        "formula_trace": "73.5×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 64.07"
+        "wb_cultural_score": 48.65,
+        "wb_overall_score": 55.8,
+        "wb_category": "Stable",
+        "formula_trace": "73.5×0.6 + (5/10)×100×0.25 + 48.6×0.15 = 63.87"
       },
       {
         "student_key": 97,
@@ -1996,10 +2284,13 @@
         "bonus_points": 7,
         "weighted_base": 59.226,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 84.23,
+        "weighted_wellbeing": 11.069,
+        "composite_score": 87.79,
         "proficiency": "Proficient",
-        "formula_trace": "98.7×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 84.23"
+        "wb_cultural_score": 73.79,
+        "wb_overall_score": 74.48,
+        "wb_category": "Flourishing",
+        "formula_trace": "98.7×0.6 + (7/10)×100×0.25 + 73.8×0.15 = 87.79"
       },
       {
         "student_key": 98,
@@ -2014,10 +2305,13 @@
         "bonus_points": 7,
         "weighted_base": 43.29,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 68.29,
+        "weighted_wellbeing": 8.693,
+        "composite_score": 69.48,
         "proficiency": "Approaching",
-        "formula_trace": "72.2×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 68.29"
+        "wb_cultural_score": 57.95,
+        "wb_overall_score": 64.68,
+        "wb_category": "Stable",
+        "formula_trace": "72.2×0.6 + (7/10)×100×0.25 + 58.0×0.15 = 69.48"
       },
       {
         "student_key": 99,
@@ -2032,10 +2326,13 @@
         "bonus_points": 7,
         "weighted_base": 48.834,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 73.83,
-        "proficiency": "Approaching",
-        "formula_trace": "81.4×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 73.83"
+        "weighted_wellbeing": 10.552,
+        "composite_score": 76.89,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 70.35,
+        "wb_overall_score": 69.81,
+        "wb_category": "Flourishing",
+        "formula_trace": "81.4×0.6 + (7/10)×100×0.25 + 70.3×0.15 = 76.89"
       },
       {
         "student_key": 100,
@@ -2050,10 +2347,13 @@
         "bonus_points": 5,
         "weighted_base": 33.744,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 53.74,
+        "weighted_wellbeing": 4.947,
+        "composite_score": 51.19,
         "proficiency": "Below",
-        "formula_trace": "56.2×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 53.74"
+        "wb_cultural_score": 32.98,
+        "wb_overall_score": 46.14,
+        "wb_category": "Struggling",
+        "formula_trace": "56.2×0.6 + (5/10)×100×0.25 + 33.0×0.15 = 51.19"
       },
       {
         "student_key": 101,
@@ -2068,10 +2368,13 @@
         "bonus_points": 5,
         "weighted_base": 39.156,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 59.16,
-        "proficiency": "Below",
-        "formula_trace": "65.3×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 59.16"
+        "weighted_wellbeing": 8.949,
+        "composite_score": 60.6,
+        "proficiency": "Approaching",
+        "wb_cultural_score": 59.66,
+        "wb_overall_score": 60.69,
+        "wb_category": "Stable",
+        "formula_trace": "65.3×0.6 + (5/10)×100×0.25 + 59.7×0.15 = 60.60"
       },
       {
         "student_key": 102,
@@ -2086,10 +2389,13 @@
         "bonus_points": 3,
         "weighted_base": 41.334,
         "weighted_programme": 7.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 56.33,
+        "weighted_wellbeing": 8.543,
+        "composite_score": 57.38,
         "proficiency": "Below",
-        "formula_trace": "68.9×0.6 + (3/10)×100×0.25 + 50.0×0.15 = 56.33"
+        "wb_cultural_score": 56.95,
+        "wb_overall_score": 62.25,
+        "wb_category": "Stable",
+        "formula_trace": "68.9×0.6 + (3/10)×100×0.25 + 57.0×0.15 = 57.38"
       },
       {
         "student_key": 103,
@@ -2104,10 +2410,13 @@
         "bonus_points": 10,
         "weighted_base": 33.726,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 66.23,
+        "weighted_wellbeing": 7.531,
+        "composite_score": 66.26,
         "proficiency": "Approaching",
-        "formula_trace": "56.2×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 66.23"
+        "wb_cultural_score": 50.21,
+        "wb_overall_score": 54.8,
+        "wb_category": "Stable",
+        "formula_trace": "56.2×0.6 + (10/10)×100×0.25 + 50.2×0.15 = 66.26"
       },
       {
         "student_key": 104,
@@ -2122,10 +2431,13 @@
         "bonus_points": 2,
         "weighted_base": 48.132,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 60.63,
+        "weighted_wellbeing": 9.979,
+        "composite_score": 63.11,
         "proficiency": "Approaching",
-        "formula_trace": "80.2×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 60.63"
+        "wb_cultural_score": 66.53,
+        "wb_overall_score": 62.51,
+        "wb_category": "Stable",
+        "formula_trace": "80.2×0.6 + (2/10)×100×0.25 + 66.5×0.15 = 63.11"
       },
       {
         "student_key": 105,
@@ -2140,10 +2452,13 @@
         "bonus_points": 7,
         "weighted_base": 52.05,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 77.05,
+        "weighted_wellbeing": 9.393,
+        "composite_score": 78.94,
         "proficiency": "Proficient",
-        "formula_trace": "86.8×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 77.05"
+        "wb_cultural_score": 62.62,
+        "wb_overall_score": 65.43,
+        "wb_category": "Flourishing",
+        "formula_trace": "86.8×0.6 + (7/10)×100×0.25 + 62.6×0.15 = 78.94"
       },
       {
         "student_key": 106,
@@ -2158,10 +2473,13 @@
         "bonus_points": 8,
         "weighted_base": 41.544,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 69.04,
+        "weighted_wellbeing": 8.97,
+        "composite_score": 70.51,
         "proficiency": "Approaching",
-        "formula_trace": "69.2×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 69.04"
+        "wb_cultural_score": 59.8,
+        "wb_overall_score": 62.7,
+        "wb_category": "Stable",
+        "formula_trace": "69.2×0.6 + (8/10)×100×0.25 + 59.8×0.15 = 70.51"
       },
       {
         "student_key": 107,
@@ -2176,10 +2494,13 @@
         "bonus_points": 5,
         "weighted_base": 39.978,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 59.98,
+        "weighted_wellbeing": 7.178,
+        "composite_score": 59.66,
         "proficiency": "Below",
-        "formula_trace": "66.6×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 59.98"
+        "wb_cultural_score": 47.85,
+        "wb_overall_score": 61.1,
+        "wb_category": "Stable",
+        "formula_trace": "66.6×0.6 + (5/10)×100×0.25 + 47.9×0.15 = 59.66"
       },
       {
         "student_key": 108,
@@ -2194,10 +2515,13 @@
         "bonus_points": 8,
         "weighted_base": 31.338,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 58.84,
+        "weighted_wellbeing": 6.188,
+        "composite_score": 57.53,
         "proficiency": "Below",
-        "formula_trace": "52.2×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 58.84"
+        "wb_cultural_score": 41.25,
+        "wb_overall_score": 58.98,
+        "wb_category": "Stable",
+        "formula_trace": "52.2×0.6 + (8/10)×100×0.25 + 41.2×0.15 = 57.53"
       },
       {
         "student_key": 109,
@@ -2212,10 +2536,13 @@
         "bonus_points": 5,
         "weighted_base": 40.692,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 60.69,
+        "weighted_wellbeing": 7.396,
+        "composite_score": 60.59,
         "proficiency": "Approaching",
-        "formula_trace": "67.8×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 60.69"
+        "wb_cultural_score": 49.31,
+        "wb_overall_score": 66.28,
+        "wb_category": "Flourishing",
+        "formula_trace": "67.8×0.6 + (5/10)×100×0.25 + 49.3×0.15 = 60.59"
       },
       {
         "student_key": 110,
@@ -2230,10 +2557,13 @@
         "bonus_points": 2,
         "weighted_base": 31.296,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 43.8,
+        "weighted_wellbeing": 6.507,
+        "composite_score": 42.8,
         "proficiency": "Below",
-        "formula_trace": "52.2×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 43.80"
+        "wb_cultural_score": 43.38,
+        "wb_overall_score": 52.89,
+        "wb_category": "Stable",
+        "formula_trace": "52.2×0.6 + (2/10)×100×0.25 + 43.4×0.15 = 42.80"
       },
       {
         "student_key": 111,
@@ -2248,10 +2578,13 @@
         "bonus_points": 7,
         "weighted_base": 41.28,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 66.28,
+        "weighted_wellbeing": 10.036,
+        "composite_score": 68.82,
         "proficiency": "Approaching",
-        "formula_trace": "68.8×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 66.28"
+        "wb_cultural_score": 66.91,
+        "wb_overall_score": 68.74,
+        "wb_category": "Flourishing",
+        "formula_trace": "68.8×0.6 + (7/10)×100×0.25 + 66.9×0.15 = 68.82"
       },
       {
         "student_key": 112,
@@ -2266,10 +2599,13 @@
         "bonus_points": 0,
         "weighted_base": 44.25,
         "weighted_programme": 0.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 51.75,
+        "weighted_wellbeing": 8.322,
+        "composite_score": 52.57,
         "proficiency": "Below",
-        "formula_trace": "73.8×0.6 + (0/10)×100×0.25 + 50.0×0.15 = 51.75"
+        "wb_cultural_score": 55.48,
+        "wb_overall_score": 61.59,
+        "wb_category": "Stable",
+        "formula_trace": "73.8×0.6 + (0/10)×100×0.25 + 55.5×0.15 = 52.57"
       },
       {
         "student_key": 113,
@@ -2284,10 +2620,13 @@
         "bonus_points": 5,
         "weighted_base": 52.302,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.3,
-        "proficiency": "Approaching",
-        "formula_trace": "87.2×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 72.30"
+        "weighted_wellbeing": 10.324,
+        "composite_score": 75.13,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 68.83,
+        "wb_overall_score": 66.71,
+        "wb_category": "Flourishing",
+        "formula_trace": "87.2×0.6 + (5/10)×100×0.25 + 68.8×0.15 = 75.13"
       },
       {
         "student_key": 114,
@@ -2302,10 +2641,13 @@
         "bonus_points": 10,
         "weighted_base": 31.218,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 63.72,
+        "weighted_wellbeing": 6.144,
+        "composite_score": 62.36,
         "proficiency": "Approaching",
-        "formula_trace": "52.0×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 63.72"
+        "wb_cultural_score": 40.96,
+        "wb_overall_score": 56.87,
+        "wb_category": "Stable",
+        "formula_trace": "52.0×0.6 + (10/10)×100×0.25 + 41.0×0.15 = 62.36"
       },
       {
         "student_key": 115,
@@ -2320,10 +2662,13 @@
         "bonus_points": 10,
         "weighted_base": 60.0,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 92.5,
+        "weighted_wellbeing": 13.374,
+        "composite_score": 98.37,
         "proficiency": "Advanced",
-        "formula_trace": "100.0×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 92.50"
+        "wb_cultural_score": 89.16,
+        "wb_overall_score": 76.46,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (10/10)×100×0.25 + 89.2×0.15 = 98.37"
       },
       {
         "student_key": 116,
@@ -2338,10 +2683,13 @@
         "bonus_points": 10,
         "weighted_base": 39.78,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.28,
+        "weighted_wellbeing": 9.801,
+        "composite_score": 74.58,
         "proficiency": "Approaching",
-        "formula_trace": "66.3×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 72.28"
+        "wb_cultural_score": 65.34,
+        "wb_overall_score": 62.66,
+        "wb_category": "Stable",
+        "formula_trace": "66.3×0.6 + (10/10)×100×0.25 + 65.3×0.15 = 74.58"
       },
       {
         "student_key": 117,
@@ -2356,10 +2704,13 @@
         "bonus_points": 8,
         "weighted_base": 37.926,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 65.43,
+        "weighted_wellbeing": 8.405,
+        "composite_score": 66.33,
         "proficiency": "Approaching",
-        "formula_trace": "63.2×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 65.43"
+        "wb_cultural_score": 56.03,
+        "wb_overall_score": 59.91,
+        "wb_category": "Stable",
+        "formula_trace": "63.2×0.6 + (8/10)×100×0.25 + 56.0×0.15 = 66.33"
       },
       {
         "student_key": 118,
@@ -2374,10 +2725,13 @@
         "bonus_points": 10,
         "weighted_base": 45.228,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 77.73,
+        "weighted_wellbeing": 8.766,
+        "composite_score": 78.99,
         "proficiency": "Proficient",
-        "formula_trace": "75.4×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 77.73"
+        "wb_cultural_score": 58.44,
+        "wb_overall_score": 59.56,
+        "wb_category": "Stable",
+        "formula_trace": "75.4×0.6 + (10/10)×100×0.25 + 58.4×0.15 = 78.99"
       },
       {
         "student_key": 119,
@@ -2392,10 +2746,13 @@
         "bonus_points": 10,
         "weighted_base": 35.232,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 67.73,
+        "weighted_wellbeing": 8.019,
+        "composite_score": 68.25,
         "proficiency": "Approaching",
-        "formula_trace": "58.7×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 67.73"
+        "wb_cultural_score": 53.46,
+        "wb_overall_score": 60.37,
+        "wb_category": "Stable",
+        "formula_trace": "58.7×0.6 + (10/10)×100×0.25 + 53.5×0.15 = 68.25"
       },
       {
         "student_key": 120,
@@ -2410,10 +2767,13 @@
         "bonus_points": 7,
         "weighted_base": 42.93,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 67.93,
+        "weighted_wellbeing": 8.436,
+        "composite_score": 68.87,
         "proficiency": "Approaching",
-        "formula_trace": "71.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 67.93"
+        "wb_cultural_score": 56.24,
+        "wb_overall_score": 63.16,
+        "wb_category": "Stable",
+        "formula_trace": "71.5×0.6 + (7/10)×100×0.25 + 56.2×0.15 = 68.87"
       },
       {
         "student_key": 121,
@@ -2428,10 +2788,13 @@
         "bonus_points": 8,
         "weighted_base": 41.244,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 68.74,
+        "weighted_wellbeing": 10.488,
+        "composite_score": 71.73,
         "proficiency": "Approaching",
-        "formula_trace": "68.7×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 68.74"
+        "wb_cultural_score": 69.92,
+        "wb_overall_score": 72.83,
+        "wb_category": "Flourishing",
+        "formula_trace": "68.7×0.6 + (8/10)×100×0.25 + 69.9×0.15 = 71.73"
       },
       {
         "student_key": 122,
@@ -2446,10 +2809,13 @@
         "bonus_points": 7,
         "weighted_base": 54.192,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 79.19,
+        "weighted_wellbeing": 11.571,
+        "composite_score": 83.26,
         "proficiency": "Proficient",
-        "formula_trace": "90.3×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 79.19"
+        "wb_cultural_score": 77.14,
+        "wb_overall_score": 71.7,
+        "wb_category": "Flourishing",
+        "formula_trace": "90.3×0.6 + (7/10)×100×0.25 + 77.1×0.15 = 83.26"
       },
       {
         "student_key": 123,
@@ -2464,10 +2830,13 @@
         "bonus_points": 7,
         "weighted_base": 36.942,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 61.94,
+        "weighted_wellbeing": 7.95,
+        "composite_score": 62.39,
         "proficiency": "Approaching",
-        "formula_trace": "61.6×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 61.94"
+        "wb_cultural_score": 53.0,
+        "wb_overall_score": 58.77,
+        "wb_category": "Stable",
+        "formula_trace": "61.6×0.6 + (7/10)×100×0.25 + 53.0×0.15 = 62.39"
       },
       {
         "student_key": 124,
@@ -2482,10 +2851,13 @@
         "bonus_points": 7,
         "weighted_base": 47.526,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.53,
+        "weighted_wellbeing": 8.307,
+        "composite_score": 73.33,
         "proficiency": "Approaching",
-        "formula_trace": "79.2×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 72.53"
+        "wb_cultural_score": 55.38,
+        "wb_overall_score": 60.47,
+        "wb_category": "Stable",
+        "formula_trace": "79.2×0.6 + (7/10)×100×0.25 + 55.4×0.15 = 73.33"
       },
       {
         "student_key": 125,
@@ -2500,10 +2872,13 @@
         "bonus_points": 2,
         "weighted_base": 52.638,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 65.14,
+        "weighted_wellbeing": 9.249,
+        "composite_score": 66.89,
         "proficiency": "Approaching",
-        "formula_trace": "87.7×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 65.14"
+        "wb_cultural_score": 61.66,
+        "wb_overall_score": 63.88,
+        "wb_category": "Stable",
+        "formula_trace": "87.7×0.6 + (2/10)×100×0.25 + 61.7×0.15 = 66.89"
       },
       {
         "student_key": 126,
@@ -2518,10 +2893,13 @@
         "bonus_points": 5,
         "weighted_base": 50.862,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 70.86,
+        "weighted_wellbeing": 8.142,
+        "composite_score": 71.5,
         "proficiency": "Approaching",
-        "formula_trace": "84.8×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 70.86"
+        "wb_cultural_score": 54.28,
+        "wb_overall_score": 62.13,
+        "wb_category": "Stable",
+        "formula_trace": "84.8×0.6 + (5/10)×100×0.25 + 54.3×0.15 = 71.50"
       },
       {
         "student_key": 127,
@@ -2536,10 +2914,13 @@
         "bonus_points": 10,
         "weighted_base": 57.63,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 90.13,
+        "weighted_wellbeing": 11.023,
+        "composite_score": 93.65,
         "proficiency": "Advanced",
-        "formula_trace": "96.0×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 90.13"
+        "wb_cultural_score": 73.49,
+        "wb_overall_score": 66.24,
+        "wb_category": "Flourishing",
+        "formula_trace": "96.0×0.6 + (10/10)×100×0.25 + 73.5×0.15 = 93.65"
       },
       {
         "student_key": 128,
@@ -2554,10 +2935,13 @@
         "bonus_points": 5,
         "weighted_base": 37.374,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 57.37,
+        "weighted_wellbeing": 5.943,
+        "composite_score": 55.82,
         "proficiency": "Below",
-        "formula_trace": "62.3×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 57.37"
+        "wb_cultural_score": 39.62,
+        "wb_overall_score": 52.44,
+        "wb_category": "Stable",
+        "formula_trace": "62.3×0.6 + (5/10)×100×0.25 + 39.6×0.15 = 55.82"
       },
       {
         "student_key": 129,
@@ -2572,10 +2956,13 @@
         "bonus_points": 2,
         "weighted_base": 46.548,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 59.05,
+        "weighted_wellbeing": 8.07,
+        "composite_score": 59.62,
         "proficiency": "Below",
-        "formula_trace": "77.6×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 59.05"
+        "wb_cultural_score": 53.8,
+        "wb_overall_score": 59.92,
+        "wb_category": "Stable",
+        "formula_trace": "77.6×0.6 + (2/10)×100×0.25 + 53.8×0.15 = 59.62"
       },
       {
         "student_key": 130,
@@ -2590,10 +2977,13 @@
         "bonus_points": 0,
         "weighted_base": 35.922,
         "weighted_programme": 0.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 43.42,
+        "weighted_wellbeing": 7.896,
+        "composite_score": 43.82,
         "proficiency": "Below",
-        "formula_trace": "59.9×0.6 + (0/10)×100×0.25 + 50.0×0.15 = 43.42"
+        "wb_cultural_score": 52.64,
+        "wb_overall_score": 58.45,
+        "wb_category": "Stable",
+        "formula_trace": "59.9×0.6 + (0/10)×100×0.25 + 52.6×0.15 = 43.82"
       },
       {
         "student_key": 131,
@@ -2608,10 +2998,13 @@
         "bonus_points": 7,
         "weighted_base": 51.81,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 76.81,
+        "weighted_wellbeing": 9.699,
+        "composite_score": 79.01,
         "proficiency": "Proficient",
-        "formula_trace": "86.3×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 76.81"
+        "wb_cultural_score": 64.66,
+        "wb_overall_score": 70.91,
+        "wb_category": "Flourishing",
+        "formula_trace": "86.3×0.6 + (7/10)×100×0.25 + 64.7×0.15 = 79.01"
       },
       {
         "student_key": 132,
@@ -2626,10 +3019,13 @@
         "bonus_points": 8,
         "weighted_base": 47.244,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 74.74,
-        "proficiency": "Approaching",
-        "formula_trace": "78.7×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 74.74"
+        "weighted_wellbeing": 10.331,
+        "composite_score": 77.57,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 68.87,
+        "wb_overall_score": 63.24,
+        "wb_category": "Stable",
+        "formula_trace": "78.7×0.6 + (8/10)×100×0.25 + 68.9×0.15 = 77.57"
       },
       {
         "student_key": 133,
@@ -2644,10 +3040,13 @@
         "bonus_points": 5,
         "weighted_base": 60.0,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 80.0,
+        "weighted_wellbeing": 11.55,
+        "composite_score": 84.05,
         "proficiency": "Proficient",
-        "formula_trace": "100.0×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 80.00"
+        "wb_cultural_score": 77.0,
+        "wb_overall_score": 74.35,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (5/10)×100×0.25 + 77.0×0.15 = 84.05"
       },
       {
         "student_key": 134,
@@ -2662,10 +3061,13 @@
         "bonus_points": 10,
         "weighted_base": 41.982,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 74.48,
-        "proficiency": "Approaching",
-        "formula_trace": "70.0×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 74.48"
+        "weighted_wellbeing": 9.61,
+        "composite_score": 76.59,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 64.07,
+        "wb_overall_score": 69.22,
+        "wb_category": "Flourishing",
+        "formula_trace": "70.0×0.6 + (10/10)×100×0.25 + 64.1×0.15 = 76.59"
       },
       {
         "student_key": 135,
@@ -2680,10 +3082,13 @@
         "bonus_points": 2,
         "weighted_base": 40.806,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 53.31,
+        "weighted_wellbeing": 8.492,
+        "composite_score": 54.3,
         "proficiency": "Below",
-        "formula_trace": "68.0×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 53.31"
+        "wb_cultural_score": 56.61,
+        "wb_overall_score": 66.82,
+        "wb_category": "Flourishing",
+        "formula_trace": "68.0×0.6 + (2/10)×100×0.25 + 56.6×0.15 = 54.30"
       },
       {
         "student_key": 136,
@@ -2698,10 +3103,13 @@
         "bonus_points": 5,
         "weighted_base": 40.35,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 60.35,
+        "weighted_wellbeing": 7.693,
+        "composite_score": 60.54,
         "proficiency": "Approaching",
-        "formula_trace": "67.2×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 60.35"
+        "wb_cultural_score": 51.29,
+        "wb_overall_score": 48.74,
+        "wb_category": "Struggling",
+        "formula_trace": "67.2×0.6 + (5/10)×100×0.25 + 51.3×0.15 = 60.54"
       },
       {
         "student_key": 137,
@@ -2716,10 +3124,13 @@
         "bonus_points": 10,
         "weighted_base": 40.614,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 73.11,
-        "proficiency": "Approaching",
-        "formula_trace": "67.7×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 73.11"
+        "weighted_wellbeing": 9.39,
+        "composite_score": 75.0,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 62.6,
+        "wb_overall_score": 65.88,
+        "wb_category": "Flourishing",
+        "formula_trace": "67.7×0.6 + (10/10)×100×0.25 + 62.6×0.15 = 75.00"
       },
       {
         "student_key": 138,
@@ -2734,10 +3145,13 @@
         "bonus_points": 7,
         "weighted_base": 46.656,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 71.66,
+        "weighted_wellbeing": 9.816,
+        "composite_score": 73.97,
         "proficiency": "Approaching",
-        "formula_trace": "77.8×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 71.66"
+        "wb_cultural_score": 65.44,
+        "wb_overall_score": 65.64,
+        "wb_category": "Flourishing",
+        "formula_trace": "77.8×0.6 + (7/10)×100×0.25 + 65.4×0.15 = 73.97"
       },
       {
         "student_key": 139,
@@ -2752,10 +3166,13 @@
         "bonus_points": 8,
         "weighted_base": 49.338,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 76.84,
+        "weighted_wellbeing": 10.001,
+        "composite_score": 79.34,
         "proficiency": "Proficient",
-        "formula_trace": "82.2×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 76.84"
+        "wb_cultural_score": 66.67,
+        "wb_overall_score": 66.62,
+        "wb_category": "Flourishing",
+        "formula_trace": "82.2×0.6 + (8/10)×100×0.25 + 66.7×0.15 = 79.34"
       },
       {
         "student_key": 140,
@@ -2770,10 +3187,13 @@
         "bonus_points": 8,
         "weighted_base": 59.064,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 86.56,
-        "proficiency": "Proficient",
-        "formula_trace": "98.4×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 86.56"
+        "weighted_wellbeing": 12.537,
+        "composite_score": 91.6,
+        "proficiency": "Advanced",
+        "wb_cultural_score": 83.58,
+        "wb_overall_score": 69.36,
+        "wb_category": "Flourishing",
+        "formula_trace": "98.4×0.6 + (8/10)×100×0.25 + 83.6×0.15 = 91.60"
       },
       {
         "student_key": 141,
@@ -2788,10 +3208,13 @@
         "bonus_points": 7,
         "weighted_base": 39.528,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 64.53,
+        "weighted_wellbeing": 8.582,
+        "composite_score": 65.61,
         "proficiency": "Approaching",
-        "formula_trace": "65.9×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 64.53"
+        "wb_cultural_score": 57.21,
+        "wb_overall_score": 60.72,
+        "wb_category": "Stable",
+        "formula_trace": "65.9×0.6 + (7/10)×100×0.25 + 57.2×0.15 = 65.61"
       },
       {
         "student_key": 142,
@@ -2806,10 +3229,13 @@
         "bonus_points": 10,
         "weighted_base": 48.678,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 81.18,
+        "weighted_wellbeing": 10.71,
+        "composite_score": 84.39,
         "proficiency": "Proficient",
-        "formula_trace": "81.1×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 81.18"
+        "wb_cultural_score": 71.4,
+        "wb_overall_score": 74.13,
+        "wb_category": "Flourishing",
+        "formula_trace": "81.1×0.6 + (10/10)×100×0.25 + 71.4×0.15 = 84.39"
       },
       {
         "student_key": 143,
@@ -2824,10 +3250,13 @@
         "bonus_points": 10,
         "weighted_base": 24.858,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 57.36,
+        "weighted_wellbeing": 6.026,
+        "composite_score": 55.88,
         "proficiency": "Below",
-        "formula_trace": "41.4×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 57.36"
+        "wb_cultural_score": 40.17,
+        "wb_overall_score": 57.56,
+        "wb_category": "Stable",
+        "formula_trace": "41.4×0.6 + (10/10)×100×0.25 + 40.2×0.15 = 55.88"
       },
       {
         "student_key": 144,
@@ -2842,10 +3271,13 @@
         "bonus_points": 10,
         "weighted_base": 26.244,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 58.74,
+        "weighted_wellbeing": 5.718,
+        "composite_score": 56.96,
         "proficiency": "Below",
-        "formula_trace": "43.7×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 58.74"
+        "wb_cultural_score": 38.12,
+        "wb_overall_score": 55.97,
+        "wb_category": "Stable",
+        "formula_trace": "43.7×0.6 + (10/10)×100×0.25 + 38.1×0.15 = 56.96"
       },
       {
         "student_key": 145,
@@ -2860,10 +3292,13 @@
         "bonus_points": 5,
         "weighted_base": 38.424,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 58.42,
+        "weighted_wellbeing": 8.497,
+        "composite_score": 59.42,
         "proficiency": "Below",
-        "formula_trace": "64.0×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 58.42"
+        "wb_cultural_score": 56.65,
+        "wb_overall_score": 59.28,
+        "wb_category": "Stable",
+        "formula_trace": "64.0×0.6 + (5/10)×100×0.25 + 56.6×0.15 = 59.42"
       },
       {
         "student_key": 146,
@@ -2878,10 +3313,13 @@
         "bonus_points": 7,
         "weighted_base": 59.202,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 84.2,
+        "weighted_wellbeing": 10.788,
+        "composite_score": 87.49,
         "proficiency": "Proficient",
-        "formula_trace": "98.7×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 84.20"
+        "wb_cultural_score": 71.92,
+        "wb_overall_score": 70.1,
+        "wb_category": "Flourishing",
+        "formula_trace": "98.7×0.6 + (7/10)×100×0.25 + 71.9×0.15 = 87.49"
       },
       {
         "student_key": 147,
@@ -2896,10 +3334,13 @@
         "bonus_points": 2,
         "weighted_base": 50.766,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 63.27,
+        "weighted_wellbeing": 9.807,
+        "composite_score": 65.57,
         "proficiency": "Approaching",
-        "formula_trace": "84.6×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 63.27"
+        "wb_cultural_score": 65.38,
+        "wb_overall_score": 60.56,
+        "wb_category": "Stable",
+        "formula_trace": "84.6×0.6 + (2/10)×100×0.25 + 65.4×0.15 = 65.57"
       },
       {
         "student_key": 148,
@@ -2914,10 +3355,13 @@
         "bonus_points": 5,
         "weighted_base": 55.218,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 75.22,
+        "weighted_wellbeing": 11.78,
+        "composite_score": 79.5,
         "proficiency": "Proficient",
-        "formula_trace": "92.0×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 75.22"
+        "wb_cultural_score": 78.53,
+        "wb_overall_score": 73.99,
+        "wb_category": "Flourishing",
+        "formula_trace": "92.0×0.6 + (5/10)×100×0.25 + 78.5×0.15 = 79.50"
       },
       {
         "student_key": 149,
@@ -2932,10 +3376,13 @@
         "bonus_points": 10,
         "weighted_base": 53.202,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 85.7,
-        "proficiency": "Proficient",
-        "formula_trace": "88.7×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 85.70"
+        "weighted_wellbeing": 12.114,
+        "composite_score": 90.32,
+        "proficiency": "Advanced",
+        "wb_cultural_score": 80.76,
+        "wb_overall_score": 74.55,
+        "wb_category": "Flourishing",
+        "formula_trace": "88.7×0.6 + (10/10)×100×0.25 + 80.8×0.15 = 90.32"
       },
       {
         "student_key": 150,
@@ -2950,10 +3397,13 @@
         "bonus_points": 10,
         "weighted_base": 58.65,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 91.15,
+        "weighted_wellbeing": 12.298,
+        "composite_score": 95.95,
         "proficiency": "Advanced",
-        "formula_trace": "97.8×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 91.15"
+        "wb_cultural_score": 81.99,
+        "wb_overall_score": 70.85,
+        "wb_category": "Flourishing",
+        "formula_trace": "97.8×0.6 + (10/10)×100×0.25 + 82.0×0.15 = 95.95"
       },
       {
         "student_key": 151,
@@ -2968,10 +3418,13 @@
         "bonus_points": 5,
         "weighted_base": 49.374,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 69.37,
+        "weighted_wellbeing": 8.52,
+        "composite_score": 70.39,
         "proficiency": "Approaching",
-        "formula_trace": "82.3×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 69.37"
+        "wb_cultural_score": 56.8,
+        "wb_overall_score": 65.08,
+        "wb_category": "Flourishing",
+        "formula_trace": "82.3×0.6 + (5/10)×100×0.25 + 56.8×0.15 = 70.39"
       },
       {
         "student_key": 152,
@@ -2986,10 +3439,13 @@
         "bonus_points": 10,
         "weighted_base": 41.298,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 73.8,
-        "proficiency": "Approaching",
-        "formula_trace": "68.8×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 73.80"
+        "weighted_wellbeing": 9.453,
+        "composite_score": 75.75,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 63.02,
+        "wb_overall_score": 68.51,
+        "wb_category": "Flourishing",
+        "formula_trace": "68.8×0.6 + (10/10)×100×0.25 + 63.0×0.15 = 75.75"
       },
       {
         "student_key": 153,
@@ -3004,10 +3460,13 @@
         "bonus_points": 7,
         "weighted_base": 36.336,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 61.34,
+        "weighted_wellbeing": 7.011,
+        "composite_score": 60.85,
         "proficiency": "Approaching",
-        "formula_trace": "60.6×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 61.34"
+        "wb_cultural_score": 46.74,
+        "wb_overall_score": 58.01,
+        "wb_category": "Stable",
+        "formula_trace": "60.6×0.6 + (7/10)×100×0.25 + 46.7×0.15 = 60.85"
       },
       {
         "student_key": 154,
@@ -3022,10 +3481,13 @@
         "bonus_points": 10,
         "weighted_base": 60.0,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 92.5,
+        "weighted_wellbeing": 11.447,
+        "composite_score": 96.45,
         "proficiency": "Advanced",
-        "formula_trace": "100.0×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 92.50"
+        "wb_cultural_score": 76.31,
+        "wb_overall_score": 72.63,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (10/10)×100×0.25 + 76.3×0.15 = 96.45"
       },
       {
         "student_key": 155,
@@ -3040,10 +3502,13 @@
         "bonus_points": 7,
         "weighted_base": 47.028,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.03,
+        "weighted_wellbeing": 8.986,
+        "composite_score": 73.51,
         "proficiency": "Approaching",
-        "formula_trace": "78.4×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 72.03"
+        "wb_cultural_score": 59.91,
+        "wb_overall_score": 66.94,
+        "wb_category": "Flourishing",
+        "formula_trace": "78.4×0.6 + (7/10)×100×0.25 + 59.9×0.15 = 73.51"
       },
       {
         "student_key": 156,
@@ -3058,10 +3523,13 @@
         "bonus_points": 0,
         "weighted_base": 43.326,
         "weighted_programme": 0.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 50.83,
+        "weighted_wellbeing": 7.431,
+        "composite_score": 50.76,
         "proficiency": "Below",
-        "formula_trace": "72.2×0.6 + (0/10)×100×0.25 + 50.0×0.15 = 50.83"
+        "wb_cultural_score": 49.54,
+        "wb_overall_score": 54.1,
+        "wb_category": "Stable",
+        "formula_trace": "72.2×0.6 + (0/10)×100×0.25 + 49.5×0.15 = 50.76"
       },
       {
         "student_key": 157,
@@ -3076,10 +3544,13 @@
         "bonus_points": 2,
         "weighted_base": 38.64,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 51.14,
+        "weighted_wellbeing": 7.971,
+        "composite_score": 51.61,
         "proficiency": "Below",
-        "formula_trace": "64.4×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 51.14"
+        "wb_cultural_score": 53.14,
+        "wb_overall_score": 64.77,
+        "wb_category": "Stable",
+        "formula_trace": "64.4×0.6 + (2/10)×100×0.25 + 53.1×0.15 = 51.61"
       },
       {
         "student_key": 158,
@@ -3094,10 +3565,13 @@
         "bonus_points": 7,
         "weighted_base": 43.254,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 68.25,
+        "weighted_wellbeing": 9.954,
+        "composite_score": 70.71,
         "proficiency": "Approaching",
-        "formula_trace": "72.1×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 68.25"
+        "wb_cultural_score": 66.36,
+        "wb_overall_score": 69.34,
+        "wb_category": "Flourishing",
+        "formula_trace": "72.1×0.6 + (7/10)×100×0.25 + 66.4×0.15 = 70.71"
       },
       {
         "student_key": 159,
@@ -3112,10 +3586,13 @@
         "bonus_points": 2,
         "weighted_base": 44.196,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 56.7,
+        "weighted_wellbeing": 7.035,
+        "composite_score": 56.23,
         "proficiency": "Below",
-        "formula_trace": "73.7×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 56.70"
+        "wb_cultural_score": 46.9,
+        "wb_overall_score": 61.43,
+        "wb_category": "Stable",
+        "formula_trace": "73.7×0.6 + (2/10)×100×0.25 + 46.9×0.15 = 56.23"
       },
       {
         "student_key": 160,
@@ -3130,10 +3607,13 @@
         "bonus_points": 8,
         "weighted_base": 38.634,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 66.13,
+        "weighted_wellbeing": 8.088,
+        "composite_score": 66.72,
         "proficiency": "Approaching",
-        "formula_trace": "64.4×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 66.13"
+        "wb_cultural_score": 53.92,
+        "wb_overall_score": 60.55,
+        "wb_category": "Stable",
+        "formula_trace": "64.4×0.6 + (8/10)×100×0.25 + 53.9×0.15 = 66.72"
       },
       {
         "student_key": 161,
@@ -3148,10 +3628,13 @@
         "bonus_points": 3,
         "weighted_base": 60.0,
         "weighted_programme": 7.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 75.0,
+        "weighted_wellbeing": 11.805,
+        "composite_score": 79.31,
         "proficiency": "Proficient",
-        "formula_trace": "100.0×0.6 + (3/10)×100×0.25 + 50.0×0.15 = 75.00"
+        "wb_cultural_score": 78.7,
+        "wb_overall_score": 71.41,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (3/10)×100×0.25 + 78.7×0.15 = 79.31"
       },
       {
         "student_key": 162,
@@ -3166,10 +3649,13 @@
         "bonus_points": 10,
         "weighted_base": 53.778,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 86.28,
-        "proficiency": "Proficient",
-        "formula_trace": "89.6×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 86.28"
+        "weighted_wellbeing": 11.241,
+        "composite_score": 90.02,
+        "proficiency": "Advanced",
+        "wb_cultural_score": 74.94,
+        "wb_overall_score": 66.38,
+        "wb_category": "Flourishing",
+        "formula_trace": "89.6×0.6 + (10/10)×100×0.25 + 74.9×0.15 = 90.02"
       },
       {
         "student_key": 163,
@@ -3184,10 +3670,13 @@
         "bonus_points": 7,
         "weighted_base": 31.182,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 56.18,
+        "weighted_wellbeing": 6.514,
+        "composite_score": 55.2,
         "proficiency": "Below",
-        "formula_trace": "52.0×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 56.18"
+        "wb_cultural_score": 43.43,
+        "wb_overall_score": 59.26,
+        "wb_category": "Stable",
+        "formula_trace": "52.0×0.6 + (7/10)×100×0.25 + 43.4×0.15 = 55.20"
       },
       {
         "student_key": 164,
@@ -3202,10 +3691,13 @@
         "bonus_points": 7,
         "weighted_base": 53.106,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 78.11,
+        "weighted_wellbeing": 8.521,
+        "composite_score": 79.13,
         "proficiency": "Proficient",
-        "formula_trace": "88.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 78.11"
+        "wb_cultural_score": 56.81,
+        "wb_overall_score": 60.79,
+        "wb_category": "Stable",
+        "formula_trace": "88.5×0.6 + (7/10)×100×0.25 + 56.8×0.15 = 79.13"
       },
       {
         "student_key": 165,
@@ -3220,10 +3712,13 @@
         "bonus_points": 10,
         "weighted_base": 47.556,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 80.06,
+        "weighted_wellbeing": 11.127,
+        "composite_score": 83.68,
         "proficiency": "Proficient",
-        "formula_trace": "79.3×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 80.06"
+        "wb_cultural_score": 74.18,
+        "wb_overall_score": 73.09,
+        "wb_category": "Flourishing",
+        "formula_trace": "79.3×0.6 + (10/10)×100×0.25 + 74.2×0.15 = 83.68"
       },
       {
         "student_key": 166,
@@ -3238,10 +3733,13 @@
         "bonus_points": 2,
         "weighted_base": 46.662,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 59.16,
-        "proficiency": "Below",
-        "formula_trace": "77.8×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 59.16"
+        "weighted_wellbeing": 8.799,
+        "composite_score": 60.46,
+        "proficiency": "Approaching",
+        "wb_cultural_score": 58.66,
+        "wb_overall_score": 58.88,
+        "wb_category": "Stable",
+        "formula_trace": "77.8×0.6 + (2/10)×100×0.25 + 58.7×0.15 = 60.46"
       },
       {
         "student_key": 167,
@@ -3256,10 +3754,13 @@
         "bonus_points": 10,
         "weighted_base": 48.306,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 80.81,
+        "weighted_wellbeing": 10.116,
+        "composite_score": 83.42,
         "proficiency": "Proficient",
-        "formula_trace": "80.5×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 80.81"
+        "wb_cultural_score": 67.44,
+        "wb_overall_score": 67.82,
+        "wb_category": "Flourishing",
+        "formula_trace": "80.5×0.6 + (10/10)×100×0.25 + 67.4×0.15 = 83.42"
       },
       {
         "student_key": 168,
@@ -3274,10 +3775,13 @@
         "bonus_points": 7,
         "weighted_base": 47.082,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.08,
+        "weighted_wellbeing": 9.198,
+        "composite_score": 73.78,
         "proficiency": "Approaching",
-        "formula_trace": "78.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 72.08"
+        "wb_cultural_score": 61.32,
+        "wb_overall_score": 56.81,
+        "wb_category": "Stable",
+        "formula_trace": "78.5×0.6 + (7/10)×100×0.25 + 61.3×0.15 = 73.78"
       },
       {
         "student_key": 169,
@@ -3292,10 +3796,13 @@
         "bonus_points": 10,
         "weighted_base": 30.948,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 63.45,
+        "weighted_wellbeing": 6.535,
+        "composite_score": 62.48,
         "proficiency": "Approaching",
-        "formula_trace": "51.6×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 63.45"
+        "wb_cultural_score": 43.57,
+        "wb_overall_score": 56.86,
+        "wb_category": "Stable",
+        "formula_trace": "51.6×0.6 + (10/10)×100×0.25 + 43.6×0.15 = 62.48"
       },
       {
         "student_key": 170,
@@ -3310,10 +3817,13 @@
         "bonus_points": 2,
         "weighted_base": 48.048,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 60.55,
+        "weighted_wellbeing": 9.518,
+        "composite_score": 62.57,
         "proficiency": "Approaching",
-        "formula_trace": "80.1×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 60.55"
+        "wb_cultural_score": 63.45,
+        "wb_overall_score": 64.0,
+        "wb_category": "Stable",
+        "formula_trace": "80.1×0.6 + (2/10)×100×0.25 + 63.5×0.15 = 62.57"
       },
       {
         "student_key": 171,
@@ -3328,10 +3838,13 @@
         "bonus_points": 7,
         "weighted_base": 44.514,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 69.51,
+        "weighted_wellbeing": 10.441,
+        "composite_score": 72.46,
         "proficiency": "Approaching",
-        "formula_trace": "74.2×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 69.51"
+        "wb_cultural_score": 69.61,
+        "wb_overall_score": 72.5,
+        "wb_category": "Flourishing",
+        "formula_trace": "74.2×0.6 + (7/10)×100×0.25 + 69.6×0.15 = 72.46"
       },
       {
         "student_key": 172,
@@ -3346,10 +3859,13 @@
         "bonus_points": 10,
         "weighted_base": 59.31,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 91.81,
+        "weighted_wellbeing": 11.492,
+        "composite_score": 95.8,
         "proficiency": "Advanced",
-        "formula_trace": "98.8×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 91.81"
+        "wb_cultural_score": 76.61,
+        "wb_overall_score": 70.68,
+        "wb_category": "Flourishing",
+        "formula_trace": "98.8×0.6 + (10/10)×100×0.25 + 76.6×0.15 = 95.80"
       },
       {
         "student_key": 173,
@@ -3364,10 +3880,13 @@
         "bonus_points": 2,
         "weighted_base": 51.108,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 63.61,
+        "weighted_wellbeing": 8.915,
+        "composite_score": 65.02,
         "proficiency": "Approaching",
-        "formula_trace": "85.2×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 63.61"
+        "wb_cultural_score": 59.43,
+        "wb_overall_score": 65.63,
+        "wb_category": "Flourishing",
+        "formula_trace": "85.2×0.6 + (2/10)×100×0.25 + 59.4×0.15 = 65.02"
       },
       {
         "student_key": 174,
@@ -3382,10 +3901,13 @@
         "bonus_points": 7,
         "weighted_base": 28.854,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 53.85,
+        "weighted_wellbeing": 5.803,
+        "composite_score": 52.16,
         "proficiency": "Below",
-        "formula_trace": "48.1×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 53.85"
+        "wb_cultural_score": 38.69,
+        "wb_overall_score": 43.68,
+        "wb_category": "Struggling",
+        "formula_trace": "48.1×0.6 + (7/10)×100×0.25 + 38.7×0.15 = 52.16"
       },
       {
         "student_key": 175,
@@ -3400,10 +3922,13 @@
         "bonus_points": 2,
         "weighted_base": 49.554,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 62.05,
+        "weighted_wellbeing": 8.143,
+        "composite_score": 62.7,
         "proficiency": "Approaching",
-        "formula_trace": "82.6×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 62.05"
+        "wb_cultural_score": 54.29,
+        "wb_overall_score": 66.52,
+        "wb_category": "Flourishing",
+        "formula_trace": "82.6×0.6 + (2/10)×100×0.25 + 54.3×0.15 = 62.70"
       },
       {
         "student_key": 176,
@@ -3418,10 +3943,13 @@
         "bonus_points": 10,
         "weighted_base": 60.0,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 92.5,
+        "weighted_wellbeing": 12.921,
+        "composite_score": 97.92,
         "proficiency": "Advanced",
-        "formula_trace": "100.0×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 92.50"
+        "wb_cultural_score": 86.14,
+        "wb_overall_score": 75.4,
+        "wb_category": "Flourishing",
+        "formula_trace": "100.0×0.6 + (10/10)×100×0.25 + 86.1×0.15 = 97.92"
       },
       {
         "student_key": 177,
@@ -3436,10 +3964,13 @@
         "bonus_points": 10,
         "weighted_base": 38.928,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 71.43,
+        "weighted_wellbeing": 7.591,
+        "composite_score": 71.52,
         "proficiency": "Approaching",
-        "formula_trace": "64.9×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 71.43"
+        "wb_cultural_score": 50.61,
+        "wb_overall_score": 61.73,
+        "wb_category": "Stable",
+        "formula_trace": "64.9×0.6 + (10/10)×100×0.25 + 50.6×0.15 = 71.52"
       },
       {
         "student_key": 178,
@@ -3454,10 +3985,13 @@
         "bonus_points": 7,
         "weighted_base": 47.274,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.27,
-        "proficiency": "Approaching",
-        "formula_trace": "78.8×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 72.27"
+        "weighted_wellbeing": 10.956,
+        "composite_score": 75.73,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 73.04,
+        "wb_overall_score": 70.94,
+        "wb_category": "Flourishing",
+        "formula_trace": "78.8×0.6 + (7/10)×100×0.25 + 73.0×0.15 = 75.73"
       },
       {
         "student_key": 179,
@@ -3472,10 +4006,13 @@
         "bonus_points": 10,
         "weighted_base": 46.266,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 78.77,
+        "weighted_wellbeing": 9.607,
+        "composite_score": 80.87,
         "proficiency": "Proficient",
-        "formula_trace": "77.1×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 78.77"
+        "wb_cultural_score": 64.05,
+        "wb_overall_score": 63.45,
+        "wb_category": "Stable",
+        "formula_trace": "77.1×0.6 + (10/10)×100×0.25 + 64.0×0.15 = 80.87"
       },
       {
         "student_key": 180,
@@ -3490,10 +4027,13 @@
         "bonus_points": 8,
         "weighted_base": 45.168,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.67,
+        "weighted_wellbeing": 9.752,
+        "composite_score": 74.92,
         "proficiency": "Approaching",
-        "formula_trace": "75.3×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 72.67"
+        "wb_cultural_score": 65.01,
+        "wb_overall_score": 65.01,
+        "wb_category": "Flourishing",
+        "formula_trace": "75.3×0.6 + (8/10)×100×0.25 + 65.0×0.15 = 74.92"
       },
       {
         "student_key": 181,
@@ -3508,10 +4048,13 @@
         "bonus_points": 2,
         "weighted_base": 38.544,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 51.04,
+        "weighted_wellbeing": 8.137,
+        "composite_score": 51.68,
         "proficiency": "Below",
-        "formula_trace": "64.2×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 51.04"
+        "wb_cultural_score": 54.25,
+        "wb_overall_score": 60.44,
+        "wb_category": "Stable",
+        "formula_trace": "64.2×0.6 + (2/10)×100×0.25 + 54.2×0.15 = 51.68"
       },
       {
         "student_key": 182,
@@ -3526,10 +4069,13 @@
         "bonus_points": 7,
         "weighted_base": 42.054,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 67.05,
+        "weighted_wellbeing": 9.216,
+        "composite_score": 68.77,
         "proficiency": "Approaching",
-        "formula_trace": "70.1×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 67.05"
+        "wb_cultural_score": 61.44,
+        "wb_overall_score": 68.98,
+        "wb_category": "Flourishing",
+        "formula_trace": "70.1×0.6 + (7/10)×100×0.25 + 61.4×0.15 = 68.77"
       },
       {
         "student_key": 183,
@@ -3544,10 +4090,13 @@
         "bonus_points": 7,
         "weighted_base": 47.904,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 72.9,
+        "weighted_wellbeing": 9.111,
+        "composite_score": 74.52,
         "proficiency": "Approaching",
-        "formula_trace": "79.8×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 72.90"
+        "wb_cultural_score": 60.74,
+        "wb_overall_score": 66.44,
+        "wb_category": "Flourishing",
+        "formula_trace": "79.8×0.6 + (7/10)×100×0.25 + 60.7×0.15 = 74.52"
       },
       {
         "student_key": 184,
@@ -3562,10 +4111,13 @@
         "bonus_points": 5,
         "weighted_base": 36.312,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 56.31,
+        "weighted_wellbeing": 5.482,
+        "composite_score": 54.29,
         "proficiency": "Below",
-        "formula_trace": "60.5×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 56.31"
+        "wb_cultural_score": 36.55,
+        "wb_overall_score": 52.7,
+        "wb_category": "Stable",
+        "formula_trace": "60.5×0.6 + (5/10)×100×0.25 + 36.5×0.15 = 54.29"
       },
       {
         "student_key": 185,
@@ -3580,10 +4132,13 @@
         "bonus_points": 5,
         "weighted_base": 44.556,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 64.56,
+        "weighted_wellbeing": 10.723,
+        "composite_score": 67.78,
         "proficiency": "Approaching",
-        "formula_trace": "74.3×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 64.56"
+        "wb_cultural_score": 71.49,
+        "wb_overall_score": 66.64,
+        "wb_category": "Flourishing",
+        "formula_trace": "74.3×0.6 + (5/10)×100×0.25 + 71.5×0.15 = 67.78"
       },
       {
         "student_key": 186,
@@ -3598,10 +4153,13 @@
         "bonus_points": 5,
         "weighted_base": 28.44,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 48.44,
+        "weighted_wellbeing": 6.78,
+        "composite_score": 47.72,
         "proficiency": "Below",
-        "formula_trace": "47.4×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 48.44"
+        "wb_cultural_score": 45.2,
+        "wb_overall_score": 49.51,
+        "wb_category": "Struggling",
+        "formula_trace": "47.4×0.6 + (5/10)×100×0.25 + 45.2×0.15 = 47.72"
       },
       {
         "student_key": 187,
@@ -3616,10 +4174,13 @@
         "bonus_points": 7,
         "weighted_base": 42.324,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 67.32,
+        "weighted_wellbeing": 9.22,
+        "composite_score": 69.04,
         "proficiency": "Approaching",
-        "formula_trace": "70.5×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 67.32"
+        "wb_cultural_score": 61.47,
+        "wb_overall_score": 59.07,
+        "wb_category": "Stable",
+        "formula_trace": "70.5×0.6 + (7/10)×100×0.25 + 61.5×0.15 = 69.04"
       },
       {
         "student_key": 188,
@@ -3634,10 +4195,13 @@
         "bonus_points": 7,
         "weighted_base": 45.642,
         "weighted_programme": 17.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 70.64,
+        "weighted_wellbeing": 8.954,
+        "composite_score": 72.1,
         "proficiency": "Approaching",
-        "formula_trace": "76.1×0.6 + (7/10)×100×0.25 + 50.0×0.15 = 70.64"
+        "wb_cultural_score": 59.69,
+        "wb_overall_score": 65.5,
+        "wb_category": "Flourishing",
+        "formula_trace": "76.1×0.6 + (7/10)×100×0.25 + 59.7×0.15 = 72.10"
       },
       {
         "student_key": 189,
@@ -3652,10 +4216,13 @@
         "bonus_points": 0,
         "weighted_base": 48.024,
         "weighted_programme": 0.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 55.52,
+        "weighted_wellbeing": 8.461,
+        "composite_score": 56.49,
         "proficiency": "Below",
-        "formula_trace": "80.0×0.6 + (0/10)×100×0.25 + 50.0×0.15 = 55.52"
+        "wb_cultural_score": 56.41,
+        "wb_overall_score": 59.19,
+        "wb_category": "Stable",
+        "formula_trace": "80.0×0.6 + (0/10)×100×0.25 + 56.4×0.15 = 56.49"
       },
       {
         "student_key": 190,
@@ -3670,10 +4237,13 @@
         "bonus_points": 5,
         "weighted_base": 51.234,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 71.23,
+        "weighted_wellbeing": 8.715,
+        "composite_score": 72.45,
         "proficiency": "Approaching",
-        "formula_trace": "85.4×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 71.23"
+        "wb_cultural_score": 58.1,
+        "wb_overall_score": 65.54,
+        "wb_category": "Flourishing",
+        "formula_trace": "85.4×0.6 + (5/10)×100×0.25 + 58.1×0.15 = 72.45"
       },
       {
         "student_key": 191,
@@ -3688,10 +4258,13 @@
         "bonus_points": 10,
         "weighted_base": 50.37,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 82.87,
+        "weighted_wellbeing": 9.027,
+        "composite_score": 84.4,
         "proficiency": "Proficient",
-        "formula_trace": "84.0×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 82.87"
+        "wb_cultural_score": 60.18,
+        "wb_overall_score": 68.37,
+        "wb_category": "Flourishing",
+        "formula_trace": "84.0×0.6 + (10/10)×100×0.25 + 60.2×0.15 = 84.40"
       },
       {
         "student_key": 192,
@@ -3706,10 +4279,13 @@
         "bonus_points": 8,
         "weighted_base": 47.328,
         "weighted_programme": 20.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 74.83,
-        "proficiency": "Approaching",
-        "formula_trace": "78.9×0.6 + (8/10)×100×0.25 + 50.0×0.15 = 74.83"
+        "weighted_wellbeing": 10.461,
+        "composite_score": 77.79,
+        "proficiency": "Proficient",
+        "wb_cultural_score": 69.74,
+        "wb_overall_score": 68.11,
+        "wb_category": "Flourishing",
+        "formula_trace": "78.9×0.6 + (8/10)×100×0.25 + 69.7×0.15 = 77.79"
       },
       {
         "student_key": 193,
@@ -3724,10 +4300,13 @@
         "bonus_points": 2,
         "weighted_base": 48.36,
         "weighted_programme": 5.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 60.86,
+        "weighted_wellbeing": 8.076,
+        "composite_score": 61.44,
         "proficiency": "Approaching",
-        "formula_trace": "80.6×0.6 + (2/10)×100×0.25 + 50.0×0.15 = 60.86"
+        "wb_cultural_score": 53.84,
+        "wb_overall_score": 65.6,
+        "wb_category": "Flourishing",
+        "formula_trace": "80.6×0.6 + (2/10)×100×0.25 + 53.8×0.15 = 61.44"
       },
       {
         "student_key": 194,
@@ -3742,10 +4321,13 @@
         "bonus_points": 5,
         "weighted_base": 55.728,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 75.73,
+        "weighted_wellbeing": 11.287,
+        "composite_score": 79.52,
         "proficiency": "Proficient",
-        "formula_trace": "92.9×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 75.73"
+        "wb_cultural_score": 75.25,
+        "wb_overall_score": 69.65,
+        "wb_category": "Flourishing",
+        "formula_trace": "92.9×0.6 + (5/10)×100×0.25 + 75.2×0.15 = 79.52"
       },
       {
         "student_key": 195,
@@ -3760,10 +4342,13 @@
         "bonus_points": 0,
         "weighted_base": 55.962,
         "weighted_programme": 0.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 63.46,
+        "weighted_wellbeing": 9.704,
+        "composite_score": 65.67,
         "proficiency": "Approaching",
-        "formula_trace": "93.3×0.6 + (0/10)×100×0.25 + 50.0×0.15 = 63.46"
+        "wb_cultural_score": 64.69,
+        "wb_overall_score": 63.99,
+        "wb_category": "Stable",
+        "formula_trace": "93.3×0.6 + (0/10)×100×0.25 + 64.7×0.15 = 65.67"
       },
       {
         "student_key": 196,
@@ -3778,10 +4363,13 @@
         "bonus_points": 5,
         "weighted_base": 48.816,
         "weighted_programme": 12.5,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 68.82,
+        "weighted_wellbeing": 9.876,
+        "composite_score": 71.19,
         "proficiency": "Approaching",
-        "formula_trace": "81.4×0.6 + (5/10)×100×0.25 + 50.0×0.15 = 68.82"
+        "wb_cultural_score": 65.84,
+        "wb_overall_score": 67.05,
+        "wb_category": "Flourishing",
+        "formula_trace": "81.4×0.6 + (5/10)×100×0.25 + 65.8×0.15 = 71.19"
       },
       {
         "student_key": 197,
@@ -3796,10 +4384,13 @@
         "bonus_points": 10,
         "weighted_base": 39.402,
         "weighted_programme": 25.0,
-        "weighted_wellbeing": 7.5,
-        "composite_score": 71.9,
+        "weighted_wellbeing": 9.107,
+        "composite_score": 73.51,
         "proficiency": "Approaching",
-        "formula_trace": "65.7×0.6 + (10/10)×100×0.25 + 50.0×0.15 = 71.90"
+        "wb_cultural_score": 60.71,
+        "wb_overall_score": 62.97,
+        "wb_category": "Stable",
+        "formula_trace": "65.7×0.6 + (10/10)×100×0.25 + 60.7×0.15 = 73.51"
       }
     ]
   },
@@ -3844,17 +4435,17 @@
   },
   "interpretation": {
     "narrative": {
-      "cohort_mean": 69.54,
-      "pct_proficient_or_above": 29.4,
-      "students_needing_support": 35,
-      "hawaiian_language_effect": 11.39,
-      "halau_hula_effect": 6.32,
-      "summary": "The cohort mean for ʻIke Kūpuna is 69.5. 29.4% of students are Proficient or Advanced. 35 students require targeted cultural support. Hawaiian Language programme shows a +11.4 pt effect; Hālau Hula shows a +6.3 pt effect."
+      "cohort_mean": 71.32,
+      "pct_proficient_or_above": 36.5,
+      "students_needing_support": 33,
+      "hawaiian_language_effect": 12.0,
+      "halau_hula_effect": 6.7,
+      "summary": "The cohort mean for ʻIke Kūpuna is 71.3. 36.5% of students are Proficient or Advanced. 33 students require targeted cultural support. Hawaiian Language programme shows a +12.0 pt effect; Hālau Hula shows a +6.7 pt effect."
     },
     "recommendations": [
       {
         "student_key": 4,
-        "composite_score": 54.4,
+        "composite_score": 54.73,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -3865,7 +4456,7 @@
       },
       {
         "student_key": 12,
-        "composite_score": 57.19,
+        "composite_score": 58.18,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -3875,7 +4466,7 @@
       },
       {
         "student_key": 14,
-        "composite_score": 51.99,
+        "composite_score": 51.8,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -3885,7 +4476,7 @@
       },
       {
         "student_key": 47,
-        "composite_score": 47.65,
+        "composite_score": 47.68,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -3895,7 +4486,7 @@
       },
       {
         "student_key": 56,
-        "composite_score": 59.26,
+        "composite_score": 59.61,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -3905,7 +4496,7 @@
       },
       {
         "student_key": 59,
-        "composite_score": 48.18,
+        "composite_score": 45.8,
         "proficiency": "Below",
         "actions": [
           "Connect with Hālau Hula programme (+3 bonus pts)",
@@ -3914,7 +4505,7 @@
       },
       {
         "student_key": 75,
-        "composite_score": 50.63,
+        "composite_score": 49.6,
         "proficiency": "Below",
         "actions": [
           "Connect with Hālau Hula programme (+3 bonus pts)",
@@ -3923,7 +4514,7 @@
       },
       {
         "student_key": 88,
-        "composite_score": 42.83,
+        "composite_score": 40.07,
         "proficiency": "Below",
         "actions": [
           "Connect with Hālau Hula programme (+3 bonus pts)",
@@ -3932,7 +4523,7 @@
       },
       {
         "student_key": 89,
-        "composite_score": 58.75,
+        "composite_score": 59.61,
         "proficiency": "Below",
         "actions": [
           "Connect with Hālau Hula programme (+3 bonus pts)",
@@ -3942,7 +4533,7 @@
       },
       {
         "student_key": 90,
-        "composite_score": 53.22,
+        "composite_score": 52.79,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -3952,7 +4543,7 @@
       },
       {
         "student_key": 93,
-        "composite_score": 52.18,
+        "composite_score": 51.66,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -3962,16 +4553,7 @@
       },
       {
         "student_key": 100,
-        "composite_score": 53.74,
-        "proficiency": "Below",
-        "actions": [
-          "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
-          "Schedule Kūpuna mentorship sessions"
-        ]
-      },
-      {
-        "student_key": 101,
-        "composite_score": 59.16,
+        "composite_score": 51.19,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -3980,7 +4562,7 @@
       },
       {
         "student_key": 102,
-        "composite_score": 56.33,
+        "composite_score": 57.38,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -3990,7 +4572,7 @@
       },
       {
         "student_key": 107,
-        "composite_score": 59.98,
+        "composite_score": 59.66,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -3999,7 +4581,7 @@
       },
       {
         "student_key": 108,
-        "composite_score": 58.84,
+        "composite_score": 57.53,
         "proficiency": "Below",
         "actions": [
           "Include in PBL-by-Design cohort (+2 bonus pts)",
@@ -4008,7 +4590,7 @@
       },
       {
         "student_key": 110,
-        "composite_score": 43.8,
+        "composite_score": 42.8,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4018,7 +4600,7 @@
       },
       {
         "student_key": 112,
-        "composite_score": 51.75,
+        "composite_score": 52.57,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4029,7 +4611,7 @@
       },
       {
         "student_key": 128,
-        "composite_score": 57.37,
+        "composite_score": 55.82,
         "proficiency": "Below",
         "actions": [
           "Connect with Hālau Hula programme (+3 bonus pts)",
@@ -4039,7 +4621,7 @@
       },
       {
         "student_key": 129,
-        "composite_score": 59.05,
+        "composite_score": 59.62,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4049,7 +4631,7 @@
       },
       {
         "student_key": 130,
-        "composite_score": 43.42,
+        "composite_score": 43.82,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4060,7 +4642,7 @@
       },
       {
         "student_key": 135,
-        "composite_score": 53.31,
+        "composite_score": 54.3,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4070,7 +4652,7 @@
       },
       {
         "student_key": 143,
-        "composite_score": 57.36,
+        "composite_score": 55.88,
         "proficiency": "Below",
         "actions": [
           "Schedule Kūpuna mentorship sessions"
@@ -4078,7 +4660,7 @@
       },
       {
         "student_key": 144,
-        "composite_score": 58.74,
+        "composite_score": 56.96,
         "proficiency": "Below",
         "actions": [
           "Schedule Kūpuna mentorship sessions"
@@ -4086,7 +4668,7 @@
       },
       {
         "student_key": 145,
-        "composite_score": 58.42,
+        "composite_score": 59.42,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4095,7 +4677,7 @@
       },
       {
         "student_key": 156,
-        "composite_score": 50.83,
+        "composite_score": 50.76,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4106,7 +4688,7 @@
       },
       {
         "student_key": 157,
-        "composite_score": 51.14,
+        "composite_score": 51.61,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4116,7 +4698,7 @@
       },
       {
         "student_key": 159,
-        "composite_score": 56.7,
+        "composite_score": 56.23,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4126,26 +4708,16 @@
       },
       {
         "student_key": 163,
-        "composite_score": 56.18,
+        "composite_score": 55.2,
         "proficiency": "Below",
         "actions": [
-          "Connect with Hālau Hula programme (+3 bonus pts)",
-          "Schedule Kūpuna mentorship sessions"
-        ]
-      },
-      {
-        "student_key": 166,
-        "composite_score": 59.16,
-        "proficiency": "Below",
-        "actions": [
-          "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
           "Connect with Hālau Hula programme (+3 bonus pts)",
           "Schedule Kūpuna mentorship sessions"
         ]
       },
       {
         "student_key": 174,
-        "composite_score": 53.85,
+        "composite_score": 52.16,
         "proficiency": "Below",
         "actions": [
           "Connect with Hālau Hula programme (+3 bonus pts)",
@@ -4154,7 +4726,7 @@
       },
       {
         "student_key": 181,
-        "composite_score": 51.04,
+        "composite_score": 51.68,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4164,7 +4736,7 @@
       },
       {
         "student_key": 184,
-        "composite_score": 56.31,
+        "composite_score": 54.29,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4173,7 +4745,7 @@
       },
       {
         "student_key": 186,
-        "composite_score": 48.44,
+        "composite_score": 47.72,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4182,7 +4754,7 @@
       },
       {
         "student_key": 189,
-        "composite_score": 55.52,
+        "composite_score": 56.49,
         "proficiency": "Below",
         "actions": [
           "Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)",
@@ -4193,7 +4765,7 @@
       },
       {
         "student_key": 7,
-        "composite_score": 92.5,
+        "composite_score": 96.85,
         "proficiency": "Advanced",
         "actions": [
           "Nominate as cultural peer mentor",
@@ -4202,7 +4774,7 @@
       },
       {
         "student_key": 28,
-        "composite_score": 91.01,
+        "composite_score": 97.17,
         "proficiency": "Advanced",
         "actions": [
           "Nominate as cultural peer mentor",
@@ -4211,7 +4783,34 @@
       },
       {
         "student_key": 31,
-        "composite_score": 92.2,
+        "composite_score": 97.92,
+        "proficiency": "Advanced",
+        "actions": [
+          "Nominate as cultural peer mentor",
+          "Feature in ʻIke Kūpuna showcase"
+        ]
+      },
+      {
+        "student_key": 54,
+        "composite_score": 90.55,
+        "proficiency": "Advanced",
+        "actions": [
+          "Nominate as cultural peer mentor",
+          "Feature in ʻIke Kūpuna showcase"
+        ]
+      },
+      {
+        "student_key": 63,
+        "composite_score": 90.19,
+        "proficiency": "Advanced",
+        "actions": [
+          "Nominate as cultural peer mentor",
+          "Feature in ʻIke Kūpuna showcase"
+        ]
+      },
+      {
+        "student_key": 74,
+        "composite_score": 91.88,
         "proficiency": "Advanced",
         "actions": [
           "Nominate as cultural peer mentor",
@@ -4220,7 +4819,7 @@
       },
       {
         "student_key": 115,
-        "composite_score": 92.5,
+        "composite_score": 98.37,
         "proficiency": "Advanced",
         "actions": [
           "Nominate as cultural peer mentor",
@@ -4229,7 +4828,25 @@
       },
       {
         "student_key": 127,
-        "composite_score": 90.13,
+        "composite_score": 93.65,
+        "proficiency": "Advanced",
+        "actions": [
+          "Nominate as cultural peer mentor",
+          "Feature in ʻIke Kūpuna showcase"
+        ]
+      },
+      {
+        "student_key": 140,
+        "composite_score": 91.6,
+        "proficiency": "Advanced",
+        "actions": [
+          "Nominate as cultural peer mentor",
+          "Feature in ʻIke Kūpuna showcase"
+        ]
+      },
+      {
+        "student_key": 149,
+        "composite_score": 90.32,
         "proficiency": "Advanced",
         "actions": [
           "Nominate as cultural peer mentor",
@@ -4238,7 +4855,7 @@
       },
       {
         "student_key": 150,
-        "composite_score": 91.15,
+        "composite_score": 95.95,
         "proficiency": "Advanced",
         "actions": [
           "Nominate as cultural peer mentor",
@@ -4247,7 +4864,16 @@
       },
       {
         "student_key": 154,
-        "composite_score": 92.5,
+        "composite_score": 96.45,
+        "proficiency": "Advanced",
+        "actions": [
+          "Nominate as cultural peer mentor",
+          "Feature in ʻIke Kūpuna showcase"
+        ]
+      },
+      {
+        "student_key": 162,
+        "composite_score": 90.02,
         "proficiency": "Advanced",
         "actions": [
           "Nominate as cultural peer mentor",
@@ -4256,7 +4882,7 @@
       },
       {
         "student_key": 172,
-        "composite_score": 91.81,
+        "composite_score": 95.8,
         "proficiency": "Advanced",
         "actions": [
           "Nominate as cultural peer mentor",
@@ -4265,7 +4891,7 @@
       },
       {
         "student_key": 176,
-        "composite_score": 92.5,
+        "composite_score": 97.92,
         "proficiency": "Advanced",
         "actions": [
           "Nominate as cultural peer mentor",
