@@ -55,3 +55,56 @@ Score_ike_kupuna = w₁ × Language Proficiency + w₂ × Participation Hours + 
 ## 6. 技术栈偏好 (Tech Stack)
 * **Language**: Python 3.11+
 * **Libraries**: pandas, numpy, textblob (用于初步 NLP), scikit-learn
+
+---
+
+## 7. 血泪教训 (Lessons Learned)
+
+### L-001 · 分析结论与数据生成假设混淆（2026-02-25）
+**来源**：Issue #9–#15 · ROOT_IKE Dashboard 评审
+
+**问题描述**：
+
+大法师在 `explore()` 阶段发现了文化课程参与对分数**无显著效果**（p > 0.49），将其作为一个分析发现写入报告。但实际上这不是一个教育学结论，而是一个**数据生成缺陷的症状**——种子数据中参与标记与分数完全独立生成，统计方法无论多严谨，都只能放大这个谎言。
+
+```
+❌ 错误的思路：
+"programme impact 分析显示 p > 0.05，说明课程参与对成绩无显著影响。"
+
+✅ 正确的思路：
+"programme impact 分析显示 p > 0.49，且方向全部为负。
+这在教育学上高度反直觉。优先怀疑数据生成逻辑，而非接受这个结论。"
+```
+
+**新增规则**：OSEMN 前置检验（Pre-flight Check）
+
+在进入正式 **S（Scrub）** 阶段之前，大法师须执行一项**数据生成假设验证**：
+
+```python
+def preflight_check(df: pd.DataFrame) -> list[str]:
+    """
+    在 OSEMN 正式开始前，检验数据是否满足基本的现实逻辑约束。
+    任何违反直觉的发现，优先归因于数据生成缺陷，而非真实效应。
+    """
+    warnings = []
+
+    # 规则1：文化课程参与者的均分不应低于非参与者
+    for col in ['is_hawaiian_language', 'is_hālau_hula', 'is_pbl_participant']:
+        if col in df.columns:
+            yes_mean = df[df[col] == 1]['normalized_score'].mean()
+            no_mean  = df[df[col] == 0]['normalized_score'].mean()
+            if yes_mean < no_mean - 2:   # 容许 2 pts 随机误差
+                warnings.append(
+                    f"⚠️  {col} 参与者均分（{yes_mean:.1f}）低于非参与者（{no_mean:.1f}）"
+                    f"— 高度疑似数据生成缺陷，请联系铁炉堡矿工核查。"
+                )
+
+    # 规则2：跨指标相关性不应全部接近零
+    # （正常教育数据中，同层指标间 r 应 > 0.3）
+
+    # 规则3：高年级学生均分不应低于低年级（文化知识类指标）
+
+    return warnings
+```
+
+**原则**：大法师是数据的审判者，不是数据的辩护律师。**当分析结论与教育常识冲突时，第一反应是质疑数据，第二反应才是质疑假设。**

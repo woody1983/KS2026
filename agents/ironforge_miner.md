@@ -53,6 +53,43 @@
 
 > 这一节记录已经发生过的数据设计失误，**永不重蹈覆辙**。
 
+### L-002 · 函数签名架构缺陷（2026-02-25）
+**来源**：Issue #9–#15 根因分析 · 7 个缺陷的共同根源
+
+**问题描述**：
+
+`generate_e_ola_outcomes()` 是一个**无状态的随机数生成器**，函数签名只接收 4 个参数，对"为谁生成"一无所知。这一个错误的函数设计，衍生出了 7 个数据缺陷（#9–#15）：
+
+```python
+# ❌ 错误架构 — 函数完全不知道这个学生是谁
+def generate_e_ola_outcomes(student_key, indicator_key, assessment_date, is_dirty=False):
+    base_score = generate_normal_score(mean=75, std=15)
+    # student_key 只是外键数字，函数对该学生的 grade_level、ethnicity、
+    # aina_connection_score、is_hawaiian_language 等属性全部隐身
+```
+
+**正确架构**：
+
+```python
+# ✅ 以学生为中心 — 先定义"这个人是谁"，再推导"他的表现"
+def generate_student_scores(student_profile: dict) -> dict:
+    """
+    输入：完整学生画像（含所有属性）
+    输出：14 个具有内在一致性的指标分数
+    核心原则：分数是学生属性的函数，不是独立随机事件
+    """
+    pass
+```
+
+**设计自检清单**（每次编写数据生成函数前必须过一遍）：
+
+> 1. 这个函数知道它在为**谁**生成数据吗？
+> 2. 该学生的哪些属性在现实中会影响这个分数？
+> 3. 同一学生的 14 个指标分数之间，哪些应该相关？
+> 4. 把输出代入真实课堂，教育工作者会觉得合理吗？
+
+---
+
 ### L-001 · 变量独立性缺陷（2026-02-25）
 **来源**：Issue #9 · 由 ROOT_IKE Dashboard 评审时发现
 

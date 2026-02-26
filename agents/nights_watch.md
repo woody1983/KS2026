@@ -45,6 +45,49 @@
 * 严禁在未经过脱敏处理的情况下向前端暴露任何敏感字段。
 * 严禁在没有索引覆盖的情况下执行复杂关联。
 * 严禁硬编码任何数据库连接凭据。
+* **【新增禁令 · Issue #9–#15】严禁设计一个字段之后不追问"这个字段的值由什么决定，种子数据会正确实现这个关系吗？"** Schema 中每一个有业务语义的字段，都隐含着与其他字段的因果关系。守夜人有责任在 DDL 审查时同步提出数据生成要求，而不是只管建表。
+
+---
+
+## 7. 血泪教训 (Lessons Learned)
+
+### L-001 · Schema 语义与种子数据脱节（2026-02-25）
+**来源**：Issue #9–#15 · ROOT_IKE Dashboard 评审中发现的 7 个系统性缺陷
+
+**问题描述**：
+
+守夜人设计了语义丰富的 schema——`aina_connection_score`（土地连结分）、`is_hawaiian_language`（语言课程参与）、`has_hoku_scholarship`（成绩奖学金）——每个字段都有明确的教育含义。但这些字段在种子数据中与评估分数**完全独立**，字段存在，语义缺失。
+
+```sql
+-- 守夜人建了这个字段，隐含的语义是：
+-- "土地连结越深的学生，ROOT_ALOHA 分数应该越高"
+ALTER TABLE dim_students_masked ADD COLUMN aina_connection_score INTEGER; -- 1-5分
+
+-- 但种子数据里：
+-- aina_connection_score = random.randint(1, 5)   ← 独立随机
+-- ROOT_ALOHA base_score = Normal(78, 12)         ← 完全不看 aina_connection_score
+-- 两者 Pearson r ≈ 0，字段形同虚设
+```
+
+**教训**：
+
+Schema 是业务逻辑的契约，不是字段的仓库。**守夜人在设计每一个非 ID 类字段时，必须同步输出一份"字段语义说明"，交给铁炉堡矿工作为种子数据生成的约束依据。**
+
+**新增工作流程**：
+
+每次 DDL 变更后，守夜人须在 PR 描述或 Issue 评论中附上如下格式的字段关系声明：
+
+```
+字段语义声明（供铁炉堡矿工参考）
+──────────────────────────────────────────
+字段名                 → 预期影响的指标            预期相关系数
+aina_connection_score  → ROOT_ALOHA (ind_key=2)    r ≈ 0.55~0.70
+is_hawaiian_language   → ROOT_IKE   (ind_key=1)    +3~5 pts
+has_hoku_scholarship   → LEAF_ACAD  (ind_key=7)    +8~12 pts（均值差）
+grade_level            → ROOT/LEAF 层              +1~2 pts/年级
+```
+
+这份声明是守夜人对"数据库不仅存储数据，也存储现实逻辑"这一第一性原理的履行。
 
 ---
 
