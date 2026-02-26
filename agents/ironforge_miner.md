@@ -45,6 +45,59 @@
 * 严禁生成毫无意义的随机字符串（如 "test_user_1"）。
 * 严禁违反"守夜人"制定的隐私脱敏原则。
 * 严禁在未清理旧数据的情况下进行重复注入。
+* **【新增禁令 · Issue #9】严禁让任何影响学生表现的变量（如课程参与标记）与评分变量完全独立生成。** 这会导致下游分析得出虚假的"无效果"结论，污染模型训练信号，使 Archmage 的所有 programme impact 分析失去意义。
+
+---
+
+## 7. 血泪教训 (Lessons Learned)
+
+> 这一节记录已经发生过的数据设计失误，**永不重蹈覆辙**。
+
+### L-001 · 变量独立性缺陷（2026-02-25）
+**来源**：Issue #9 · 由 ROOT_IKE Dashboard 评审时发现
+
+**问题描述**：
+
+在 `seed_data_enterprise.py` 中，文化课程参与标记（`is_hawaiian_language`、`is_hālau_hula`、`is_pbl_participant`）与学生评估分数（`normalized_score`）**完全独立生成**：
+
+```python
+# ❌ 错误示范 — 两个变量毫无关联
+is_hawaiian_language = random.random() < 0.70   # 纯概率
+base_score = generate_normal_score(mean=75, std=15)  # 与上面无关
+```
+
+**后果**：
+
+- ʻŌlelo Hawaiʻi 参与者均分 **低于** 非参与者（75.82 vs 77.32），方向完全反了
+- 3 个项目的 t 检验 p 值全部 > 0.49，统计上等同于随机噪声
+- Archmage 的 programme impact 分析结论无效
+- Dashboard 展示的对比数据在教育决策层面具有误导性
+
+**正确做法**：
+
+任何在教育逻辑上**应当对成绩有正向影响**的变量，必须在生成分数时引入对应的效应量：
+
+```python
+# ✅ 正确示范 — 参与效应写入分数生成逻辑
+base_score = generate_normal_score(mean=75, std=15)
+
+cultural_boost = 0
+if is_hawaiian_language:
+    cultural_boost += random.gauss(3.5, 2.0)   # 证据基础：+3–5 pts
+if is_hālau_hula:
+    cultural_boost += random.gauss(2.5, 1.8)   # 证据基础：+2–4 pts
+if is_pbl_participant:
+    cultural_boost += random.gauss(1.5, 1.5)   # 证据基础：+1–3 pts
+
+base_score = min(100, max(0, base_score + cultural_boost))
+```
+
+**设计原则（以后每次生成数据前必须自检）**：
+
+> 对于数据集中每一对"原因变量"和"结果变量"，问自己：
+> **在现实世界中，这个原因会影响这个结果吗？**
+> 如果答案是"会"，那么在代码里它们就**必须**有统计上的关联。
+> 独立生成 = 隐式声明"无效果" = 对下游分析的谎言。
 
 ---
 
