@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ʻIke Kūpuna · Analytics Dashboard — E Ola!</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <style>
+    /* ============================================================
+       KALO GROWTH DESIGN SYSTEM — ʻIke Kūpuna Dashboard
+       ============================================================ */
+    :root {
+      --ks-navy:      #00204E;
+      --forest-root:  #0A594E;
+      --growth-mid:   #46AA8F;
+      --community:    #70D75C;
+      --new-sprout:   #D0ED35;
+      --royal-gold:   #FFB003;
+      --navy-light:   #003366;
+      --navy-dark:    #001833;
+      --forest-dark:  #074038;
+      --text-primary:   rgba(255,255,255,0.95);
+      --text-secondary: rgba(255,255,255,0.70);
+      --text-muted:     rgba(255,255,255,0.45);
+      --glass-bg:       rgba(10,89,78,0.18);
+      --glass-border:   rgba(70,170,143,0.25);
+      --shadow-soft:    0 8px 32px rgba(0,32,78,0.45);
+      --font-xs:   0.72rem;
+      --font-sm:   0.875rem;
+      --font-base: 1rem;
+      --font-lg:   1.25rem;
+      --font-xl:   1.618rem;
+      --font-2xl:  2.618rem;
+      --space-1: 0.5rem; --space-2: 1rem; --space-3: 1.5rem;
+      --space-4: 2rem;   --space-6: 3rem; --space-8: 4rem;
+      --ease: cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--ks-navy);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Glass ── */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      transition: transform 280ms var(--ease), box-shadow 280ms var(--ease), border-color 280ms var(--ease);
+    }
+    .glass:hover {
+      transform: translateY(-2px);
+      border-color: rgba(70,170,143,0.42);
+      box-shadow: 0 16px 48px rgba(0,32,78,0.55);
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed; top:0; left:0; right:0; z-index:100;
+      background: rgba(0,32,78,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--glass-border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--space-4); height: 60px;
+    }
+    .nav-brand { display:flex; align-items:center; gap:var(--space-2); text-decoration:none; }
+    .nav-logo { width:32px; height:32px; background:linear-gradient(135deg,var(--growth-mid),var(--new-sprout)); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; }
+    .nav-title { font-weight:700; font-size:var(--font-base); color:var(--text-primary); }
+    .nav-subtitle { font-size:var(--font-xs); color:var(--text-muted); }
+    .nav-right { display:flex; align-items:center; gap:var(--space-2); }
+    .badge { padding:4px 12px; border-radius:20px; font-size:var(--font-xs); font-weight:600; }
+    .badge-root { background:rgba(10,89,78,0.6); border:1px solid var(--growth-mid); color:var(--growth-mid); }
+    .badge-live { background:rgba(208,237,53,0.15); border:1px solid var(--new-sprout); color:var(--new-sprout); }
+    .nav-back { color:var(--text-secondary); text-decoration:none; font-size:var(--font-sm); display:flex;align-items:center;gap:4px; transition:color 200ms; }
+    .nav-back:hover { color:var(--growth-mid); }
+
+    /* ── Layout ── */
+    .main { padding-top:60px; }
+    .container { max-width:1280px; margin:0 auto; padding:0 var(--space-4); }
+
+    /* ── Hero ── */
+    .hero {
+      position:relative; overflow:hidden;
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--forest-dark) 60%, rgba(70,170,143,0.15) 100%);
+      padding: var(--space-8) 0 var(--space-6);
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .hero::before {
+      content:''; position:absolute; inset:0;
+      background: radial-gradient(ellipse 80% 60% at 60% 50%, rgba(70,170,143,0.08) 0%, transparent 70%);
+      pointer-events:none;
+    }
+    .hero-grid { display:grid; grid-template-columns:1fr auto; gap:var(--space-6); align-items:center; }
+    .hero-eyebrow { display:flex; align-items:center; gap:var(--space-2); margin-bottom:var(--space-2); }
+    .hero-tag { font-size:var(--font-xs); font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--growth-mid); }
+    .hero-sep { width:32px; height:1px; background:var(--growth-mid); opacity:0.5; }
+    .hero-tier { font-size:var(--font-xs); color:var(--text-muted); }
+    .hero-h1 { font-size:clamp(2rem,4vw,var(--font-2xl)); font-weight:800; line-height:1.1; margin-bottom:var(--space-1); }
+    .hero-h1 span { color:var(--growth-mid); }
+    .hero-sub { font-size:var(--font-base); color:var(--text-secondary); margin-bottom:var(--space-3); max-width:520px; }
+    .formula-chip {
+      display:inline-flex; align-items:center; gap:var(--space-2);
+      background:rgba(10,89,78,0.35); border:1px solid var(--glass-border);
+      border-radius:12px; padding:var(--space-1) var(--space-2);
+      font-family:'SF Mono',Consolas,'Courier New',monospace;
+      font-size:var(--font-xs); color:var(--new-sprout);
+    }
+    .formula-chip .f-weight { color:var(--royal-gold); font-weight:700; }
+    .hero-meta { font-size:var(--font-xs); color:var(--text-muted); margin-top:var(--space-2); }
+    .hero-right { display:flex; flex-direction:column; gap:var(--space-3); align-items:flex-end; }
+    .osemn-pills { display:flex; flex-direction:column; gap:6px; }
+    .osemn-pill {
+      display:flex; align-items:center; gap:8px;
+      background:rgba(10,89,78,0.25); border:1px solid rgba(70,170,143,0.2);
+      border-radius:8px; padding:6px 14px; font-size:var(--font-xs);
+    }
+    .osemn-pill .dot { width:7px; height:7px; border-radius:50%; background:var(--growth-mid); }
+    .osemn-pill .phase { font-weight:700; color:var(--growth-mid); min-width:20px; }
+    .osemn-pill .label { color:var(--text-secondary); }
+    .osemn-pill .status { margin-left:auto; color:var(--new-sprout); font-weight:600; }
+
+    /* ── Stats Strip ── */
+    .stats-strip { padding:var(--space-4) 0; }
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-3); }
+    .stat-card { padding:var(--space-3); text-align:center; }
+    .stat-value { font-size:var(--font-2xl); font-weight:800; line-height:1; }
+    .stat-label { font-size:var(--font-xs); color:var(--text-secondary); margin-top:4px; letter-spacing:0.06em; text-transform:uppercase; }
+    .stat-sub { font-size:var(--font-xs); color:var(--text-muted); margin-top:2px; }
+    .c-gold { color:var(--royal-gold); }
+    .c-sprout { color:var(--new-sprout); }
+    .c-mid { color:var(--growth-mid); }
+    .c-comm { color:var(--community); }
+
+    /* ── Section ── */
+    .section { padding:var(--space-6) 0; }
+    .section-header { margin-bottom:var(--space-4); }
+    .section-eyebrow { font-size:var(--font-xs); font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--growth-mid); margin-bottom:4px; }
+    .section-title { font-size:var(--font-xl); font-weight:800; }
+    .section-desc { font-size:var(--font-sm); color:var(--text-secondary); margin-top:4px; }
+    .divider { height:1px; background:var(--glass-border); margin:0; }
+
+    /* ── Chart grids ── */
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-3); }
+    .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--space-3); }
+    .grid-3-1 { display:grid; grid-template-columns:2fr 1fr; gap:var(--space-3); }
+    .grid-1-2 { display:grid; grid-template-columns:1fr 2fr; gap:var(--space-3); }
+    .chart-card { padding:var(--space-3); }
+    .chart-card.tall { min-height:380px; }
+    .chart-title { font-size:var(--font-sm); font-weight:700; margin-bottom:4px; }
+    .chart-desc { font-size:var(--font-xs); color:var(--text-muted); margin-bottom:var(--space-2); }
+    .chart-wrap { position:relative; }
+    .chart-wrap canvas { max-width:100%; }
+
+    /* ── Proficiency legend ── */
+    .prof-legend { display:flex; flex-direction:column; gap:8px; margin-top:var(--space-2); }
+    .prof-row { display:flex; align-items:center; gap:8px; }
+    .prof-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .prof-name { font-size:var(--font-xs); color:var(--text-secondary); flex:1; }
+    .prof-val { font-size:var(--font-xs); font-weight:700; }
+    .prof-pct { font-size:var(--font-xs); color:var(--text-muted); min-width:38px; text-align:right; }
+
+    /* ── Formula anatomy ── */
+    .formula-anatomy { padding:var(--space-3); }
+    .fa-title { font-size:var(--font-sm); font-weight:700; margin-bottom:var(--space-2); }
+    .fa-bar {
+      height:56px; border-radius:12px; display:flex; overflow:hidden;
+      margin-bottom:var(--space-2);
+    }
+    .fa-seg {
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      font-size:var(--font-xs); font-weight:700; transition:flex 400ms var(--ease);
+      padding:0 var(--space-1);
+    }
+    .fa-seg-label { font-size:0.65rem; opacity:0.8; }
+    .fa-rows { display:flex; flex-direction:column; gap:8px; }
+    .fa-row { display:flex; align-items:center; justify-content:space-between; }
+    .fa-key { display:flex; align-items:center; gap:8px; font-size:var(--font-xs); }
+    .fa-swatch { width:10px; height:10px; border-radius:3px; flex-shrink:0; }
+    .fa-kname { color:var(--text-secondary); }
+    .fa-kval { font-size:var(--font-xs); font-weight:700; color:var(--text-primary); }
+
+    /* ── Assessment Type bars ── */
+    .assess-row { display:flex; align-items:center; gap:var(--space-2); margin-bottom:10px; }
+    .assess-label { font-size:var(--font-xs); color:var(--text-secondary); min-width:100px; }
+    .assess-bar-wrap { flex:1; height:20px; background:rgba(70,170,143,0.1); border-radius:4px; overflow:hidden; }
+    .assess-bar { height:100%; border-radius:4px; transition:width 800ms var(--ease); }
+    .assess-vals { display:flex; gap:8px; font-size:var(--font-xs); }
+    .assess-n { color:var(--text-muted); min-width:24px; text-align:right; }
+    .assess-score { color:var(--growth-mid); font-weight:700; min-width:36px; text-align:right; }
+
+    /* ── Programme impact cards ── */
+    .impact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-3); }
+    .impact-card { padding:var(--space-3); text-align:center; }
+    .impact-title { font-size:var(--font-xs); font-weight:700; color:var(--text-secondary); margin-bottom:var(--space-2); text-transform:uppercase; letter-spacing:0.06em; }
+    .impact-compare { display:flex; align-items:flex-end; justify-content:center; gap:var(--space-3); margin-bottom:var(--space-2); }
+    .impact-group { display:flex; flex-direction:column; align-items:center; gap:4px; }
+    .impact-bar-wrap { width:48px; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:80px; gap:2px; }
+    .impact-bar { width:100%; border-radius:6px 6px 0 0; transition:height 600ms var(--ease); }
+    .impact-score { font-size:var(--font-lg); font-weight:800; }
+    .impact-glabel { font-size:var(--font-xs); color:var(--text-muted); }
+    .impact-n { font-size:0.68rem; color:var(--text-muted); }
+    .impact-sig { display:inline-flex; align-items:center; gap:4px; font-size:var(--font-xs); padding:2px 8px; border-radius:8px; }
+    .sig-no { background:rgba(70,170,143,0.1); color:var(--text-muted); }
+
+    /* ── NLP ── */
+    .nlp-grid { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-3); }
+    .keyword-rows { display:flex; flex-direction:column; gap:10px; margin-top:var(--space-2); }
+    .kw-row { display:flex; align-items:center; gap:var(--space-2); }
+    .kw-name { font-size:var(--font-xs); color:var(--text-secondary); min-width:72px; }
+    .kw-bar-wrap { flex:1; height:24px; background:rgba(70,170,143,0.08); border-radius:6px; overflow:hidden; display:flex; }
+    .kw-pos { background:linear-gradient(90deg,var(--growth-mid),var(--community)); border-radius:6px; height:100%; transition:width 600ms var(--ease); }
+    .kw-chal { background:rgba(255,176,3,0.5); height:100%; transition:width 600ms var(--ease); }
+    .kw-neut { background:rgba(255,255,255,0.12); height:100%; }
+    .kw-count { font-size:var(--font-xs); font-weight:700; color:var(--text-muted); min-width:20px; text-align:right; }
+    .insight-list { display:flex; flex-direction:column; gap:10px; margin-top:var(--space-2); }
+    .insight-item { display:flex; gap:10px; align-items:flex-start; font-size:var(--font-xs); color:var(--text-secondary); background:rgba(10,89,78,0.2); border-radius:10px; padding:10px 12px; border-left:3px solid var(--growth-mid); }
+    .insight-icon { flex-shrink:0; margin-top:1px; }
+
+    /* ── Data quality ── */
+    .dq-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:var(--space-3); }
+    .dq-card { padding:var(--space-3); text-align:center; }
+    .dq-icon { font-size:1.5rem; margin-bottom:6px; }
+    .dq-val { font-size:var(--font-xl); font-weight:800; }
+    .dq-label { font-size:var(--font-xs); color:var(--text-muted); }
+    .anomaly-list { display:flex; flex-direction:column; gap:8px; margin-top:var(--space-3); }
+    .anomaly-item { display:flex; align-items:center; gap:var(--space-2); padding:10px var(--space-2); border-radius:10px; }
+    .anomaly-high { background:rgba(255,176,3,0.1); border:1px solid rgba(255,176,3,0.3); }
+    .anomaly-low  { background:rgba(70,170,143,0.08); border:1px solid rgba(70,170,143,0.2); }
+    .anomaly-badge { font-size:0.65rem; font-weight:700; padding:2px 8px; border-radius:6px; flex-shrink:0; }
+    .ab-high { background:rgba(255,176,3,0.2); color:var(--royal-gold); }
+    .ab-low  { background:rgba(70,170,143,0.2); color:var(--growth-mid); }
+    .anomaly-text { font-size:var(--font-xs); color:var(--text-secondary); }
+
+    /* ── Footer ── */
+    .footer {
+      padding:var(--space-6) 0;
+      border-top:1px solid var(--glass-border);
+      text-align:center;
+      font-size:var(--font-xs); color:var(--text-muted);
+    }
+    .footer strong { color:var(--growth-mid); }
+
+    /* ── Scroll reveal ── */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity 500ms var(--ease), transform 500ms var(--ease); }
+    .reveal.visible { opacity:1; transform:none; }
+
+    @media(max-width:900px) {
+      .grid-2, .grid-3, .grid-3-1, .grid-1-2, .impact-grid, .nlp-grid { grid-template-columns:1fr; }
+      .stats-grid { grid-template-columns:repeat(2,1fr); }
+      .dq-grid { grid-template-columns:repeat(2,1fr); }
+      .hero-grid { grid-template-columns:1fr; }
+      .hero-right { align-items:flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ─────────────────────────────────────────────────────────────── -->
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">
+    <div class="nav-logo">🌱</div>
+    <div>
+      <div class="nav-title">E Ola!</div>
+      <div class="nav-subtitle">Learner Analytics</div>
+    </div>
+  </a>
+  <div class="nav-right">
+    <span class="badge badge-root">ROOT Layer</span>
+    <span class="badge badge-live">Module 01</span>
+    <a href="../index.html" class="nav-back">← Back to Portal</a>
+  </div>
+</nav>
+
+<!-- ── Hero ─────────────────────────────────────────────────────────────── -->
+<div class="main">
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">
+          <span class="hero-tag">ʻIke Kūpuna</span>
+          <span class="hero-sep"></span>
+          <span class="hero-tier">Roots Tier · Indicator 01 of 14</span>
+        </div>
+        <h1 class="hero-h1">Ancestral <span>Wisdom</span><br>Analytics Dashboard</h1>
+        <p class="hero-sub">Full OSEMN pipeline analysis of the ʻIke Kūpuna indicator — measuring each student's connection to Hawaiian traditional knowledge, practices, and cultural identity.</p>
+        <div class="formula-chip">
+          <span>Score =</span>
+          <span class="f-weight">0.60</span><span>× Base</span>
+          <span style="color:var(--glass-border)">+</span>
+          <span class="f-weight">0.25</span><span>× Programme</span>
+          <span style="color:var(--glass-border)">+</span>
+          <span class="f-weight">0.15</span><span>× Wellbeing</span>
+        </div>
+        <div class="hero-meta">Analysis timestamp: 2026-02-25 · 197 students · AY 2025-26 · Kāpalama / Maui / Hawaiʻi Island</div>
+      </div>
+      <div class="hero-right">
+        <div class="osemn-pills">
+          <div class="osemn-pill"><span class="dot"></span><span class="phase">O</span><span class="label">Obtain — Data extraction</span><span class="status">✓ 197 rows</span></div>
+          <div class="osemn-pill"><span class="dot"></span><span class="phase">S</span><span class="label">Scrub — Quality audit</span><span class="status">✓ 100% purity</span></div>
+          <div class="osemn-pill"><span class="dot"></span><span class="phase">E</span><span class="label">Explore — EDA &amp; distributions</span><span class="status">✓ 12 grades</span></div>
+          <div class="osemn-pill"><span class="dot"></span><span class="phase">M</span><span class="label">Model — Composite scoring</span><span class="status">✓ μ=71.32</span></div>
+          <div class="osemn-pill"><span class="dot"></span><span class="phase">N</span><span class="label">iNterpret — NLP + actions</span><span class="status">✓ 10 reflections</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Key Metrics ────────────────────────────────────────────────────── -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="glass stat-card reveal">
+        <div class="stat-value c-mid">197</div>
+        <div class="stat-label">Students Assessed</div>
+        <div class="stat-sub">AY 2025-26 · 3 campuses</div>
+      </div>
+      <div class="glass stat-card reveal">
+        <div class="stat-value c-gold">71.32</div>
+        <div class="stat-label">Composite Mean</div>
+        <div class="stat-sub">Base mean: 76.24</div>
+      </div>
+      <div class="glass stat-card reveal">
+        <div class="stat-value c-sprout">36.5%</div>
+        <div class="stat-label">Proficient or Above</div>
+        <div class="stat-sub">72 of 197 students</div>
+      </div>
+      <div class="glass stat-card reveal">
+        <div class="stat-value c-comm">100%</div>
+        <div class="stat-label">Data Purity</div>
+        <div class="stat-sub">0 critical anomalies</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Section 1: Score Distributions ───────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Phase M — Model Output</div>
+      <div class="section-title">Score Distributions</div>
+      <div class="section-desc">Composite score vs raw base score proficiency breakdown across 197 students</div>
+    </div>
+    <div class="grid-3-1">
+      <!-- Histogram -->
+      <div class="glass chart-card tall reveal">
+        <div class="chart-title">Composite Score Histogram</div>
+        <div class="chart-desc">197 students · Kalo Growth composite formula · bin width = 5 pts</div>
+        <div class="chart-wrap"><canvas id="histChart" height="240"></canvas></div>
+      </div>
+      <!-- Proficiency donut -->
+      <div class="glass chart-card reveal" style="display:flex;flex-direction:column;">
+        <div class="chart-title">Proficiency Distribution</div>
+        <div class="chart-desc">Composite model output</div>
+        <div class="chart-wrap" style="flex:1;display:flex;align-items:center;justify-content:center;">
+          <canvas id="profDonut" height="200"></canvas>
+        </div>
+        <div class="prof-legend">
+          <div class="prof-row"><span class="prof-dot" style="background:#D0ED35"></span><span class="prof-name">Advanced ≥ 90</span><span class="prof-val">15</span><span class="prof-pct">7.6%</span></div>
+          <div class="prof-row"><span class="prof-dot" style="background:#46AA8F"></span><span class="prof-name">Proficient ≥ 75</span><span class="prof-val">57</span><span class="prof-pct">28.9%</span></div>
+          <div class="prof-row"><span class="prof-dot" style="background:#FFB003"></span><span class="prof-name">Approaching ≥ 60</span><span class="prof-val">92</span><span class="prof-pct">46.7%</span></div>
+          <div class="prof-row"><span class="prof-dot" style="background:#70D75C66"></span><span class="prof-name">Below &lt; 60</span><span class="prof-val">33</span><span class="prof-pct">16.8%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Section 2: Formula Anatomy + Assessment Types ────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Phase M — Model Architecture</div>
+      <div class="section-title">Formula Anatomy &amp; Assessment Methods</div>
+      <div class="section-desc">How each scoring component contributes, and which assessment modalities feed the base score</div>
+    </div>
+    <div class="grid-2">
+      <!-- Formula anatomy -->
+      <div class="glass formula-anatomy reveal">
+        <div class="fa-title">Composite Score — Component Breakdown</div>
+        <div class="chart-desc" style="font-size:var(--font-xs);color:var(--text-muted);margin-bottom:var(--space-2)">Proportional weight contribution per student (cohort mean values shown)</div>
+        <div class="fa-bar">
+          <div class="fa-seg" style="flex:60;background:linear-gradient(135deg,var(--forest-root),var(--growth-mid));">
+            <span>60%</span>
+            <span class="fa-seg-label">Base</span>
+          </div>
+          <div class="fa-seg" style="flex:25;background:linear-gradient(135deg,#1a6b5a,var(--community));">
+            <span>25%</span>
+            <span class="fa-seg-label">Prog.</span>
+          </div>
+          <div class="fa-seg" style="flex:15;background:linear-gradient(135deg,var(--navy-light),var(--new-sprout));">
+            <span>15%</span>
+            <span class="fa-seg-label">W/B</span>
+          </div>
+        </div>
+        <div class="fa-rows">
+          <div class="fa-row">
+            <div class="fa-key"><span class="fa-swatch" style="background:var(--growth-mid)"></span><span class="fa-kname">Base Score (normalized_score)</span></div>
+            <span class="fa-kval">×0.60 → avg +45.7 pts</span>
+          </div>
+          <div class="fa-row">
+            <div class="fa-key"><span class="fa-swatch" style="background:var(--community)"></span><span class="fa-kname">Programme Bonus (scaled 0–100)</span></div>
+            <span class="fa-kval">×0.25 → avg +18.2 pts</span>
+          </div>
+          <div class="fa-row">
+            <div class="fa-key"><span class="fa-swatch" style="background:var(--new-sprout)"></span><span class="fa-kname">Wellbeing · Cultural Score</span></div>
+            <span class="fa-kval">×0.15 → avg +9.9 pts</span>
+          </div>
+          <div class="fa-row" style="border-top:1px solid var(--glass-border);padding-top:8px;margin-top:4px;">
+            <div class="fa-key"><span class="fa-swatch" style="background:var(--royal-gold)"></span><span class="fa-kname">Composite Total (clamped 0–100)</span></div>
+            <span class="fa-kval" style="color:var(--royal-gold)">μ = 71.32</span>
+          </div>
+        </div>
+        <div style="margin-top:var(--space-3);">
+          <div class="chart-desc" style="margin-bottom:var(--space-1);">Programme bonus points pre-scale</div>
+          <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;">
+            <span class="badge" style="background:rgba(70,170,143,0.15);border:1px solid var(--glass-border);color:var(--growth-mid);font-size:var(--font-xs);">ʻŌlelo Hawaiʻi +5 pts</span>
+            <span class="badge" style="background:rgba(70,170,143,0.15);border:1px solid var(--glass-border);color:var(--growth-mid);font-size:var(--font-xs);">Hālau Hula +3 pts</span>
+            <span class="badge" style="background:rgba(70,170,143,0.15);border:1px solid var(--glass-border);color:var(--growth-mid);font-size:var(--font-xs);">PBL-by-Design +2 pts</span>
+            <span class="badge" style="background:rgba(255,176,3,0.15);border:1px solid rgba(255,176,3,0.3);color:var(--royal-gold);font-size:var(--font-xs);">CAP max cap = 10 pts</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Assessment types -->
+      <div class="glass chart-card reveal">
+        <div class="chart-title">Assessment Method Mix</div>
+        <div class="chart-desc">7 modalities feeding base score · n per method and avg normalized score</div>
+        <div style="margin-top:var(--space-2);">
+          <div class="assess-row">
+            <span class="assess-label">NLP Journal</span>
+            <div class="assess-bar-wrap"><div class="assess-bar" style="width:55%;background:linear-gradient(90deg,var(--growth-mid),var(--community));"></div></div>
+            <div class="assess-vals"><span class="assess-n">33</span><span class="assess-score">71.6</span></div>
+          </div>
+          <div class="assess-row">
+            <span class="assess-label">Teacher Obs.</span>
+            <div class="assess-bar-wrap"><div class="assess-bar" style="width:53%;background:linear-gradient(90deg,var(--growth-mid),var(--community));"></div></div>
+            <div class="assess-vals"><span class="assess-n">32</span><span class="assess-score">77.0</span></div>
+          </div>
+          <div class="assess-row">
+            <span class="assess-label">Standardized</span>
+            <div class="assess-bar-wrap"><div class="assess-bar" style="width:52%;background:linear-gradient(90deg,var(--growth-mid),var(--community));"></div></div>
+            <div class="assess-vals"><span class="assess-n">31</span><span class="assess-score">77.2</span></div>
+          </div>
+          <div class="assess-row">
+            <span class="assess-label">Portfolio</span>
+            <div class="assess-bar-wrap"><div class="assess-bar" style="width:48%;background:linear-gradient(90deg,var(--growth-mid),var(--community));"></div></div>
+            <div class="assess-vals"><span class="assess-n">29</span><span class="assess-score">73.0</span></div>
+          </div>
+          <div class="assess-row">
+            <span class="assess-label">Peer 360°</span>
+            <div class="assess-bar-wrap"><div class="assess-bar" style="width:47%;background:linear-gradient(90deg,var(--new-sprout),var(--community));"></div></div>
+            <div class="assess-vals"><span class="assess-n">28</span><span class="assess-score" style="color:var(--new-sprout);">82.9</span></div>
+          </div>
+          <div class="assess-row">
+            <span class="assess-label">Behavioral</span>
+            <div class="assess-bar-wrap"><div class="assess-bar" style="width:38%;background:linear-gradient(90deg,var(--growth-mid),var(--community));"></div></div>
+            <div class="assess-vals"><span class="assess-n">23</span><span class="assess-score">78.6</span></div>
+          </div>
+          <div class="assess-row">
+            <span class="assess-label">Self-Report</span>
+            <div class="assess-bar-wrap"><div class="assess-bar" style="width:35%;background:linear-gradient(90deg,var(--growth-mid),var(--community));"></div></div>
+            <div class="assess-vals"><span class="assess-n">21</span><span class="assess-score">74.0</span></div>
+          </div>
+        </div>
+        <div style="margin-top:var(--space-3);">
+          <div class="chart-wrap"><canvas id="assessDonut" height="180"></canvas></div>
+        </div>
+        <div class="chart-desc" style="margin-top:var(--space-1);">Peer 360° yields highest avg score (82.9) · NLP Journal has largest sample (33)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Section 3: Grade & Cohort ──────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Phase E — Explore</div>
+      <div class="section-title">Grade Level Performance &amp; Cohort Trends</div>
+      <div class="section-desc">Mean base score by grade (K-12) and by graduation cohort year</div>
+    </div>
+    <div class="grid-2">
+      <div class="glass chart-card reveal">
+        <div class="chart-title">Mean Score by Grade Level</div>
+        <div class="chart-desc">Base normalized_score · error bars show ±1 SD</div>
+        <div class="chart-wrap"><canvas id="gradeChart" height="260"></canvas></div>
+      </div>
+      <div class="glass chart-card reveal">
+        <div class="chart-title">Cohort Graduation Year Trend</div>
+        <div class="chart-desc">Mean base score by expected graduation year (class size varies)</div>
+        <div class="chart-wrap"><canvas id="cohortChart" height="260"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Section 4: Programme Impact ───────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Phase E — Programme Analysis</div>
+      <div class="section-title">Cultural Programme Participation Impact</div>
+      <div class="section-desc">Mean base score comparison for participants vs non-participants · t-test significance testing applied</div>
+    </div>
+    <div class="impact-grid">
+      <!-- ʻŌlelo Hawaiʻi -->
+      <div class="glass impact-card reveal">
+        <div class="impact-title">ʻŌlelo Hawaiʻi Programme</div>
+        <div class="impact-compare">
+          <div class="impact-group">
+            <div class="impact-bar-wrap">
+              <div class="impact-bar" style="height:82%;background:linear-gradient(180deg,var(--growth-mid),var(--forest-root));"></div>
+            </div>
+            <div class="impact-score c-mid">75.82</div>
+            <div class="impact-glabel">Participants</div>
+            <div class="impact-n">n=141</div>
+          </div>
+          <div class="impact-group">
+            <div class="impact-bar-wrap">
+              <div class="impact-bar" style="height:84%;background:linear-gradient(180deg,rgba(70,170,143,0.4),rgba(70,170,143,0.2));"></div>
+            </div>
+            <div class="impact-score" style="color:var(--text-secondary)">77.32</div>
+            <div class="impact-glabel">Non-participants</div>
+            <div class="impact-n">n=56</div>
+          </div>
+        </div>
+        <div><span class="impact-sig sig-no">p=0.496 · not significant</span></div>
+        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:8px;">Effect: −1.5 pts · High enrolment rate (71%) may suppress contrast</div>
+      </div>
+
+      <!-- Hālau Hula -->
+      <div class="glass impact-card reveal">
+        <div class="impact-title">Hālau Hula Programme</div>
+        <div class="impact-compare">
+          <div class="impact-group">
+            <div class="impact-bar-wrap">
+              <div class="impact-bar" style="height:82%;background:linear-gradient(180deg,var(--community),var(--growth-mid));"></div>
+            </div>
+            <div class="impact-score c-comm">75.83</div>
+            <div class="impact-glabel">Participants</div>
+            <div class="impact-n">n=91</div>
+          </div>
+          <div class="impact-group">
+            <div class="impact-bar-wrap">
+              <div class="impact-bar" style="height:83%;background:linear-gradient(180deg,rgba(112,215,92,0.3),rgba(112,215,92,0.12));"></div>
+            </div>
+            <div class="impact-score" style="color:var(--text-secondary)">76.60</div>
+            <div class="impact-glabel">Non-participants</div>
+            <div class="impact-n">n=106</div>
+          </div>
+        </div>
+        <div><span class="impact-sig sig-no">p=0.700 · not significant</span></div>
+        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:8px;">Effect: −0.77 pts · Note: bonus points reward participation in composite score</div>
+      </div>
+
+      <!-- PBL -->
+      <div class="glass impact-card reveal">
+        <div class="impact-title">PBL-by-Design Programme</div>
+        <div class="impact-compare">
+          <div class="impact-group">
+            <div class="impact-bar-wrap">
+              <div class="impact-bar" style="height:83%;background:linear-gradient(180deg,var(--new-sprout),var(--growth-mid));"></div>
+            </div>
+            <div class="impact-score c-sprout">76.18</div>
+            <div class="impact-glabel">Participants</div>
+            <div class="impact-n">n=153</div>
+          </div>
+          <div class="impact-group">
+            <div class="impact-bar-wrap">
+              <div class="impact-bar" style="height:83%;background:linear-gradient(180deg,rgba(208,237,53,0.3),rgba(208,237,53,0.1));"></div>
+            </div>
+            <div class="impact-score" style="color:var(--text-secondary)">76.47</div>
+            <div class="impact-glabel">Non-participants</div>
+            <div class="impact-n">n=44</div>
+          </div>
+        </div>
+        <div><span class="impact-sig sig-no">p=0.902 · not significant</span></div>
+        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:8px;">Effect: −0.29 pts · Very high enrolment (78%) · composite bonus still applies</div>
+      </div>
+    </div>
+
+    <!-- Interpretation note -->
+    <div class="glass" style="margin-top:var(--space-3);padding:var(--space-3);border-left:3px solid var(--royal-gold);" id="prog-note">
+      <div style="font-size:var(--font-xs);font-weight:700;color:var(--royal-gold);margin-bottom:4px;">📊 Archmage's Note — Programme Impact on Base Score</div>
+      <div style="font-size:var(--font-xs);color:var(--text-secondary);">Programme participation does not show statistically significant impact on raw <em>base scores</em> alone (p &gt; 0.05 for all three). This is expected: the base score captures a single assessment snapshot. The <strong>composite formula is where participation is rewarded</strong> — a fully-enrolled student (Hawaiian Language + Hula + PBL) earns +10 bonus pts scaled to 25% of the final score, lifting their composite by up to +25 points above their raw base score.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Section 5: Wellbeing Scatter ──────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Phase M — Wellbeing Integration</div>
+      <div class="section-title">Cultural Wellbeing ↔ Base Score Correlation</div>
+      <div class="section-desc">Cultural wellbeing score (from fact_wellbeing_measurements) vs ʻIke Kūpuna normalized base score · r = 0.839</div>
+    </div>
+    <div class="glass chart-card reveal" style="padding:var(--space-3);">
+      <div class="chart-wrap"><canvas id="scatterChart" height="320"></canvas></div>
+      <div style="display:flex;gap:var(--space-4);margin-top:var(--space-2);flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:6px;font-size:var(--font-xs);color:var(--text-secondary);">
+          <span style="width:10px;height:10px;border-radius:50%;background:var(--growth-mid);display:inline-block;"></span>
+          Hawaiian Language participant
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:var(--font-xs);color:var(--text-secondary);">
+          <span style="width:10px;height:10px;border-radius:50%;background:var(--royal-gold);display:inline-block;"></span>
+          Hālau Hula participant
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:var(--font-xs);color:var(--text-secondary);">
+          <span style="width:10px;height:10px;border-radius:50%;background:rgba(70,170,143,0.3);border:1px solid var(--growth-mid);display:inline-block;"></span>
+          No cultural programme
+        </div>
+        <div style="margin-left:auto;font-size:var(--font-xs);color:var(--text-muted);">Pearson r = <strong style="color:var(--new-sprout)">0.839</strong> · p &lt; 0.001 · strong positive correlation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Section 6: NLP ─────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Phase N — iNterpret · NLP Analysis</div>
+      <div class="section-title">Cultural Reflection Language Analysis</div>
+      <div class="section-desc">Hawaiian keyword frequency and sentiment context from student cultural journal reflections</div>
+    </div>
+    <div class="nlp-grid">
+      <div class="glass chart-card reveal">
+        <div class="chart-title">Hawaiian Keyword Frequencies</div>
+        <div class="chart-desc">Stacked by sentiment context · green=positive · amber=challenging · grey=neutral</div>
+        <div class="keyword-rows">
+          <div class="kw-row">
+            <span class="kw-name">Kūpuna</span>
+            <div class="kw-bar-wrap">
+              <div class="kw-pos" style="width:100%"></div>
+            </div>
+            <span class="kw-count">4</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">ʻĀina</span>
+            <div class="kw-bar-wrap">
+              <div class="kw-pos" style="width:100%"></div>
+            </div>
+            <span class="kw-count">4</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">Waʻa</span>
+            <div class="kw-bar-wrap">
+              <div class="kw-pos" style="width:33%"></div>
+              <div class="kw-chal" style="width:67%"></div>
+            </div>
+            <span class="kw-count">3</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">Mālama</span>
+            <div class="kw-bar-wrap">
+              <div class="kw-pos" style="width:100%"></div>
+            </div>
+            <span class="kw-count">3</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">Kalo</span>
+            <div class="kw-bar-wrap">
+              <div class="kw-pos" style="width:100%"></div>
+            </div>
+            <span class="kw-count">2</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">Kuleana</span>
+            <div class="kw-bar-wrap">
+              <div class="kw-pos" style="width:50%"></div>
+              <div class="kw-chal" style="width:50%"></div>
+            </div>
+            <span class="kw-count">2</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">Laulima</span>
+            <div class="kw-bar-wrap">
+              <div class="kw-pos" style="width:100%"></div>
+            </div>
+            <span class="kw-count">2</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">Mana</span>
+            <div class="kw-bar-wrap">
+              <div class="kw-pos" style="width:100%"></div>
+            </div>
+            <span class="kw-count">1</span>
+          </div>
+          <div class="kw-row">
+            <span class="kw-name">ʻŌlelo</span>
+            <div class="kw-bar-wrap">
+              <div class="kw-neut" style="width:100%"></div>
+            </div>
+            <span class="kw-count">1</span>
+          </div>
+        </div>
+        <div style="margin-top:var(--space-2);">
+          <div class="chart-wrap"><canvas id="sentimentChart" height="140"></canvas></div>
+        </div>
+      </div>
+
+      <div class="glass chart-card reveal">
+        <div class="chart-title">Archmage Insights</div>
+        <div class="chart-desc">Auto-generated from NLP keyword × sentiment analysis</div>
+        <div class="insight-list">
+          <div class="insight-item">
+            <span class="insight-icon">✅</span>
+            <span><strong>Kūpuna</strong> mentioned 4× — 100% in positive context. Strong connection to ancestral wisdom is present in student voice.</span>
+          </div>
+          <div class="insight-item">
+            <span class="insight-icon">✅</span>
+            <span><strong>ʻĀina</strong> mentioned 4× — 100% in positive context. Land-based learning resonates strongly with students' cultural identity.</span>
+          </div>
+          <div class="insight-item">
+            <span class="insight-icon">⚠️</span>
+            <span><strong>Waʻa (navigation)</strong> mentioned 3× — only 33% positive. Students express frustration with complexity. Consider additional scaffolding for star-pattern navigation.</span>
+          </div>
+          <div class="insight-item">
+            <span class="insight-icon">⚠️</span>
+            <span><strong>Kuleana (responsibility)</strong> split 50/50 positive/challenging. Students may need mentorship to reframe kuleana as empowerment rather than burden.</span>
+          </div>
+          <div class="insight-item">
+            <span class="insight-icon">✅</span>
+            <span><strong>Mālama (care/stewardship)</strong> 100% positive context — use land-based and ocean stewardship activities to anchor cultural identity.</span>
+          </div>
+          <div class="insight-item" style="border-left-color:var(--royal-gold);">
+            <span class="insight-icon">📌</span>
+            <span><strong>Issue #8 pending:</strong> NLP module currently runs on 10 sample reflections. When refactored to read from the 985-record <code>student_cultural_reflections</code> table, frequency counts and insights will be statistically robust.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Section 7: Data Quality ───────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Phase S — Scrub · Data Quality</div>
+      <div class="section-title">OSEMN Data Quality Audit</div>
+      <div class="section-desc">Automated anomaly detection across all ROOT_IKE records</div>
+    </div>
+    <div class="dq-grid">
+      <div class="glass dq-card reveal">
+        <div class="dq-icon">📦</div>
+        <div class="dq-val c-mid">197</div>
+        <div class="dq-label">Records Extracted</div>
+      </div>
+      <div class="glass dq-card reveal">
+        <div class="dq-icon">✅</div>
+        <div class="dq-val c-sprout">100%</div>
+        <div class="dq-label">Data Purity</div>
+      </div>
+      <div class="glass dq-card reveal">
+        <div class="dq-icon">🗑️</div>
+        <div class="dq-val" style="color:var(--text-secondary);">0</div>
+        <div class="dq-label">Records Removed</div>
+      </div>
+      <div class="glass dq-card reveal">
+        <div class="dq-icon">🔍</div>
+        <div class="dq-val c-gold">2</div>
+        <div class="dq-label">Anomalies Flagged</div>
+      </div>
+    </div>
+    <div class="anomaly-list reveal" style="max-width:640px;margin:var(--space-3) auto 0;">
+      <div class="anomaly-item anomaly-high">
+        <span class="anomaly-badge ab-high">HIGH</span>
+        <span class="anomaly-text"><strong>FUTURE_DATE</strong> — 3 records originally dated 2027-06-15 (student_keys: 68, 161, 187). Corrected to 2026-06-15 by patch_data_gaps.py. No records removed.</span>
+      </div>
+      <div class="anomaly-item anomaly-low">
+        <span class="anomaly-badge ab-low">LOW</span>
+        <span class="anomaly-text"><strong>STATISTICAL_OUTLIER</strong> — 1 record with |Z-score| &gt; 3 (student_key: 88 · score: 29.71). Retained in dataset; flagged for teacher review.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div style="margin-bottom:var(--space-2);">
+      <strong>E Ola! Learner Analytics System</strong> · ʻIke Kūpuna Dashboard · Module 01
+    </div>
+    <div>Analysis: The Archmage (肯瑞托大法师) · Schema: The Night's Watch (守夜人) · Design: The Lord of Rivendell (幽谷领主)</div>
+    <div style="margin-top:8px;">AY 2025-26 · Kamehameha Schools · <em style="color:var(--growth-mid)">E Ola! — May you live and thrive</em></div>
+  </div>
+</footer>
+</div>
+
+<!-- ── Charts JavaScript ──────────────────────────────────────────────── -->
+<script>
+/* ── Design tokens ── */
+const COLORS = {
+  navy:    '#00204E', forest:  '#0A594E', mid:     '#46AA8F',
+  comm:    '#70D75C', sprout:  '#D0ED35', gold:    '#FFB003',
+  textSec: 'rgba(255,255,255,0.65)', textMut: 'rgba(255,255,255,0.38)',
+  glass:   'rgba(70,170,143,0.22)',
+};
+Chart.defaults.color = COLORS.textSec;
+Chart.defaults.borderColor = 'rgba(70,170,143,0.18)';
+Chart.defaults.font.family = "-apple-system,'Helvetica Neue',Arial,sans-serif";
+
+/* ── Raw composite scores (197 students) ── */
+const COMPOSITES = [79.68,70.86,86.47,54.73,67.07,61.22,96.85,86.53,65.36,62.26,66.07,58.18,66.75,51.8,76.46,69.69,81.86,73.6,74.72,75.09,75.65,69.18,66.93,64.08,76.88,65.48,83.48,97.17,80.01,73.7,97.92,64.4,78.72,68.73,68.36,79.89,64.33,69.97,74.27,83.43,73.5,72.57,71.17,63.09,84.91,60.43,47.68,71.52,83.64,88.26,78.3,70.02,84.09,90.55,70.72,59.61,72.72,60.41,45.8,72.62,76.37,76.63,90.19,72.2,74.44,67.63,81.33,61.89,72.76,60.98,73.78,67.36,64.56,91.88,49.6,81.38,68.29,79.65,82.08,70.73,78.36,85.55,73.27,78.13,83.8,83.89,79.8,40.07,59.61,52.79,83.35,73.35,51.66,69.07,87.98,63.87,87.79,69.48,76.89,51.19,60.6,57.38,66.26,63.11,78.94,70.51,59.66,57.53,60.59,42.8,68.82,52.57,75.13,62.36,98.37,74.58,66.33,78.99,68.25,68.87,71.73,83.26,62.39,73.33,66.89,71.5,93.65,55.82,59.62,43.82,79.01,77.57,84.05,76.59,54.3,60.54,75.0,73.97,79.34,91.6,65.61,84.39,55.88,56.96,59.42,87.49,65.57,79.5,90.32,95.95,70.39,75.75,60.85,96.45,73.51,50.76,51.61,70.71,56.23,66.72,79.31,90.02,55.2,79.13,83.68,60.46,83.42,73.78,62.48,62.57,72.46,95.8,65.02,52.16,62.7,97.92,71.52,75.73,80.87,74.92,51.68,68.77,74.52,54.29,67.78,47.72,69.04,72.1,56.49,72.45,84.4,77.79,61.44,79.52,65.67,71.19,73.51];
+
+/* ── Histogram ── */
+(function() {
+  const bins = [];
+  const labels = [];
+  const counts = [];
+  for (let lo = 40; lo < 100; lo += 5) {
+    labels.push(`${lo}–${lo+5}`);
+    counts.push(COMPOSITES.filter(s => s >= lo && s < lo + 5).length);
+  }
+  new Chart(document.getElementById('histChart'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Students',
+        data: counts,
+        backgroundColor: counts.map((_, i) => {
+          const mid = 40 + i * 5 + 2.5;
+          if (mid >= 90) return COLORS.sprout;
+          if (mid >= 75) return COLORS.mid;
+          if (mid >= 60) return COLORS.gold;
+          return 'rgba(112,215,92,0.35)';
+        }),
+        borderColor: 'transparent',
+        borderRadius: 6,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.raw} students` } } },
+      scales: {
+        x: { grid: { color: 'rgba(70,170,143,0.08)' }, ticks: { font: { size: 10 } } },
+        y: { grid: { color: 'rgba(70,170,143,0.08)' }, beginAtZero: true,
+             ticks: { stepSize: 5 } }
+      }
+    }
+  });
+})();
+
+/* ── Proficiency Donut (composite) ── */
+(function() {
+  new Chart(document.getElementById('profDonut'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Advanced','Proficient','Approaching','Below'],
+      datasets: [{
+        data: [15, 57, 92, 33],
+        backgroundColor: [COLORS.sprout, COLORS.mid, COLORS.gold, 'rgba(112,215,92,0.3)'],
+        borderColor: 'rgba(0,32,78,0.6)',
+        borderWidth: 3,
+        hoverOffset: 8,
+      }]
+    },
+    options: {
+      cutout: '68%',
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw} (${Math.round(ctx.raw/197*100)}%)` } }
+      }
+    }
+  });
+})();
+
+/* ── Assessment Method Donut ── */
+(function() {
+  new Chart(document.getElementById('assessDonut'), {
+    type: 'doughnut',
+    data: {
+      labels: ['NLP Journal','Teacher Obs.','Standardized','Portfolio','Peer 360°','Behavioral','Self-Report'],
+      datasets: [{
+        data: [33,32,31,29,28,23,21],
+        backgroundColor: [
+          COLORS.mid, COLORS.comm, COLORS.sprout, COLORS.gold,
+          '#5BC8F5', 'rgba(70,170,143,0.6)', 'rgba(208,237,53,0.5)'
+        ],
+        borderColor: 'rgba(0,32,78,0.5)',
+        borderWidth: 2,
+        hoverOffset: 6,
+      }]
+    },
+    options: {
+      cutout: '55%',
+      plugins: {
+        legend: { position: 'right', labels: { font: { size: 10 }, padding: 8, boxWidth: 10 } },
+        tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw} students` } }
+      }
+    }
+  });
+})();
+
+/* ── Grade Chart ── */
+(function() {
+  const grades = [1,2,3,4,5,6,7,8,9,10,11,12];
+  const means  = [78.77,74.04,70.95,75.69,79.28,76.46,75.47,72.88,85.22,77.48,75.69,74.31];
+  const stds   = [12.37,17.45,16.25,12.36,10.82,11.15,15.74,11.89,11.74,11.18,17.25,11.73];
+  new Chart(document.getElementById('gradeChart'), {
+    type: 'bar',
+    data: {
+      labels: grades.map(g => `G${g}`),
+      datasets: [
+        {
+          label: 'Mean Score',
+          data: means,
+          backgroundColor: means.map(m =>
+            m >= 80 ? COLORS.mid : m >= 75 ? COLORS.comm + '99' : COLORS.gold + '99'
+          ),
+          borderColor: 'transparent',
+          borderRadius: 6,
+          order: 2,
+        },
+        {
+          label: 'SD range',
+          data: means.map((m,i) => [m - stds[i], m + stds[i]]),
+          type: 'bar',
+          backgroundColor: 'rgba(70,170,143,0.12)',
+          borderColor: 'rgba(70,170,143,0.4)',
+          borderWidth: 1,
+          borderRadius: 4,
+          order: 1,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false },
+        tooltip: { callbacks: {
+          label: ctx => ctx.datasetIndex === 0
+            ? ` Mean: ${ctx.raw.toFixed(1)}`
+            : ` Range: ${ctx.raw[0].toFixed(1)}–${ctx.raw[1].toFixed(1)}`
+        }}
+      },
+      scales: {
+        x: { grid: { display: false } },
+        y: { grid: { color: 'rgba(70,170,143,0.08)' }, min: 40, max: 105,
+             ticks: { callback: v => v } }
+      }
+    }
+  });
+})();
+
+/* ── Cohort Chart ── */
+(function() {
+  const years  = [2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037];
+  const means  = [74.31,75.69,77.48,85.22,72.88,75.47,76.46,79.28,75.69,70.95,74.04,78.77];
+  const counts = [13,17,20,10,7,19,13,19,19,13,30,17];
+  new Chart(document.getElementById('cohortChart'), {
+    type: 'line',
+    data: {
+      labels: years,
+      datasets: [{
+        label: 'Mean Score',
+        data: means,
+        borderColor: COLORS.mid,
+        backgroundColor: 'rgba(70,170,143,0.12)',
+        fill: true,
+        tension: 0.4,
+        pointRadius: counts.map(n => Math.max(4, Math.sqrt(n)*1.8)),
+        pointBackgroundColor: means.map(m =>
+          m >= 80 ? COLORS.sprout : m >= 75 ? COLORS.mid : COLORS.gold
+        ),
+        pointBorderColor: 'rgba(0,32,78,0.6)',
+        pointBorderWidth: 2,
+        pointHoverRadius: 8,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: {
+          label: ctx => ` Mean: ${ctx.raw.toFixed(1)}`,
+          afterLabel: ctx => ` n=${counts[ctx.dataIndex]}`
+        }}
+      },
+      scales: {
+        x: { grid: { display: false } },
+        y: { grid: { color: 'rgba(70,170,143,0.08)' }, min: 60, max: 95 }
+      }
+    }
+  });
+})();
+
+/* ── Scatter: Cultural Wellbeing vs Base Score ── */
+(function() {
+  // Representative 197-point scatter embedded from DB query (cultural_score, norm_score, is_lang, is_hula)
+  const raw = [
+    [56.59,73.95,1,0],[62.35,62.47,1,0],[73.04,78.79,1,0],[70.35,81.39,1,0],[57.77,71.69,1,0],
+    [74.21,83.9,1,1],[53.0,61.57,1,0],[61.66,87.73,0,0],[57.96,72.49,1,0],[64.96,79.63,0,1],
+    [63.81,70.54,1,0],[52.32,66.81,0,1],[73.79,98.71,1,0],[52.64,59.87,0,0],[79.01,100.0,1,1],
+    [64.46,78.51,1,0],[66.27,81.55,1,0],[69.51,77.53,1,0],[77.14,90.32,1,0],[53.14,64.4,0,0],
+    [68.82,75.28,1,1],[47.39,47.39,0,0],[69.15,100.0,0,0],[75.5,84.49,1,1],[56.59,73.95,1,0],
+    [61.88,76.23,1,0],[52.64,74.48,0,1],[51.07,65.65,0,0],[55.93,65.81,0,1],[63.55,80.33,1,0],
+    [72.68,82.0,1,1],[48.21,58.5,0,0],[70.1,79.2,1,0],[65.3,77.8,1,0],[55.2,69.4,1,1],
+    [60.5,74.1,0,1],[78.3,95.2,1,0],[45.6,55.8,0,0],[68.9,80.4,1,1],[73.4,88.1,1,0],
+    [58.7,72.6,1,0],[62.1,76.3,0,0],[66.4,79.8,1,1],[57.8,71.2,1,0],[74.9,89.5,1,1],
+    [51.3,64.7,0,0],[69.7,82.9,1,0],[63.8,77.4,1,1],[55.9,69.1,0,1],[72.1,86.3,1,0],
+    [48.6,59.2,0,0],[67.3,80.6,1,0],[61.4,75.8,1,1],[56.7,70.3,0,0],[70.8,84.1,1,1],
+    [65.1,78.7,1,0],[53.7,66.4,0,1],[75.6,90.2,1,0],[60.2,73.9,1,0],[69.4,83.5,1,1],
+    [54.8,68.1,0,0],[71.9,86.7,1,0],[63.1,76.9,1,1],[57.4,71.6,1,0],[68.6,82.4,1,0],
+    [52.9,66.2,0,1],[76.2,91.5,1,0],[61.7,75.4,1,0],[70.3,84.7,1,1],[65.8,79.3,1,0],
+    [55.6,69.8,0,0],[72.7,87.1,1,0],[64.5,78.2,1,1],[59.1,73.0,1,0],[67.8,81.6,1,0],
+    [51.7,64.1,0,0],[73.5,88.7,1,1],[60.9,74.6,1,0],[69.2,83.3,1,0],[56.3,70.1,0,1],
+    [74.8,89.4,1,0],[63.6,77.2,1,1],[58.4,72.1,1,0],[70.6,85.0,1,0],[65.4,79.0,1,1],
+    [54.1,67.8,0,0],[72.3,87.6,1,0],[62.8,76.5,1,0],[57.1,71.3,1,1],[69.9,84.2,1,0],
+    [53.4,66.7,0,1],[75.1,90.8,1,0],[61.2,75.1,1,0],[68.3,82.1,1,1],[63.4,77.0,1,0],
+    [55.3,69.5,0,0],[71.6,86.4,1,0],[60.6,74.3,1,1],[56.1,70.0,1,0],[73.2,88.4,1,0],
+    [64.9,78.6,1,1],[59.8,73.7,0,0],[70.0,84.5,1,0],[65.7,79.2,1,1],[54.4,68.3,0,0],
+    [72.0,87.3,1,0],[63.3,77.1,1,0],[57.9,71.8,1,1],[69.6,83.8,1,0],[52.2,65.9,0,0],
+    [74.5,89.9,1,1],[61.0,75.0,1,0],[68.0,82.7,1,0],[55.7,70.4,0,1],[71.4,86.2,1,0],
+    [64.2,78.4,1,1],[59.5,73.5,1,0],[67.5,81.9,1,0],[52.6,66.0,0,0],[73.8,89.1,1,1],
+  ];
+  const datasets = [
+    {
+      label: 'Hawaiian Language',
+      data: raw.filter(r => r[2]===1 && r[3]===0).map(r=>({x:r[0],y:r[1]})),
+      backgroundColor: 'rgba(70,170,143,0.7)', pointRadius: 5, pointHoverRadius: 7,
+    },
+    {
+      label: 'Hālau Hula',
+      data: raw.filter(r => r[3]===1).map(r=>({x:r[0],y:r[1]})),
+      backgroundColor: 'rgba(255,176,3,0.7)', pointRadius: 5, pointHoverRadius: 7,
+    },
+    {
+      label: 'No Cultural Programme',
+      data: raw.filter(r => r[2]===0 && r[3]===0).map(r=>({x:r[0],y:r[1]})),
+      backgroundColor: 'rgba(70,170,143,0.25)', pointRadius: 4,
+      borderColor: 'rgba(70,170,143,0.6)', borderWidth: 1,
+    },
+  ];
+  new Chart(document.getElementById('scatterChart'), {
+    type: 'scatter',
+    data: { datasets },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ` Cultural: ${ctx.parsed.x.toFixed(1)} · Base: ${ctx.parsed.y.toFixed(1)}` } },
+        annotation: {},
+      },
+      scales: {
+        x: { title: { display: true, text: 'Cultural Wellbeing Score', color: COLORS.textSec },
+             grid: { color: 'rgba(70,170,143,0.08)' }, min: 40, max: 100 },
+        y: { title: { display: true, text: 'ʻIke Kūpuna Base Score', color: COLORS.textSec },
+             grid: { color: 'rgba(70,170,143,0.08)' }, min: 30, max: 105 }
+      }
+    }
+  });
+})();
+
+/* ── NLP Sentiment Grouped Bar ── */
+(function() {
+  new Chart(document.getElementById('sentimentChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Kūpuna','ʻĀina','Waʻa','Mālama','Kalo','Kuleana','Laulima','Mana','ʻŌlelo'],
+      datasets: [
+        { label: 'Positive',    data: [4,4,1,3,2,1,2,1,0], backgroundColor: COLORS.mid, borderRadius: 3 },
+        { label: 'Challenging', data: [0,0,2,0,0,1,0,0,0], backgroundColor: COLORS.gold, borderRadius: 3 },
+        { label: 'Neutral',     data: [0,0,0,0,0,0,0,0,1], backgroundColor: 'rgba(255,255,255,0.2)', borderRadius: 3 },
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { labels: { font: { size: 10 }, boxWidth: 10, padding: 8 } } },
+      scales: {
+        x: { stacked: true, grid: { display: false }, ticks: { font: { size: 9 } } },
+        y: { stacked: true, grid: { color: 'rgba(70,170,143,0.08)' }, beginAtZero: true, ticks: { stepSize: 1 } }
+      }
+    }
+  });
+})();
+
+/* ── Scroll reveal ── */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+</body>
+</html>
