@@ -27,6 +27,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from scipy import stats
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -40,10 +41,11 @@ INDICATOR_CODE = "ROOT_IKE"
 INDICATOR_NAME = "'Ike Kūpuna (Ancestral Wisdom)"
 
 # Scoring formula weights (must sum to 1.0)
+# NOTE: programme participation effects are encoded in normalized_score via the causal
+# seed model. A separate program_bonus channel was removed to prevent double-counting.
 WEIGHTS = {
-    "base_score":          0.60,   # Raw normalized assessment score
-    "program_bonus":       0.25,   # Cultural programme participation
-    "wellbeing_adjustment": 0.15,  # Cultural well-being correlation
+    "base_score":           0.70,  # Raw normalized assessment score (encodes programme effects)
+    "wellbeing_adjustment": 0.30,  # Cultural well-being correlation
 }
 
 # Programme bonus points (pre-scaling)
@@ -114,6 +116,7 @@ class IkeKupunaAnalyzer:
         self.df_clean: pd.DataFrame = pd.DataFrame()
         self.df_scored: pd.DataFrame = pd.DataFrame()
         self.anomalies: list = []
+        self.dropped_records_log: dict = {}
         self.nlp_results: dict = {}
         self.report: dict = {}
 
@@ -255,6 +258,33 @@ class IkeKupunaAnalyzer:
                 bad_keys.update(issue.get("student_keys", []))
 
         self.df_clean = df[~df["student_key"].isin(bad_keys)].copy()
+
+        # Build dropped record log (Issue 6 — survivorship bias mitigation)
+        n_dropped = len(df) - len(self.df_clean)
+        self.dropped_records_log = {
+            "total_extracted": len(df),
+            "total_dropped":   n_dropped,
+            "total_retained":  len(self.df_clean),
+            "drop_rate_pct":   round(n_dropped / max(len(df), 1) * 100, 2),
+            "reasons": [
+                {
+                    "type":        issue["type"],
+                    "severity":    issue["severity"],
+                    "count":       issue.get("count", 0),
+                    "student_keys": issue.get("student_keys", []),
+                    "description": issue["description"],
+                }
+                for issue in issues
+                if issue["severity"] == "CRITICAL"
+            ],
+            "note": (
+                "Records are dropped only for CRITICAL severity issues (NULL scores, "
+                "out-of-range values). Non-critical anomalies (FUTURE_DATE, PROFICIENCY_MISMATCH, "
+                "STATISTICAL_OUTLIER) are retained and flagged. If drop_rate_pct is high "
+                "or non-random (e.g. low-performing students), this may indicate survivorship bias."
+            ),
+        }
+
         return self
 
     # -----------------------------------------------------------------------
@@ -363,10 +393,22 @@ class IkeKupunaAnalyzer:
         """
         Apply the 'Ike Kūpuna composite scoring formula to every student.
 
-        Formula:
-            Score = w1 × Base_Score
-                  + w2 × Programme_Bonus (scaled 0-100)
-                  + w3 × Wellbeing_Mid (fixed midpoint = 50, no live wellbeing data)
+        Formula (both components present):
+            Score = 0.70 × Base_Score + 0.30 × Wellbeing_Score
+
+        Programme participation effects (Hawaiian language, hula, PBL) are already
+        encoded in normalized_score via the causal seed model — no separate bonus
+        channel is needed and adding one would double-count those effects.
+
+        Wellbeing: uses wb_cultural (0–100) directly at 30% weight.
+
+        WEIGHT REDISTRIBUTION (missing wellbeing):
+            Score = 1.00 × Base_Score
+        When wb_cultural is NULL/missing the wellbeing weight (0.30) is absorbed by
+        base score rather than set to zero. Setting to zero would cap a perfect-base
+        student at 70, creating an unfair -30 pt administrative penalty. Redistribution
+        scores the student entirely on available data; the scoring_mode flag
+        ("composite" vs "assessment_only") is preserved for downstream transparency.
 
         Clamped to [0, 100].
         """
@@ -374,29 +416,26 @@ class IkeKupunaAnalyzer:
         rows = []
 
         for _, row in df.iterrows():
-            # Component 1 — Base Score (60%)
+            # Component 1 — Base Score
             base = float(row["normalized_score"])
-            w_base = base * WEIGHTS["base_score"]
 
-            # Component 2 — Programme Bonus (25%)
-            bonus_pts = 0
-            if row["is_hawaiian_language"]:
-                bonus_pts += PROGRAMME_POINTS["hawaiian_language"]
-            if row["is_hālau_hula"]:
-                bonus_pts += PROGRAMME_POINTS["halau_hula"]
-            if row["is_pbl_participant"]:
-                bonus_pts += PROGRAMME_POINTS["pbl_participant"]
-            bonus_pts = min(bonus_pts, PROGRAMME_POINTS["cap"])
-            # Scale 0–10 bonus to 0–100 points space
-            w_programme = (bonus_pts / PROGRAMME_POINTS["cap"]) * 100 * WEIGHTS["program_bonus"]
+            # Component 2 — Wellbeing
+            wb_available = pd.notna(row.get("wb_cultural"))
+            wellbeing_score = float(row["wb_cultural"]) if wb_available else 0.0
+            wellbeing_missing = not wb_available
 
-            # Component 3 — Wellbeing Adjustment (15%)
-            # Use real cultural_score from fact_wellbeing_measurements;
-            # fall back to neutral midpoint (50) if not available.
-            wellbeing_mid = float(row["wb_cultural"]) if pd.notna(row.get("wb_cultural")) else 50.0
-            w_wellbeing = wellbeing_mid * WEIGHTS["wellbeing_adjustment"]
+            # Effective weights — redistribute wellbeing weight to base when absent
+            if not wellbeing_missing:
+                eff_base_w = WEIGHTS["base_score"]            # 0.70
+                eff_wb_w   = WEIGHTS["wellbeing_adjustment"]  # 0.30
+            else:
+                eff_base_w = 1.0   # absorbs the 0.30 wellbeing weight
+                eff_wb_w   = 0.0
 
-            final = max(0.0, min(100.0, w_base + w_programme + w_wellbeing))
+            w_base     = base          * eff_base_w
+            w_wellbeing = wellbeing_score * eff_wb_w
+
+            final = max(0.0, min(100.0, w_base + w_wellbeing))
 
             def proficiency(score):
                 for level, threshold in sorted(
@@ -416,21 +455,22 @@ class IkeKupunaAnalyzer:
                 "is_halau_hula":   bool(row["is_hālau_hula"]),
                 "is_pbl":          bool(row["is_pbl_participant"]),
                 # Score components
-                "raw_base_score":  round(base, 2),
-                "bonus_points":    bonus_pts,
-                "weighted_base":   round(w_base, 3),
-                "weighted_programme": round(w_programme, 3),
+                "raw_base_score":    round(base, 2),
+                "wellbeing_score":   round(wellbeing_score, 2),
+                "wellbeing_missing": wellbeing_missing,
+                "scoring_mode":      "assessment_only" if wellbeing_missing else "composite",
+                "eff_base_weight":   eff_base_w,
+                "eff_wb_weight":     eff_wb_w,
+                "weighted_base":     round(w_base, 3),
                 "weighted_wellbeing": round(w_wellbeing, 3),
-                "composite_score": round(final, 2),
-                "proficiency":     proficiency(final),
-                "wb_cultural_score":  round(wellbeing_mid, 2),
-                "wb_overall_score":   round(float(row["wb_overall"]), 2) if pd.notna(row.get("wb_overall")) else None,
-                "wb_category":        row.get("wb_category"),
-                "formula_trace":   (
-                    f"{base:.1f}×{WEIGHTS['base_score']} "
-                    f"+ ({bonus_pts}/{PROGRAMME_POINTS['cap']})×100×{WEIGHTS['program_bonus']} "
-                    f"+ {wellbeing_mid:.1f}×{WEIGHTS['wellbeing_adjustment']} "
-                    f"= {final:.2f}"
+                "composite_score":   round(final, 2),
+                "proficiency":       proficiency(final),
+                "wb_overall_score":  round(float(row["wb_overall"]), 2) if pd.notna(row.get("wb_overall")) else None,
+                "wb_category":       row.get("wb_category"),
+                "formula_trace":     (
+                    f"{base:.1f}×{eff_base_w:.2f}"
+                    + (f" + {wellbeing_score:.1f}×{eff_wb_w:.2f}" if not wellbeing_missing else "  [wb missing → base_w=1.00]")
+                    + f" = {final:.2f}"
                 ),
             })
 
@@ -442,21 +482,53 @@ class IkeKupunaAnalyzer:
     # -----------------------------------------------------------------------
 
     def _nlp_analyse(self, reflections: list[dict]) -> dict:
-        """Keyword extraction + sentiment mapping on cultural reflections."""
+        """
+        Keyword extraction + VADER-based sentiment classification on cultural reflections.
+
+        Replaces pre-labeled sentiment fields with VADER compound scores so that
+        negations ("I felt no mana today", "lacks kuleana") are classified correctly
+        rather than defaulting to "neutral" or trusting a potentially mis-labeled tag.
+
+        VADER classification thresholds (industry standard):
+            compound >= +0.05  →  positive
+            compound <= -0.05  →  challenging
+            otherwise          →  neutral
+        """
+        sia = SentimentIntensityAnalyzer()
+
         keyword_total: Counter = Counter()
         by_sentiment: dict[str, Counter] = {
-            "positive":   Counter(),
-            "neutral":    Counter(),
+            "positive":    Counter(),
+            "neutral":     Counter(),
             "challenging": Counter(),
         }
+        per_reflection: list[dict] = []
 
         for entry in reflections:
-            text      = entry.get("text", entry.get("reflection_text", "")).lower()
-            sentiment = entry.get("sentiment", entry.get("sentiment_type", "neutral"))
+            text       = entry.get("text", entry.get("reflection_text", ""))
+            text_lower = text.lower()
 
+            # VADER-computed sentiment (overrides any pre-label)
+            vader_scores = sia.polarity_scores(text)
+            compound     = vader_scores["compound"]
+            if compound >= 0.05:
+                sentiment = "positive"
+            elif compound <= -0.05:
+                sentiment = "challenging"
+            else:
+                sentiment = "neutral"
+
+            per_reflection.append({
+                "text_preview":       text[:80] + ("…" if len(text) > 80 else ""),
+                "vader_compound":     round(compound, 4),
+                "sentiment_computed": sentiment,
+                "sentiment_original": entry.get("sentiment", entry.get("sentiment_type", "unlabeled")),
+            })
+
+            # Keyword matching (unchanged — operates on VADER-classified sentiment bucket)
             for keyword, variants in HAWAIIAN_KEYWORDS.items():
                 hits = sum(
-                    len(re.findall(r"\b" + re.escape(v) + r"\b", text))
+                    len(re.findall(r"\b" + re.escape(v) + r"\b", text_lower))
                     for v in variants
                 )
                 if hits:
@@ -466,9 +538,9 @@ class IkeKupunaAnalyzer:
         # Build insights
         insights = []
         for keyword, count in keyword_total.most_common(3):
-            pos = by_sentiment["positive"].get(keyword, 0)
-            chal = by_sentiment["challenging"].get(keyword, 0)
-            pct_pos = round(pos / max(count, 1) * 100)
+            pos      = by_sentiment["positive"].get(keyword, 0)
+            chal     = by_sentiment["challenging"].get(keyword, 0)
+            pct_pos  = round(pos / max(count, 1) * 100)
             insights.append(
                 f"{keyword} mentioned {count}× — {pct_pos}% in positive context"
             )
@@ -489,12 +561,13 @@ class IkeKupunaAnalyzer:
             )
 
         return {
-            "total_reflections": len(reflections),
-            "keyword_frequencies": dict(keyword_total.most_common()),
+            "total_reflections":    len(reflections),
+            "keyword_frequencies":  dict(keyword_total.most_common()),
             "by_sentiment": {
                 s: dict(c) for s, c in by_sentiment.items()
             },
-            "insights": insights,
+            "insights":             insights,
+            "per_reflection_vader": per_reflection,
         }
 
     # -----------------------------------------------------------------------
@@ -515,11 +588,11 @@ class IkeKupunaAnalyzer:
                 "actions": [],
             }
             if not row["is_hawaiian_language"]:
-                rec["actions"].append("Enrol in ʻŌlelo Hawaiʻi programme (+5 bonus pts)")
+                rec["actions"].append("Enrol in ʻŌlelo Hawaiʻi programme (raises ROOT_IKE base score via cultural immersion)")
             if not row["is_halau_hula"]:
-                rec["actions"].append("Connect with Hālau Hula programme (+3 bonus pts)")
+                rec["actions"].append("Connect with Hālau Hula programme (raises ROOT_IKE base score via embodied practice)")
             if not row["is_pbl"]:
-                rec["actions"].append("Include in PBL-by-Design cohort (+2 bonus pts)")
+                rec["actions"].append("Include in PBL-by-Design cohort (supports LEAF indicators: problem-solving, collaboration)")
             rec["actions"].append("Schedule Kūpuna mentorship sessions")
             recommendations.append(rec)
 
@@ -625,7 +698,14 @@ class IkeKupunaAnalyzer:
                 "indicator_name": INDICATOR_NAME,
                 "analysis_timestamp": datetime.now().isoformat(),
                 "db_path": str(self.db_path),
-                "formula": "Score = 0.60×Base + 0.25×Programme_Bonus(scaled) + 0.15×Wellbeing_Mid",
+                "formula": "Score = 0.70×Base_Score + 0.30×Wellbeing_Score",
+                "formula_notes": (
+                    "v2: programme_bonus channel removed (was double-counting causal effects "
+                    "already encoded in normalized_score). Wellbeing uses raw wb_cultural×0.30. "
+                    "Missing wellbeing → weight redistribution: base_w absorbs 0.30 → 1.00 "
+                    "(avoids both zero-penalty cap and phantom midpoint imputation). "
+                    "scoring_mode field: 'composite' | 'assessment_only'."
+                ),
                 "weights": WEIGHTS,
                 "proficiency_thresholds": PROFICIENCY_THRESHOLDS,
             },
@@ -642,6 +722,7 @@ class IkeKupunaAnalyzer:
                     "low":      low,
                 },
                 "anomaly_detail": self.anomalies,
+                "dropped_records_log": self.dropped_records_log,
             },
             "eda": eda,
             "model_output": {
@@ -712,9 +793,20 @@ if __name__ == "__main__":
         print(f"      {prog:20s}  effect={d['effect_size_pts']:+.2f} pts  p={d['p_value']}  {sig}")
 
     print(f"\n  PHASE 4 — MODEL")
+    print(f"    Formula             : {meta['formula']}")
     print(f"    Composite mean      : {mo['score_stats']['mean']}")
     print(f"    Proficiency dist    : ", end="")
     print("  ".join(f"{k}:{v}" for k, v in mo["proficiency_distribution"].items()))
+
+    drl = dq.get("dropped_records_log", {})
+    if drl:
+        print(f"\n  DROPPED RECORD LOG")
+        print(f"    Total dropped       : {drl.get('total_dropped', 0)}  "
+              f"(drop rate: {drl.get('drop_rate_pct', 0)}%)")
+        for reason in drl.get("reasons", []):
+            print(f"    • {reason['type']} — {reason['count']} records: {reason['description']}")
+        if not drl.get("reasons"):
+            print(f"    No records dropped — 0 critical anomalies.")
 
     print(f"\n  PHASE 4b — NLP")
     nlp = report["nlp"]

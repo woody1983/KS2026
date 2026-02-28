@@ -252,6 +252,35 @@
     .reveal { opacity:0; transform:translateY(24px); transition:opacity 500ms var(--ease), transform 500ms var(--ease); }
     .reveal.visible { opacity:1; transform:none; }
 
+    /* ── Assessment-only scoring mode indicator ── */
+    /* Applied to any score value rendered without wellbeing data (wb missing → base_w=1.00) */
+    .score-assessment-only {
+      opacity: 0.72;
+      font-style: italic;
+    }
+    .score-assessment-only::after {
+      content: ' *';
+      color: var(--text-muted);
+      font-size: 0.75em;
+      font-style: normal;
+    }
+    .assessment-only-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.68rem; color: var(--text-muted);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px; padding: 2px 7px;
+      vertical-align: middle; margin-left: 5px;
+    }
+    .scoring-mode-legend {
+      display: flex; gap: var(--space-3); flex-wrap: wrap;
+      margin-top: var(--space-2); padding-top: var(--space-2);
+      border-top: 1px solid var(--glass-border);
+      font-size: var(--font-xs); color: var(--text-muted);
+    }
+    .sml-item { display: flex; align-items: center; gap: 6px; }
+    .sml-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
     @media(max-width:900px) {
       .grid-2, .grid-3, .grid-3-1, .grid-1-2, .impact-grid, .nlp-grid { grid-template-columns:1fr; }
       .stats-grid { grid-template-columns:repeat(2,1fr); }
@@ -294,20 +323,21 @@
         <p class="hero-sub">Full OSEMN pipeline analysis of the ʻIke Kūpuna indicator — measuring each student's connection to Hawaiian traditional knowledge, practices, and cultural identity.</p>
         <div class="formula-chip">
           <span>Score =</span>
-          <span class="f-weight">0.60</span><span>× Base</span>
+          <span class="f-weight">0.70</span><span>× Base</span>
           <span style="color:var(--glass-border)">+</span>
-          <span class="f-weight">0.25</span><span>× Programme</span>
-          <span style="color:var(--glass-border)">+</span>
-          <span class="f-weight">0.15</span><span>× Wellbeing</span>
+          <span class="f-weight">0.30</span><span>× Wellbeing</span>
         </div>
-        <div class="hero-meta">Analysis timestamp: 2026-02-25 · 197 students · AY 2025-26 · Kāpalama / Maui / Hawaiʻi Island</div>
+        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:6px;">
+          v2 formula — programme effects encoded in Base via causal model (no double-counting)
+        </div>
+        <div class="hero-meta">Analysis timestamp: 2026-02-27 · 197 students · AY 2025-26 · Kāpalama / Maui / Hawaiʻi Island</div>
       </div>
       <div class="hero-right">
         <div class="osemn-pills">
           <div class="osemn-pill"><span class="dot"></span><span class="phase">O</span><span class="label">Obtain — Data extraction</span><span class="status">✓ 197 rows</span></div>
           <div class="osemn-pill"><span class="dot"></span><span class="phase">S</span><span class="label">Scrub — Quality audit</span><span class="status">✓ 100% purity</span></div>
           <div class="osemn-pill"><span class="dot"></span><span class="phase">E</span><span class="label">Explore — EDA &amp; distributions</span><span class="status">✓ 12 grades</span></div>
-          <div class="osemn-pill"><span class="dot"></span><span class="phase">M</span><span class="label">Model — Composite scoring</span><span class="status">✓ μ=71.32</span></div>
+          <div class="osemn-pill"><span class="dot"></span><span class="phase">M</span><span class="label">Model — Composite scoring</span><span class="status">✓ μ=80.79</span></div>
           <div class="osemn-pill"><span class="dot"></span><span class="phase">N</span><span class="label">iNterpret — NLP + actions</span><span class="status">✓ 10 reflections</span></div>
         </div>
       </div>
@@ -325,14 +355,14 @@
         <div class="stat-sub">AY 2025-26 · 3 campuses</div>
       </div>
       <div class="glass stat-card reveal">
-        <div class="stat-value c-gold">71.32</div>
+        <div class="stat-value c-gold">80.79</div>
         <div class="stat-label">Composite Mean</div>
-        <div class="stat-sub">Base mean: 76.24</div>
+        <div class="stat-sub">σ = 10.47</div>
       </div>
       <div class="glass stat-card reveal">
-        <div class="stat-value c-sprout">36.5%</div>
+        <div class="stat-value c-sprout">70.1%</div>
         <div class="stat-label">Proficient or Above</div>
-        <div class="stat-sub">72 of 197 students</div>
+        <div class="stat-sub">138 of 197 students</div>
       </div>
       <div class="glass stat-card reveal">
         <div class="stat-value c-comm">100%</div>
@@ -368,10 +398,10 @@
           <canvas id="profDonut" height="200"></canvas>
         </div>
         <div class="prof-legend">
-          <div class="prof-row"><span class="prof-dot" style="background:#D0ED35"></span><span class="prof-name">Advanced ≥ 90</span><span class="prof-val">15</span><span class="prof-pct">7.6%</span></div>
-          <div class="prof-row"><span class="prof-dot" style="background:#46AA8F"></span><span class="prof-name">Proficient ≥ 75</span><span class="prof-val">57</span><span class="prof-pct">28.9%</span></div>
-          <div class="prof-row"><span class="prof-dot" style="background:#FFB003"></span><span class="prof-name">Approaching ≥ 60</span><span class="prof-val">92</span><span class="prof-pct">46.7%</span></div>
-          <div class="prof-row"><span class="prof-dot" style="background:#70D75C66"></span><span class="prof-name">Below &lt; 60</span><span class="prof-val">33</span><span class="prof-pct">16.8%</span></div>
+          <div class="prof-row"><span class="prof-dot" style="background:#D0ED35"></span><span class="prof-name">Advanced ≥ 90</span><span class="prof-val">44</span><span class="prof-pct">22.3%</span></div>
+          <div class="prof-row"><span class="prof-dot" style="background:#46AA8F"></span><span class="prof-name">Proficient ≥ 75</span><span class="prof-val">94</span><span class="prof-pct">47.7%</span></div>
+          <div class="prof-row"><span class="prof-dot" style="background:#FFB003"></span><span class="prof-name">Approaching ≥ 60</span><span class="prof-val">53</span><span class="prof-pct">26.9%</span></div>
+          <div class="prof-row"><span class="prof-dot" style="background:#70D75C66"></span><span class="prof-name">Below &lt; 60</span><span class="prof-val">6</span><span class="prof-pct">3.0%</span></div>
         </div>
       </div>
     </div>
@@ -391,48 +421,66 @@
     <div class="grid-2">
       <!-- Formula anatomy -->
       <div class="glass formula-anatomy reveal">
-        <div class="fa-title">Composite Score — Component Breakdown</div>
-        <div class="chart-desc" style="font-size:var(--font-xs);color:var(--text-muted);margin-bottom:var(--space-2)">Proportional weight contribution per student (cohort mean values shown)</div>
+        <div class="fa-title">Composite Score — Component Breakdown (v2)</div>
+        <div class="chart-desc" style="font-size:var(--font-xs);color:var(--text-muted);margin-bottom:var(--space-2)">Proportional weight contribution per student · programme effects encoded in Base Score</div>
         <div class="fa-bar">
-          <div class="fa-seg" style="flex:60;background:linear-gradient(135deg,var(--forest-root),var(--growth-mid));">
-            <span>60%</span>
+          <div class="fa-seg" style="flex:70;background:linear-gradient(135deg,var(--forest-root),var(--growth-mid));">
+            <span>70%</span>
             <span class="fa-seg-label">Base</span>
           </div>
-          <div class="fa-seg" style="flex:25;background:linear-gradient(135deg,#1a6b5a,var(--community));">
-            <span>25%</span>
-            <span class="fa-seg-label">Prog.</span>
-          </div>
-          <div class="fa-seg" style="flex:15;background:linear-gradient(135deg,var(--navy-light),var(--new-sprout));">
-            <span>15%</span>
+          <div class="fa-seg" style="flex:30;background:linear-gradient(135deg,var(--navy-light),var(--new-sprout));">
+            <span>30%</span>
             <span class="fa-seg-label">W/B</span>
           </div>
         </div>
-        <div class="fa-rows">
-          <div class="fa-row">
-            <div class="fa-key"><span class="fa-swatch" style="background:var(--growth-mid)"></span><span class="fa-kname">Base Score (normalized_score)</span></div>
-            <span class="fa-kval">×0.60 → avg +45.7 pts</span>
+        <!-- Mode A: composite (both components present) -->
+        <div style="margin-bottom:10px;">
+          <div style="font-size:var(--font-xs);font-weight:600;color:var(--growth-mid);margin-bottom:6px;">
+            Mode — composite <span class="assessment-only-tag" style="color:var(--growth-mid);border-color:rgba(70,170,143,0.3);background:rgba(70,170,143,0.08);">wellbeing present</span>
           </div>
-          <div class="fa-row">
-            <div class="fa-key"><span class="fa-swatch" style="background:var(--community)"></span><span class="fa-kname">Programme Bonus (scaled 0–100)</span></div>
-            <span class="fa-kval">×0.25 → avg +18.2 pts</span>
-          </div>
-          <div class="fa-row">
-            <div class="fa-key"><span class="fa-swatch" style="background:var(--new-sprout)"></span><span class="fa-kname">Wellbeing · Cultural Score</span></div>
-            <span class="fa-kval">×0.15 → avg +9.9 pts</span>
-          </div>
-          <div class="fa-row" style="border-top:1px solid var(--glass-border);padding-top:8px;margin-top:4px;">
-            <div class="fa-key"><span class="fa-swatch" style="background:var(--royal-gold)"></span><span class="fa-kname">Composite Total (clamped 0–100)</span></div>
-            <span class="fa-kval" style="color:var(--royal-gold)">μ = 71.32</span>
+          <div class="fa-rows">
+            <div class="fa-row">
+              <div class="fa-key"><span class="fa-swatch" style="background:var(--growth-mid)"></span><span class="fa-kname">Base Score</span></div>
+              <span class="fa-kval">×0.70</span>
+            </div>
+            <div class="fa-row">
+              <div class="fa-key"><span class="fa-swatch" style="background:var(--new-sprout)"></span><span class="fa-kname">wb_cultural (0–100)</span></div>
+              <span class="fa-kval">×0.30</span>
+            </div>
           </div>
         </div>
-        <div style="margin-top:var(--space-3);">
-          <div class="chart-desc" style="margin-bottom:var(--space-1);">Programme bonus points pre-scale</div>
-          <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;">
-            <span class="badge" style="background:rgba(70,170,143,0.15);border:1px solid var(--glass-border);color:var(--growth-mid);font-size:var(--font-xs);">ʻŌlelo Hawaiʻi +5 pts</span>
-            <span class="badge" style="background:rgba(70,170,143,0.15);border:1px solid var(--glass-border);color:var(--growth-mid);font-size:var(--font-xs);">Hālau Hula +3 pts</span>
-            <span class="badge" style="background:rgba(70,170,143,0.15);border:1px solid var(--glass-border);color:var(--growth-mid);font-size:var(--font-xs);">PBL-by-Design +2 pts</span>
-            <span class="badge" style="background:rgba(255,176,3,0.15);border:1px solid rgba(255,176,3,0.3);color:var(--royal-gold);font-size:var(--font-xs);">CAP max cap = 10 pts</span>
+        <!-- Mode B: assessment_only (wellbeing absent → weight redistribution) -->
+        <div style="padding:10px 12px;background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.12);border-radius:10px;margin-bottom:10px;">
+          <div style="font-size:var(--font-xs);font-weight:600;color:var(--text-muted);margin-bottom:6px;">
+            Mode — assessment_only <span class="assessment-only-tag">wb missing</span>
           </div>
+          <div class="fa-rows">
+            <div class="fa-row">
+              <div class="fa-key"><span class="fa-swatch" style="background:var(--growth-mid)"></span><span class="fa-kname">Base Score <span style="color:var(--text-muted);font-weight:400;">(absorbs wb weight)</span></span></div>
+              <span class="fa-kval">×1.00</span>
+            </div>
+            <div class="fa-row">
+              <div class="fa-key"><span class="fa-swatch" style="background:rgba(255,255,255,0.15)"></span><span class="fa-kname" style="color:var(--text-muted);">wb_cultural — absent</span></div>
+              <span class="fa-kval" style="color:var(--text-muted);">×0.00</span>
+            </div>
+          </div>
+          <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:8px;">
+            Weight redistribution — not zero-penalty, not midpoint imputation.
+            A perfect-base student still scores 100.
+          </div>
+        </div>
+        <div class="fa-row" style="border-top:1px solid var(--glass-border);padding-top:8px;">
+          <div class="fa-key"><span class="fa-swatch" style="background:var(--royal-gold)"></span><span class="fa-kname">Composite Total (clamped 0–100)</span></div>
+          <span class="fa-kval" style="color:var(--royal-gold)">μ = 80.79</span>
+        </div>
+        <!-- Scoring mode legend -->
+        <div class="scoring-mode-legend">
+          <div class="sml-item"><span class="sml-dot" style="background:var(--growth-mid)"></span>composite — base + wellbeing (w: 0.70 + 0.30)</div>
+          <div class="sml-item"><span class="sml-dot" style="background:rgba(255,255,255,0.25);border:1px dashed rgba(255,255,255,0.3)"></span><span class="score-assessment-only" style="font-size:inherit">assessment_only</span> — base only (w: 1.00) · score displayed in italic *</div>
+        </div>
+        <div style="margin-top:var(--space-3);padding:10px 12px;background:rgba(255,176,3,0.08);border:1px solid rgba(255,176,3,0.25);border-radius:10px;">
+          <div style="font-size:var(--font-xs);font-weight:700;color:var(--royal-gold);margin-bottom:4px;">v2 change — Programme Bonus channel removed</div>
+          <div style="font-size:var(--font-xs);color:var(--text-secondary);">The prior formula added a separate 25% programme bonus on top of base scores that already encode programme participation via the causal seed model. This double-counted programme effects. In v2, the bonus channel is removed; causal effects flow only through normalized_score.</div>
         </div>
       </div>
 
@@ -530,21 +578,21 @@
             <div class="impact-bar-wrap">
               <div class="impact-bar" style="height:82%;background:linear-gradient(180deg,var(--growth-mid),var(--forest-root));"></div>
             </div>
-            <div class="impact-score c-mid">75.82</div>
+            <div class="impact-score c-mid">81.15</div>
             <div class="impact-glabel">Participants</div>
             <div class="impact-n">n=141</div>
           </div>
           <div class="impact-group">
             <div class="impact-bar-wrap">
-              <div class="impact-bar" style="height:84%;background:linear-gradient(180deg,rgba(70,170,143,0.4),rgba(70,170,143,0.2));"></div>
+              <div class="impact-bar" style="height:79%;background:linear-gradient(180deg,rgba(70,170,143,0.4),rgba(70,170,143,0.2));"></div>
             </div>
-            <div class="impact-score" style="color:var(--text-secondary)">77.32</div>
+            <div class="impact-score" style="color:var(--text-secondary)">79.9</div>
             <div class="impact-glabel">Non-participants</div>
             <div class="impact-n">n=56</div>
           </div>
         </div>
-        <div><span class="impact-sig sig-no">p=0.496 · not significant</span></div>
-        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:8px;">Effect: −1.5 pts · High enrolment rate (71%) may suppress contrast</div>
+        <div><span class="impact-sig sig-no">p=0.45 · not significant</span></div>
+        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:8px;">Effect: +1.24 pts · Direction correct · higher enrolment rate (71%) compresses contrast</div>
       </div>
 
       <!-- Hālau Hula -->
@@ -555,21 +603,21 @@
             <div class="impact-bar-wrap">
               <div class="impact-bar" style="height:82%;background:linear-gradient(180deg,var(--community),var(--growth-mid));"></div>
             </div>
-            <div class="impact-score c-comm">75.83</div>
+            <div class="impact-score c-comm">82.35</div>
             <div class="impact-glabel">Participants</div>
             <div class="impact-n">n=91</div>
           </div>
           <div class="impact-group">
             <div class="impact-bar-wrap">
-              <div class="impact-bar" style="height:83%;background:linear-gradient(180deg,rgba(112,215,92,0.3),rgba(112,215,92,0.12));"></div>
+              <div class="impact-bar" style="height:80%;background:linear-gradient(180deg,rgba(112,215,92,0.3),rgba(112,215,92,0.12));"></div>
             </div>
-            <div class="impact-score" style="color:var(--text-secondary)">76.60</div>
+            <div class="impact-score" style="color:var(--text-secondary)">79.45</div>
             <div class="impact-glabel">Non-participants</div>
             <div class="impact-n">n=106</div>
           </div>
         </div>
-        <div><span class="impact-sig sig-no">p=0.700 · not significant</span></div>
-        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:8px;">Effect: −0.77 pts · Note: bonus points reward participation in composite score</div>
+        <div><span class="impact-sig" style="color:var(--royal-gold);border-color:var(--royal-gold);">p=0.053 · borderline ⚡</span></div>
+        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:8px;">Effect: +2.89 pts · Strongest raw effect · approaches significance (p&lt;0.10)</div>
       </div>
 
       <!-- PBL -->
@@ -578,30 +626,36 @@
         <div class="impact-compare">
           <div class="impact-group">
             <div class="impact-bar-wrap">
-              <div class="impact-bar" style="height:83%;background:linear-gradient(180deg,var(--new-sprout),var(--growth-mid));"></div>
+              <div class="impact-bar" style="height:81%;background:linear-gradient(180deg,var(--new-sprout),var(--growth-mid));"></div>
             </div>
-            <div class="impact-score c-sprout">76.18</div>
+            <div class="impact-score c-sprout">80.81</div>
             <div class="impact-glabel">Participants</div>
             <div class="impact-n">n=153</div>
           </div>
           <div class="impact-group">
             <div class="impact-bar-wrap">
-              <div class="impact-bar" style="height:83%;background:linear-gradient(180deg,rgba(208,237,53,0.3),rgba(208,237,53,0.1));"></div>
+              <div class="impact-bar" style="height:80%;background:linear-gradient(180deg,rgba(208,237,53,0.3),rgba(208,237,53,0.1));"></div>
             </div>
-            <div class="impact-score" style="color:var(--text-secondary)">76.47</div>
+            <div class="impact-score" style="color:var(--text-secondary)">80.73</div>
             <div class="impact-glabel">Non-participants</div>
             <div class="impact-n">n=44</div>
           </div>
         </div>
-        <div><span class="impact-sig sig-no">p=0.902 · not significant</span></div>
-        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:8px;">Effect: −0.29 pts · Very high enrolment (78%) · composite bonus still applies</div>
+        <div><span class="impact-sig sig-no">p=0.97 · not significant</span></div>
+        <div style="font-size:var(--font-xs);color:var(--text-muted);margin-top:8px;">Effect: +0.08 pts · PBL effect on ROOT_IKE is near zero (expected: PBL drives LEAF indicators)</div>
       </div>
     </div>
 
     <!-- Interpretation note -->
     <div class="glass" style="margin-top:var(--space-3);padding:var(--space-3);border-left:3px solid var(--royal-gold);" id="prog-note">
       <div style="font-size:var(--font-xs);font-weight:700;color:var(--royal-gold);margin-bottom:4px;">📊 Archmage's Note — Programme Impact on Base Score</div>
-      <div style="font-size:var(--font-xs);color:var(--text-secondary);">Programme participation does not show statistically significant impact on raw <em>base scores</em> alone (p &gt; 0.05 for all three). This is expected: the base score captures a single assessment snapshot. The <strong>composite formula is where participation is rewarded</strong> — a fully-enrolled student (Hawaiian Language + Hula + PBL) earns +10 bonus pts scaled to 25% of the final score, lifting their composite by up to +25 points above their raw base score.</div>
+      <div style="font-size:var(--font-xs);color:var(--text-secondary);">Hālau Hula shows the strongest raw effect on ROOT_IKE base scores (+2.89 pts, p=0.053) — <strong>borderline significant</strong>, the closest any programme has come to crossing p&lt;0.05. ʻŌlelo Hawaiʻi shows a consistent +1.24 pts. PBL shows near-zero effect on ROOT_IKE (+0.08 pts), which is <strong>architecturally correct</strong>: PBL is designed to drive LEAF indicators (Problem Solving, Collaboration, Innovation), not cultural ROOT indicators.</div>
+    </div>
+
+    <!-- Selection Bias Caveat -->
+    <div class="glass" style="margin-top:var(--space-2);padding:var(--space-3);border-left:3px solid rgba(208,237,53,0.6);" id="selection-bias-note">
+      <div style="font-size:var(--font-xs);font-weight:700;color:var(--new-sprout);margin-bottom:4px;">⚠️ Selection Bias Caveat — OSEMN Interpret</div>
+      <div style="font-size:var(--font-xs);color:var(--text-secondary);">The t-test comparisons above reflect <strong>unadjusted group means</strong>. Students who self-select into Hawaiian language or Hālau Hula programmes are likely more culturally engaged <em>before</em> enrolment — creating pre-existing baseline differences not controlled for here. The observed score gaps may therefore overstate the causal programme effect. <strong>On synthetic data</strong> this concern is latent (the causal model controls assignment); it becomes critical when real student data is integrated. Future work: propensity score matching or difference-in-differences analysis when longitudinal real data is available.</div>
     </div>
   </div>
 </section>
@@ -612,26 +666,20 @@
 <section class="section">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-eyebrow">Phase M — Wellbeing Integration</div>
-      <div class="section-title">Cultural Wellbeing ↔ Base Score Correlation</div>
-      <div class="section-desc">Cultural wellbeing score (from fact_wellbeing_measurements) vs ʻIke Kūpuna normalized base score · r = 0.839</div>
+      <div class="section-eyebrow">Phase E — Cross-Indicator Correlation</div>
+      <div class="section-title">ROOT_IKE ↔ ROOT_ALOHA · Shared Cultural Foundation</div>
+      <div class="section-desc">Each dot = one student · Pearson r = 0.701 · p &lt; 0.001 · colour = ʻŌlelo Hawaiʻi participation · n=197</div>
     </div>
     <div class="glass chart-card reveal" style="padding:var(--space-3);">
       <div class="chart-wrap"><canvas id="scatterChart" height="320"></canvas></div>
       <div style="display:flex;gap:var(--space-4);margin-top:var(--space-2);flex-wrap:wrap;">
         <div style="display:flex;align-items:center;gap:6px;font-size:var(--font-xs);color:var(--text-secondary);">
-          <span style="width:10px;height:10px;border-radius:50%;background:var(--growth-mid);display:inline-block;"></span>
-          Hawaiian Language participant
+          <span style="width:10px;height:10px;border-radius:50%;background:var(--growth-mid);display:inline-block;"></span>ʻŌlelo Hawaiʻi participant (n=141)
         </div>
         <div style="display:flex;align-items:center;gap:6px;font-size:var(--font-xs);color:var(--text-secondary);">
-          <span style="width:10px;height:10px;border-radius:50%;background:var(--royal-gold);display:inline-block;"></span>
-          Hālau Hula participant
+          <span style="width:10px;height:10px;border-radius:50%;background:rgba(70,170,143,0.28);border:1px solid var(--growth-mid);display:inline-block;"></span>Non-participant (n=56)
         </div>
-        <div style="display:flex;align-items:center;gap:6px;font-size:var(--font-xs);color:var(--text-secondary);">
-          <span style="width:10px;height:10px;border-radius:50%;background:rgba(70,170,143,0.3);border:1px solid var(--growth-mid);display:inline-block;"></span>
-          No cultural programme
-        </div>
-        <div style="margin-left:auto;font-size:var(--font-xs);color:var(--text-muted);">Pearson r = <strong style="color:var(--new-sprout)">0.839</strong> · p &lt; 0.001 · strong positive correlation</div>
+        <div style="margin-left:auto;font-size:var(--font-xs);color:var(--text-muted);">Pearson r = <strong style="color:var(--new-sprout)">0.701</strong> · p &lt; 0.001 · both ROOT indicators share cultural_latent driver</div>
       </div>
     </div>
   </div>
@@ -830,7 +878,7 @@ Chart.defaults.borderColor = 'rgba(70,170,143,0.18)';
 Chart.defaults.font.family = "-apple-system,'Helvetica Neue',Arial,sans-serif";
 
 /* ── Raw composite scores (197 students) ── */
-const COMPOSITES = [79.68,70.86,86.47,54.73,67.07,61.22,96.85,86.53,65.36,62.26,66.07,58.18,66.75,51.8,76.46,69.69,81.86,73.6,74.72,75.09,75.65,69.18,66.93,64.08,76.88,65.48,83.48,97.17,80.01,73.7,97.92,64.4,78.72,68.73,68.36,79.89,64.33,69.97,74.27,83.43,73.5,72.57,71.17,63.09,84.91,60.43,47.68,71.52,83.64,88.26,78.3,70.02,84.09,90.55,70.72,59.61,72.72,60.41,45.8,72.62,76.37,76.63,90.19,72.2,74.44,67.63,81.33,61.89,72.76,60.98,73.78,67.36,64.56,91.88,49.6,81.38,68.29,79.65,82.08,70.73,78.36,85.55,73.27,78.13,83.8,83.89,79.8,40.07,59.61,52.79,83.35,73.35,51.66,69.07,87.98,63.87,87.79,69.48,76.89,51.19,60.6,57.38,66.26,63.11,78.94,70.51,59.66,57.53,60.59,42.8,68.82,52.57,75.13,62.36,98.37,74.58,66.33,78.99,68.25,68.87,71.73,83.26,62.39,73.33,66.89,71.5,93.65,55.82,59.62,43.82,79.01,77.57,84.05,76.59,54.3,60.54,75.0,73.97,79.34,91.6,65.61,84.39,55.88,56.96,59.42,87.49,65.57,79.5,90.32,95.95,70.39,75.75,60.85,96.45,73.51,50.76,51.61,70.71,56.23,66.72,79.31,90.02,55.2,79.13,83.68,60.46,83.42,73.78,62.48,62.57,72.46,95.8,65.02,52.16,62.7,97.92,71.52,75.73,80.87,74.92,51.68,68.77,74.52,54.29,67.78,47.72,69.04,72.1,56.49,72.45,84.4,77.79,61.44,79.52,65.67,71.19,73.51];
+const COMPOSITES = [82.83,84.92,84.65,75.55,90.58,74.46,76.74,69.27,87.86,78.92,95.3,66.34,93.91,72.72,67.44,64.75,88.64,69.64,70.73,82.48,81.79,63.8,70.74,95.37,84.86,84.03,80.66,86.89,71.58,86.64,73.64,91.54,87.78,94.61,82.93,92.78,75.41,65.68,80.37,78.72,85.65,76.37,75.71,88.95,70.85,94.97,100.0,72.12,76.21,62.48,81.26,83.83,76.96,85.8,71.56,82.24,93.47,75.84,83.59,86.9,74.52,87.46,59.1,79.41,87.1,71.87,77.89,100.0,90.69,87.8,91.21,72.64,75.16,56.86,77.0,90.36,82.07,84.04,79.79,77.06,73.9,83.29,77.35,78.07,71.88,78.11,100.0,81.2,77.8,82.78,80.41,60.14,80.67,69.42,75.96,75.05,72.17,91.77,75.2,100.0,84.18,73.74,92.87,71.84,87.94,73.63,90.02,89.24,92.02,73.37,92.66,91.88,75.27,93.64,82.24,75.12,70.79,96.04,72.39,87.41,85.18,64.3,89.69,71.67,82.03,90.88,78.78,54.75,64.74,70.39,85.25,84.86,81.27,91.6,44.06,67.2,95.59,79.71,90.61,100.0,85.4,71.86,63.72,91.19,84.43,74.14,70.74,61.4,88.44,88.92,72.33,73.16,93.53,73.91,88.08,92.19,76.03,77.25,74.99,87.12,63.44,72.75,98.21,94.44,87.43,98.95,92.08,81.41,87.65,71.15,87.54,90.64,88.48,69.04,65.4,95.53,78.21,98.76,99.36,95.06,85.81,87.31,83.15,82.44,74.53,76.9,93.99,76.82,86.42,74.17,92.84,59.78,87.22,69.82,78.8,52.93,90.37];
 
 /* ── Histogram ── */
 (function() {
@@ -880,7 +928,7 @@ const COMPOSITES = [79.68,70.86,86.47,54.73,67.07,61.22,96.85,86.53,65.36,62.26,
     data: {
       labels: ['Advanced','Proficient','Approaching','Below'],
       datasets: [{
-        data: [15, 57, 92, 33],
+        data: [44, 94, 53, 6],
         backgroundColor: [COLORS.sprout, COLORS.mid, COLORS.gold, 'rgba(112,215,92,0.3)'],
         borderColor: 'rgba(0,32,78,0.6)',
         borderWidth: 3,
@@ -927,8 +975,8 @@ const COMPOSITES = [79.68,70.86,86.47,54.73,67.07,61.22,96.85,86.53,65.36,62.26,
 /* ── Grade Chart ── */
 (function() {
   const grades = [1,2,3,4,5,6,7,8,9,10,11,12];
-  const means  = [78.77,74.04,70.95,75.69,79.28,76.46,75.47,72.88,85.22,77.48,75.69,74.31];
-  const stds   = [12.37,17.45,16.25,12.36,10.82,11.15,15.74,11.89,11.74,11.18,17.25,11.73];
+  const means  = [79.76,82.6,80.79,79.46,80.95,78.69,79.6,82.66,74.8,82.88,80.63,84.13];
+  const stds   = [10.49,9.24,8.59,7.33,10.25,11.46,12.28,12.22,13.91,8.31,10.63,14.7];
   new Chart(document.getElementById('gradeChart'), {
     type: 'bar',
     data: {
@@ -977,7 +1025,7 @@ const COMPOSITES = [79.68,70.86,86.47,54.73,67.07,61.22,96.85,86.53,65.36,62.26,
 /* ── Cohort Chart ── */
 (function() {
   const years  = [2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037];
-  const means  = [74.31,75.69,77.48,85.22,72.88,75.47,76.46,79.28,75.69,70.95,74.04,78.77];
+  const means  = [84.13,80.63,82.88,74.8,82.66,79.6,78.69,80.95,79.46,80.79,82.6,79.76];
   const counts = [13,17,20,10,7,19,13,19,19,13,30,17];
   new Chart(document.getElementById('cohortChart'), {
     type: 'line',
@@ -1016,51 +1064,67 @@ const COMPOSITES = [79.68,70.86,86.47,54.73,67.07,61.22,96.85,86.53,65.36,62.26,
   });
 })();
 
-/* ── Scatter: Cultural Wellbeing vs Base Score ── */
+/* ── Scatter: ROOT_IKE vs ROOT_ALOHA (real DB data, r=0.701) ── */
 (function() {
-  // Representative 197-point scatter embedded from DB query (cultural_score, norm_score, is_lang, is_hula)
+  // Query: SELECT ike.normalized_score, aloha.normalized_score, is_hawaiian_language, is_hālau_hula
+  //        FROM dim_students_masked JOIN fact_e_ola_outcomes WHERE indicator_key IN (1,2)
+  // Pearson r = 0.701, p < 0.001, n = 197
   const raw = [
-    [56.59,73.95,1,0],[62.35,62.47,1,0],[73.04,78.79,1,0],[70.35,81.39,1,0],[57.77,71.69,1,0],
-    [74.21,83.9,1,1],[53.0,61.57,1,0],[61.66,87.73,0,0],[57.96,72.49,1,0],[64.96,79.63,0,1],
-    [63.81,70.54,1,0],[52.32,66.81,0,1],[73.79,98.71,1,0],[52.64,59.87,0,0],[79.01,100.0,1,1],
-    [64.46,78.51,1,0],[66.27,81.55,1,0],[69.51,77.53,1,0],[77.14,90.32,1,0],[53.14,64.4,0,0],
-    [68.82,75.28,1,1],[47.39,47.39,0,0],[69.15,100.0,0,0],[75.5,84.49,1,1],[56.59,73.95,1,0],
-    [61.88,76.23,1,0],[52.64,74.48,0,1],[51.07,65.65,0,0],[55.93,65.81,0,1],[63.55,80.33,1,0],
-    [72.68,82.0,1,1],[48.21,58.5,0,0],[70.1,79.2,1,0],[65.3,77.8,1,0],[55.2,69.4,1,1],
-    [60.5,74.1,0,1],[78.3,95.2,1,0],[45.6,55.8,0,0],[68.9,80.4,1,1],[73.4,88.1,1,0],
-    [58.7,72.6,1,0],[62.1,76.3,0,0],[66.4,79.8,1,1],[57.8,71.2,1,0],[74.9,89.5,1,1],
-    [51.3,64.7,0,0],[69.7,82.9,1,0],[63.8,77.4,1,1],[55.9,69.1,0,1],[72.1,86.3,1,0],
-    [48.6,59.2,0,0],[67.3,80.6,1,0],[61.4,75.8,1,1],[56.7,70.3,0,0],[70.8,84.1,1,1],
-    [65.1,78.7,1,0],[53.7,66.4,0,1],[75.6,90.2,1,0],[60.2,73.9,1,0],[69.4,83.5,1,1],
-    [54.8,68.1,0,0],[71.9,86.7,1,0],[63.1,76.9,1,1],[57.4,71.6,1,0],[68.6,82.4,1,0],
-    [52.9,66.2,0,1],[76.2,91.5,1,0],[61.7,75.4,1,0],[70.3,84.7,1,1],[65.8,79.3,1,0],
-    [55.6,69.8,0,0],[72.7,87.1,1,0],[64.5,78.2,1,1],[59.1,73.0,1,0],[67.8,81.6,1,0],
-    [51.7,64.1,0,0],[73.5,88.7,1,1],[60.9,74.6,1,0],[69.2,83.3,1,0],[56.3,70.1,0,1],
-    [74.8,89.4,1,0],[63.6,77.2,1,1],[58.4,72.1,1,0],[70.6,85.0,1,0],[65.4,79.0,1,1],
-    [54.1,67.8,0,0],[72.3,87.6,1,0],[62.8,76.5,1,0],[57.1,71.3,1,1],[69.9,84.2,1,0],
-    [53.4,66.7,0,1],[75.1,90.8,1,0],[61.2,75.1,1,0],[68.3,82.1,1,1],[63.4,77.0,1,0],
-    [55.3,69.5,0,0],[71.6,86.4,1,0],[60.6,74.3,1,1],[56.1,70.0,1,0],[73.2,88.4,1,0],
-    [64.9,78.6,1,1],[59.8,73.7,0,0],[70.0,84.5,1,0],[65.7,79.2,1,1],[54.4,68.3,0,0],
-    [72.0,87.3,1,0],[63.3,77.1,1,0],[57.9,71.8,1,1],[69.6,83.8,1,0],[52.2,65.9,0,0],
-    [74.5,89.9,1,1],[61.0,75.0,1,0],[68.0,82.7,1,0],[55.7,70.4,0,1],[71.4,86.2,1,0],
-    [64.2,78.4,1,1],[59.5,73.5,1,0],[67.5,81.9,1,0],[52.6,66.0,0,0],[73.8,89.1,1,1],
+    [82.8,73.6,1,1],[84.9,94.5,0,1],[84.7,79.2,1,1],[75.5,78.3,0,0],[90.6,98.5,0,1],
+    [74.5,70.9,1,1],[76.7,83.0,1,1],[69.3,59.0,1,1],[87.9,99.6,1,0],[78.9,81.9,1,0],
+    [95.3,70.5,1,0],[66.3,71.4,0,0],[93.9,83.5,1,1],[72.7,76.3,0,0],[67.4,79.0,0,0],
+    [64.8,77.7,1,0],[88.6,91.5,1,1],[69.6,84.5,1,1],[70.7,62.3,0,1],[82.5,85.5,1,0],
+    [81.8,71.4,1,0],[63.8,68.9,1,0],[70.7,69.9,1,0],[95.4,95.3,1,0],[84.9,83.6,1,1],
+    [84.0,76.9,0,0],[80.7,75.9,1,0],[86.9,98.1,1,1],[71.6,75.4,1,0],[86.6,91.6,1,1],
+    [73.6,74.5,1,1],[91.5,92.1,1,0],[87.8,94.8,0,1],[94.6,88.4,0,1],[82.9,87.3,1,1],
+    [92.8,90.2,1,1],[75.4,69.8,1,0],[65.7,66.5,1,1],[80.4,85.3,1,0],[78.7,78.4,1,1],
+    [85.7,85.2,1,0],[76.4,75.4,1,0],[75.7,88.2,1,0],[89.0,81.9,1,1],[70.8,87.2,1,1],
+    [95.0,85.9,0,1],[100,100,0,1],[72.1,62.2,1,0],[76.2,90.7,1,0],[62.5,80.7,1,0],
+    [81.3,97.0,1,1],[83.8,83.0,0,1],[77.0,80.3,0,1],[85.8,89.0,1,0],[71.6,69.5,0,0],
+    [82.2,77.7,0,1],[93.5,81.2,1,0],[75.8,85.8,1,0],[83.6,70.4,1,0],[86.9,75.0,1,1],
+    [74.5,66.8,1,0],[87.5,74.9,1,0],[59.1,62.5,1,0],[79.4,81.7,1,0],[87.1,90.5,1,0],
+    [71.9,70.8,1,0],[77.9,80.0,1,1],[100,84.9,0,0],[90.7,85.5,1,0],[87.8,84.1,1,0],
+    [91.2,91.0,1,1],[72.6,69.0,1,0],[75.2,80.4,1,0],[56.9,73.8,1,1],[77.0,76.7,1,0],
+    [90.4,87.6,1,0],[82.1,76.0,0,0],[84.0,81.2,0,1],[79.8,100,1,0],[77.1,74.2,1,0],
+    [73.9,76.2,1,0],[83.3,100,1,1],[77.3,91.0,0,1],[78.1,86.8,1,1],[71.9,64.3,1,0],
+    [78.1,79.5,1,0],[100,88.1,1,0],[81.2,80.9,1,0],[77.8,80.0,1,0],[82.8,87.4,0,0],
+    [80.4,87.5,1,0],[60.1,72.1,1,1],[80.7,85.9,0,1],[69.4,68.9,1,0],[76.0,71.3,1,1],
+    [75.0,69.1,0,1],[72.2,80.3,1,0],[91.8,97.3,1,0],[75.2,73.5,1,0],[100,100,0,1],
+    [84.2,84.1,0,1],[73.7,75.0,0,1],[92.9,86.5,1,1],[71.8,78.4,0,0],[87.9,98.9,1,0],
+    [73.6,73.6,1,1],[90.0,88.8,0,1],[89.2,90.1,1,1],[92.0,94.8,0,1],[73.4,80.5,0,0],
+    [92.7,80.2,1,0],[91.9,92.8,0,0],[75.3,81.2,0,1],[93.6,88.1,1,1],[82.2,81.5,1,1],
+    [75.1,91.0,1,1],[70.8,78.3,1,1],[96.0,76.3,1,1],[72.4,68.3,1,1],[87.4,83.8,1,0],
+    [85.2,82.7,1,1],[64.3,71.9,1,0],[89.7,88.0,1,0],[71.7,65.8,1,0],[82.0,77.4,0,0],
+    [90.9,87.7,1,0],[78.8,69.6,1,1],[54.8,64.0,1,0],[64.7,59.8,0,0],[70.4,69.4,0,0],
+    [85.2,97.4,1,0],[84.9,90.2,1,1],[81.3,91.0,0,1],[91.6,79.0,1,1],[44.1,48.9,0,0],
+    [67.2,69.3,1,0],[95.6,99.3,1,1],[79.7,68.1,1,0],[90.6,88.9,1,1],[100,100,1,1],
+    [85.4,81.2,1,0],[71.9,85.1,1,1],[63.7,68.1,1,1],[91.2,94.9,1,1],[84.4,86.8,0,1],
+    [74.1,75.3,1,0],[70.7,87.5,0,0],[61.4,71.1,0,1],[88.4,83.5,1,1],[88.9,98.8,1,1],
+    [72.3,73.3,1,0],[73.2,77.9,1,1],[93.5,83.5,1,0],[73.9,70.1,1,1],[88.1,93.6,1,0],
+    [92.2,84.5,0,0],[76.0,81.3,0,0],[77.2,85.3,1,0],[75.0,92.2,0,0],[87.1,87.1,1,1],
+    [63.4,68.4,0,1],[72.8,73.3,1,1],[98.2,93.4,1,0],[94.4,80.5,1,0],[87.4,89.9,1,1],
+    [99.0,100,0,0],[92.1,90.1,1,1],[81.4,70.9,1,0],[87.7,87.8,1,1],[71.2,64.5,0,0],
+    [87.5,75.2,1,0],[90.6,85.8,1,1],[88.5,94.7,0,0],[69.0,66.2,1,0],[65.4,55.9,0,0],
+    [95.5,96.3,1,1],[78.2,81.4,1,1],[98.8,78.1,1,0],[99.4,97.4,1,1],[95.1,89.9,1,1],
+    [85.8,78.0,0,0],[87.3,76.0,1,0],[83.2,86.3,1,0],[82.4,89.0,0,1],[74.5,67.7,0,1],
+    [76.9,74.4,0,1],[94.0,91.8,1,0],[76.8,72.3,1,0],[86.4,79.5,0,0],[74.2,67.4,0,1],
+    [92.8,85.8,1,1],[59.8,78.5,1,1],[87.2,97.4,0,0],[69.8,70.1,1,0],[78.8,91.5,0,0],
+    [52.9,53.6,1,0],[90.4,86.9,1,1],
   ];
   const datasets = [
     {
-      label: 'Hawaiian Language',
-      data: raw.filter(r => r[2]===1 && r[3]===0).map(r=>({x:r[0],y:r[1]})),
-      backgroundColor: 'rgba(70,170,143,0.7)', pointRadius: 5, pointHoverRadius: 7,
+      label: 'ʻŌlelo Hawaiʻi participant',
+      data: raw.filter(r => r[2]===1).map(r => ({x: r[0], y: r[1]})),
+      backgroundColor: 'rgba(70,170,143,0.72)',
+      pointRadius: 5, pointHoverRadius: 7,
     },
     {
-      label: 'Hālau Hula',
-      data: raw.filter(r => r[3]===1).map(r=>({x:r[0],y:r[1]})),
-      backgroundColor: 'rgba(255,176,3,0.7)', pointRadius: 5, pointHoverRadius: 7,
-    },
-    {
-      label: 'No Cultural Programme',
-      data: raw.filter(r => r[2]===0 && r[3]===0).map(r=>({x:r[0],y:r[1]})),
-      backgroundColor: 'rgba(70,170,143,0.25)', pointRadius: 4,
-      borderColor: 'rgba(70,170,143,0.6)', borderWidth: 1,
+      label: 'Non-participant',
+      data: raw.filter(r => r[2]===0).map(r => ({x: r[0], y: r[1]})),
+      backgroundColor: 'rgba(70,170,143,0.22)',
+      borderColor: 'rgba(70,170,143,0.55)',
+      borderWidth: 1,
+      pointRadius: 4, pointHoverRadius: 6,
     },
   ];
   new Chart(document.getElementById('scatterChart'), {
@@ -1070,16 +1134,21 @@ const COMPOSITES = [79.68,70.86,86.47,54.73,67.07,61.22,96.85,86.53,65.36,62.26,
       responsive: true,
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { label: ctx => ` Cultural: ${ctx.parsed.x.toFixed(1)} · Base: ${ctx.parsed.y.toFixed(1)}` } },
-        annotation: {},
+        tooltip: { callbacks: {
+          label: ctx => ` IKE: ${ctx.parsed.x} · ALOHA: ${ctx.parsed.y}`
+        }},
       },
       scales: {
-        x: { title: { display: true, text: 'Cultural Wellbeing Score', color: COLORS.textSec },
-             grid: { color: 'rgba(70,170,143,0.08)' }, min: 40, max: 100 },
-        y: { title: { display: true, text: 'ʻIke Kūpuna Base Score', color: COLORS.textSec },
-             grid: { color: 'rgba(70,170,143,0.08)' }, min: 30, max: 105 }
-      }
-    }
+        x: {
+          title: { display: true, text: 'ROOT_IKE — ʻIke Kūpuna Score', color: COLORS.textSec },
+          grid: { color: 'rgba(70,170,143,0.08)' }, min: 40, max: 105,
+        },
+        y: {
+          title: { display: true, text: 'ROOT_ALOHA — Aloha ʻĀina Score', color: COLORS.textSec },
+          grid: { color: 'rgba(70,170,143,0.08)' }, min: 40, max: 105,
+        },
+      },
+    },
   });
 })();
 
