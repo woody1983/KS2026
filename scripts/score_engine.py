@@ -244,10 +244,34 @@ for issue in anomalies:
 df_clean = df_clean[~df_clean["student_key"].isin(critical_student_keys)]
 removed_count = initial_count - len(df_clean)
 
+dropped_log = {
+    "total_dropped": removed_count,
+    "reasons": [
+        {
+            "type": issue["type"],
+            "severity": issue["severity"],
+            "count": issue.get("count", 0),
+            "student_keys": issue.get("student_keys", []) if isinstance(issue.get("student_keys"), list) else [],
+            "description": issue["description"],
+        }
+        for issue in anomalies
+        if issue["severity"] == "CRITICAL"
+    ],
+    "note": "Only CRITICAL issues trigger record removal. Non-critical anomalies are retained and flagged.",
+}
+
 print(f"\n✨ Data Cleaning Summary:")
 print(f"   Initial records: {initial_count}")
 print(f"   Removed (critical issues): {removed_count}")
 print(f"   Clean records: {len(df_clean)}")
+
+print(f"\n📋 Dropped Record Log:")
+if dropped_log["total_dropped"] == 0:
+    print(f"   No records dropped — 0 critical issues detected.")
+else:
+    print(f"   Total dropped: {dropped_log['total_dropped']}")
+    for reason in dropped_log["reasons"]:
+        print(f"   • {reason['type']} ({reason['count']} records): {reason['description']}")
 
 # ============================================================================
 # PHASE 3: EXPLORE (探索性分析)
@@ -379,20 +403,21 @@ print("-" * 80)
 # Score = w1 × Base_Score + w2 × Program_Bonus + w3 × Wellbeing_Adjustment
 
 # Weights (transparent and adjustable)
+# NOTE: programme participation effects are encoded in normalized_score via the causal
+# seed model. Adding a separate bonus channel here would double-count that effect.
 WEIGHTS = {
-    "base_score": 0.60,  # 60% - Raw assessment score
-    "program_bonus": 0.25,  # 25% - Cultural program participation
-    "wellbeing_adjustment": 0.15,  # 15% - Cultural well-being correlation
+    "base_score": 0.70,           # 70% - Raw assessment score (encodes programme effects)
+    "wellbeing_adjustment": 0.30, # 30% - Cultural well-being correlation
 }
 
 print("\n📐 Scoring Formula:")
 print(
-    "   Score_ike_kupuna = w₁ × Base_Score + w₂ × Program_Bonus + w₃ × Wellbeing_Adjustment"
+    "   Score_ike_kupuna = w₁ × Base_Score + w₂ × Wellbeing_Adjustment"
 )
+print("   (Programme effects are already encoded in Base_Score via causal seed model)")
 print(f"\n   Weights:")
 print(f"      w₁ (Base Score):           {WEIGHTS['base_score']:.2f}")
-print(f"      w₂ (Program Bonus):        {WEIGHTS['program_bonus']:.2f}")
-print(f"      w₃ (Wellbeing Adjustment): {WEIGHTS['wellbeing_adjustment']:.2f}")
+print(f"      w₂ (Wellbeing Adjustment): {WEIGHTS['wellbeing_adjustment']:.2f}")
 print(f"      Sum: {sum(WEIGHTS.values()):.2f}")
 
 
@@ -401,51 +426,53 @@ def calculate_ike_kupuna_score(row, wellbeing_row=None):
     Calculate 'Ike Kūpuna score with full logic derivation
 
     Logic:
-    1. Base score is normalized to 0-100 scale
-    2. Program bonus adds up to 10 points for cultural engagement
-    3. Well-being adjustment considers cultural dimension correlation
+    1. Base score is normalized to 0-100 scale. Programme participation effects
+       (Hawaiian language, hula) are already encoded here via the causal seed model —
+       adding a separate bonus channel would double-count those effects.
+    2. Well-being adjustment uses the raw cultural_score (0-100) at 30% weight.
+    3. WEIGHT REDISTRIBUTION: if wellbeing data is absent, its 30% weight is
+       absorbed by base score (base_w → 1.00). This avoids two failure modes:
+         • setting contribution = 0  → unfair -30 pt cap on well-assessed students
+         • imputing midpoint (50)    → 15 phantom pts for every unmatched student
+       The student is scored entirely on the data that exists; the missing flag is
+       preserved so downstream consumers can distinguish the two scoring regimes.
     """
 
-    # Component 1: Base Score (60% weight)
+    # Component 1: Base Score
     base_score = row["normalized_score"]
-    weighted_base = base_score * WEIGHTS["base_score"]
 
-    # Component 2: Program Bonus (25% weight)
-    # Hawaiian language = +5 points, Hula = +3 points, Both = +10 points (capped)
-    program_bonus = 0
-    if row["is_hawaiian_language"]:
-        program_bonus += 5
-    if row["is_hālau_hula"]:
-        program_bonus += 3
-    program_bonus = min(program_bonus, 10)  # Cap at 10 points
-    weighted_program = program_bonus * 10 * WEIGHTS["program_bonus"]  # Scale to 100
-
-    # Component 3: Well-being Adjustment (15% weight)
-    wellbeing_adj = 0
+    # Component 2: Well-being
+    wellbeing_score = 0.0
+    wellbeing_missing = True
     if wellbeing_row is not None:
-        # Normalize cultural score to -10 to +10 adjustment range
-        cultural_score = wellbeing_row["cultural_score"]
-        wellbeing_adj = ((cultural_score - 50) / 50) * 10  # -10 to +10
-    weighted_wellbeing = (50 + wellbeing_adj) * WEIGHTS[
-        "wellbeing_adjustment"
-    ]  # Center at 50
+        wellbeing_score = float(wellbeing_row["cultural_score"])
+        wellbeing_missing = False
+
+    # Effective weights — redistribute wellbeing weight to base when data absent
+    if not wellbeing_missing:
+        eff_base_w = WEIGHTS["base_score"]            # 0.70
+        eff_wb_w   = WEIGHTS["wellbeing_adjustment"]  # 0.30
+    else:
+        eff_base_w = 1.0   # absorbs the 0.30 wellbeing weight
+        eff_wb_w   = 0.0
+
+    weighted_base      = base_score      * eff_base_w
+    weighted_wellbeing = wellbeing_score * eff_wb_w
 
     # Final Score
-    final_score = weighted_base + weighted_program + weighted_wellbeing
-
-    # Ensure 0-100 bounds
-    final_score = max(0, min(100, final_score))
+    final_score = max(0, min(100, weighted_base + weighted_wellbeing))
 
     return {
-        "student_key": row["student_key"],
-        "base_score": base_score,
-        "weighted_base": weighted_base,
-        "program_bonus": program_bonus,
-        "weighted_program": weighted_program,
-        "wellbeing_adj": wellbeing_adj,
+        "student_key":        row["student_key"],
+        "base_score":         base_score,
+        "wellbeing_score":    wellbeing_score,
+        "wellbeing_missing":  wellbeing_missing,
+        "eff_base_weight":    eff_base_w,
+        "eff_wb_weight":      eff_wb_w,
+        "weighted_base":      weighted_base,
         "weighted_wellbeing": weighted_wellbeing,
-        "final_score": final_score,
-        "proficiency": generate_proficiency(final_score),
+        "final_score":        final_score,
+        "proficiency":        generate_proficiency(final_score),
     }
 
 
@@ -484,19 +511,17 @@ for idx, (_, row) in enumerate(df_clean.iterrows()):
             f"\n   Student {row['student_key']} ({row['gender_category']}, Grade {row['grade_level']}):"
         )
         print(
-            f"      ├─ Base Score:           {result['base_score']:.1f} × {WEIGHTS['base_score']:.2f} = {result['weighted_base']:.2f}"
+            f"      ├─ Base Score:     {result['base_score']:.1f} × {result['eff_base_weight']:.2f} = {result['weighted_base']:.2f}"
+            + (" ← wb weight redistributed" if result["wellbeing_missing"] else "")
         )
-        print(
-            f"      ├─ Program Bonus:        {result['program_bonus']:.0f} pts × 10 × {WEIGHTS['program_bonus']:.2f} = {result['weighted_program']:.2f}"
-        )
-        if result["wellbeing_adj"] != 0:
+        if not result["wellbeing_missing"]:
             print(
-                f"      ├─ Well-being Adj:       ({result['wellbeing_adj']:+.1f}) × {WEIGHTS['wellbeing_adjustment']:.2f} = {result['weighted_wellbeing']:.2f}"
+                f"      ├─ Wellbeing:      {result['wellbeing_score']:.1f} × {result['eff_wb_weight']:.2f} = {result['weighted_wellbeing']:.2f}"
             )
         else:
-            print(f"      ├─ Well-being Adj:       N/A (no data)")
+            print(f"      ├─ Wellbeing:      N/A (missing · assessment-only mode)")
         print(
-            f"      └─ FINAL SCORE:          {result['final_score']:.2f} → {result['proficiency']}"
+            f"      └─ FINAL SCORE:    {result['final_score']:.2f} → {result['proficiency']}"
         )
 
 results_df = pd.DataFrame(results)
@@ -534,18 +559,18 @@ for _, student in top_performers.iterrows():
     print(
         f"      → Strong base score ({student['base_score']:.1f}) indicates solid assessment performance"
     )
-    if student["program_bonus"] > 0:
-        programs = []
-        if orig_row["is_hawaiian_language"]:
-            programs.append("Hawaiian language")
-        if orig_row["is_hālau_hula"]:
-            programs.append("hula")
+    programs = []
+    if orig_row["is_hawaiian_language"]:
+        programs.append("Hawaiian language")
+    if orig_row["is_hālau_hula"]:
+        programs.append("hula")
+    if programs:
         print(
-            f"      → Cultural engagement bonus (+{student['program_bonus']:.0f} pts) from {', '.join(programs)} participation"
+            f"      → Cultural programme participation ({', '.join(programs)}) — effects encoded in base score"
         )
-    if student["wellbeing_adj"] > 2:
+    if not student["wellbeing_missing"] and student["wellbeing_score"] > 65:
         print(
-            f"      → Positive cultural well-being correlation enhances overall score"
+            f"      → Positive cultural well-being ({student['wellbeing_score']:.0f}) enhances overall score"
         )
     print(f"      → RECOMMENDATION: Consider as peer mentor for cultural programs")
 
@@ -558,12 +583,15 @@ for _, student in bottom_performers.iterrows():
     print(
         f"      → Base score ({student['base_score']:.1f}) suggests foundational gaps"
     )
-    if student["program_bonus"] == 0:
+    no_programmes = (
+        not orig_row["is_hawaiian_language"] and not orig_row["is_hālau_hula"]
+    )
+    if no_programmes:
         print(
             f"      → No cultural program participation detected - opportunity for engagement"
         )
-    if student["wellbeing_adj"] < -2:
-        print(f"      → Cultural well-being concerns may be impacting performance")
+    if not student["wellbeing_missing"] and student["wellbeing_score"] < 40:
+        print(f"      → Cultural well-being concerns ({student['wellbeing_score']:.0f}) may be impacting performance")
     print(f"      → RECOMMENDATION: Refer to cultural mentorship program")
 
 # Generate program effectiveness insight
@@ -613,11 +641,16 @@ for _, result in results_df.iterrows():
             "gender": orig_row["gender_category"],
             "ethnicity": orig_row["ethnicity_category"],
             "base_score": round(result["base_score"], 2),
-            "program_bonus": result["program_bonus"],
-            "wellbeing_adjustment": round(result["wellbeing_adj"], 2),
+            "wellbeing_score": round(result["wellbeing_score"], 2),
+            "wellbeing_missing": result["wellbeing_missing"],
+            "scoring_mode": "assessment_only" if result["wellbeing_missing"] else "composite",
             "final_score": round(result["final_score"], 2),
             "proficiency_level": result["proficiency"],
-            "calculation_logic": f"{result['base_score']:.1f}×0.6 + {result['program_bonus']:.0f}×2.5 + {50 + result['wellbeing_adj']:.1f}×0.15",
+            "calculation_logic": (
+                f"{result['base_score']:.1f}×{result['eff_base_weight']:.2f}"
+                + (f" + {result['wellbeing_score']:.1f}×{result['eff_wb_weight']:.2f}" if not result["wellbeing_missing"] else "  [wb missing → base_w=1.00]")
+                + f" = {result['final_score']:.2f}"
+            ),
         }
     )
 
@@ -638,6 +671,7 @@ anomaly_report = {
         "low": low_count,
     },
     "detailed_issues": anomalies,
+    "dropped_records_log": dropped_log,
 }
 
 with open("output/anomaly_report.json", "w") as f:
@@ -646,27 +680,30 @@ print(f"✓ Saved anomaly report to: output/anomaly_report.json")
 
 # Save model specification
 model_spec = {
-    "model_name": "IkeKupunaScoreEngine_v1",
+    "model_name": "IkeKupunaScoreEngine_v2",
     "timestamp": datetime.now().isoformat(),
-    "formula": "Score = w₁×Base + w₂×Program_Bonus + w₃×Wellbeing_Adj",
+    "formula": "Score = w₁×Base_Score + w₂×Wellbeing_Score",
+    "design_notes": (
+        "Programme participation (Hawaiian language, hula) is encoded directly in "
+        "normalized_score via the causal seed model. A separate programme_bonus channel "
+        "was removed in v2 to eliminate double-counting."
+    ),
     "weights": WEIGHTS,
     "components": {
         "base_score": {
-            "description": "Normalized assessment score from fact_e_ola_outcomes",
+            "description": (
+                "Normalized assessment score from fact_e_ola_outcomes. "
+                "Programme causal effects (e.g. +4 pts for Hawaiian language) are "
+                "already reflected here — no separate bonus required."
+            ),
             "weight": WEIGHTS["base_score"],
             "range": "0-100",
         },
-        "program_bonus": {
-            "description": "Cultural program participation bonus",
-            "weight": WEIGHTS["program_bonus"],
-            "calculation": "Hawaiian language (+5) + Hula (+3), capped at 10",
-            "scaled_range": "0-25",
-        },
         "wellbeing_adjustment": {
-            "description": "Cultural well-being correlation adjustment",
+            "description": "Cultural well-being score from fact_wellbeing_measurements",
             "weight": WEIGHTS["wellbeing_adjustment"],
-            "calculation": "((cultural_score - 50) / 50) × 10",
-            "range": "-10 to +10",
+            "calculation": "wb_cultural × 0.30  (0 if data missing — no midpoint imputation)",
+            "range": "0-100",
         },
     },
     "proficiency_thresholds": {

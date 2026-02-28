@@ -1,7 +1,7 @@
 {
-  "analysis_timestamp": "2026-02-20T21:05:39.389630",
+  "analysis_timestamp": "2026-02-27T08:06:49.562925",
   "total_records_analyzed": 2758,
-  "clean_records": 2756,
+  "clean_records": 2757,
   "anomalies_detected": 3,
   "anomaly_breakdown": {
     "critical": 1,
@@ -13,41 +13,105 @@
     {
       "type": "SCORE_EXCEEDS_MAXIMUM",
       "severity": "CRITICAL",
-      "count": 2,
-      "description": "Found 2 records with scores > 100 (logical impossibility)",
+      "count": 1,
+      "description": "Found 1 records with scores > 100 (logical impossibility)",
       "records": [
         {
-          "outcome_id": 85,
-          "student_key": 7,
+          "outcome_id": 939,
+          "student_key": 68,
           "indicator_name": "'Ike K\u016bpuna",
-          "raw_score": 125.0
-        },
-        {
-          "outcome_id": 2241,
-          "student_key": 161,
-          "indicator_name": "'Ike K\u016bpuna",
-          "raw_score": 103.0
+          "raw_score": 136.0
         }
       ]
     },
     {
       "type": "FUTURE_DATE",
       "severity": "HIGH",
-      "count": 3,
-      "description": "Found 3 records with future assessment dates",
+      "count": 17,
+      "description": "Found 17 records with future assessment dates",
       "records": [
         {
-          "outcome_id": 939,
+          "outcome_id": 90,
+          "student_key": 7,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 91,
+          "student_key": 7,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 92,
+          "student_key": 7,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 95,
+          "student_key": 7,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 96,
+          "student_key": 7,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 97,
+          "student_key": 7,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 394,
+          "student_key": 29,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 396,
+          "student_key": 29,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 405,
+          "student_key": 29,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 947,
           "student_key": 68,
           "assessment_date": "2027-06-15 00:00:00"
         },
         {
-          "outcome_id": 2241,
+          "outcome_id": 2246,
           "student_key": 161,
           "assessment_date": "2027-06-15 00:00:00"
         },
         {
-          "outcome_id": 2605,
+          "outcome_id": 2247,
+          "student_key": 161,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 2248,
+          "student_key": 161,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 2249,
+          "student_key": 161,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 2250,
+          "student_key": 161,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 2607,
+          "student_key": 187,
+          "assessment_date": "2027-06-15 00:00:00"
+        },
+        {
+          "outcome_id": 2618,
           "student_key": 187,
           "assessment_date": "2027-06-15 00:00:00"
         }
@@ -60,44 +124,44 @@
       "description": "Found 8 statistical outliers (|Z| > 3)",
       "records": [
         {
-          "outcome_id": 85,
-          "student_key": 7,
-          "raw_score": 125.0
+          "outcome_id": 524,
+          "student_key": 38,
+          "raw_score": 48.19
         },
         {
-          "outcome_id": 794,
-          "student_key": 57,
-          "raw_score": 28.04
+          "outcome_id": 939,
+          "student_key": 68,
+          "raw_score": 136.0
         },
         {
-          "outcome_id": 840,
-          "student_key": 60,
-          "raw_score": 27.26
+          "outcome_id": 1673,
+          "student_key": 120,
+          "raw_score": 41.71
         },
         {
-          "outcome_id": 1174,
-          "student_key": 84,
-          "raw_score": 26.95
+          "outcome_id": 1781,
+          "student_key": 128,
+          "raw_score": 42.55
         },
         {
-          "outcome_id": 1219,
-          "student_key": 88,
-          "raw_score": 29.71
+          "outcome_id": 1877,
+          "student_key": 135,
+          "raw_score": 44.06
         },
         {
-          "outcome_id": 1703,
-          "student_key": 122,
-          "raw_score": 31.83
+          "outcome_id": 1878,
+          "student_key": 135,
+          "raw_score": 48.9
         },
         {
-          "outcome_id": 2112,
-          "student_key": 151,
-          "raw_score": 28.69
+          "outcome_id": 2387,
+          "student_key": 171,
+          "raw_score": 48.76
         },
         {
-          "outcome_id": 2505,
-          "student_key": 179,
-          "raw_score": 27.13
+          "outcome_id": 2733,
+          "student_key": 196,
+          "raw_score": 49.18
         }
       ]
     }

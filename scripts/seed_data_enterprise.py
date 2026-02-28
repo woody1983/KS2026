@@ -519,57 +519,218 @@ def generate_student_profile(student_id):
     }
 
 
-def generate_e_ola_outcomes(
-    student_key, indicator_key, assessment_date, is_dirty=False
-):
-    """Generate E Ola! outcomes with realistic distributions"""
+def _clip_score(score):
+    """Clip score to valid 0-100 range."""
+    return max(0.0, min(100.0, round(float(score), 2)))
 
-    # Base score (normal distribution)
-    if indicator_key == 1:  # 'Ike Kūpuna - Hawaiian language
-        base_score = generate_normal_score(mean=75, std=15)
-    elif indicator_key == 2:  # Aloha ʻĀina - Land connection
-        base_score = generate_normal_score(mean=78, std=12)
-    elif indicator_key in [3, 4, 5]:  # Roots
-        base_score = generate_normal_score(mean=76, std=14)
-    elif indicator_key in [6, 7, 8]:  # Trunk
-        base_score = generate_normal_score(mean=72, std=13)
-    elif indicator_key in [9, 10, 11, 12, 13, 14, 15]:  # Leaves
-        base_score = generate_normal_score(mean=74, std=16)
-    else:  # Fruits
-        base_score = generate_normal_score(mean=70, std=14)
 
-    # Dirty data injection: score > 100
-    if is_dirty and random.random() < 0.3:
-        base_score = random.randint(101, 150)
+def _proficiency(score):
+    if score >= 90:
+        return "Advanced"
+    elif score >= 75:
+        return "Proficient"
+    elif score >= 60:
+        return "Approaching"
+    return "Below"
 
-    # Dirty data injection: future date
-    if is_dirty and random.random() < 0.3:
-        assessment_date = "2027-06-15"
 
-    # Proficiency level
-    if base_score >= 90:
-        proficiency = "Advanced"
-    elif base_score >= 75:
-        proficiency = "Proficient"
-    elif base_score >= 60:
-        proficiency = "Approaching"
-    else:
-        proficiency = "Below"
+def generate_student_scores(
+    student_profile: dict, student_key: int, assessment_date: str, is_dirty: bool = False
+) -> list:
+    """
+    Generate all 14 E Ola! indicator scores for one student.
 
-    return {
-        "student_key": student_key,
-        "indicator_key": indicator_key,
-        "assessment_type_key": random.randint(1, 7),
-        "date_key": int(assessment_date.replace("-", "")),
-        "raw_score": base_score,
-        "normalized_score": min(100, base_score),
-        "proficiency_level": proficiency,
-        "percentile_rank": min(
-            99, max(1, int(stats.percentileofscore([50, 60, 70, 80, 90], base_score)))
-        ),
-        "assessment_date": assessment_date,
-        "source_system": "Synthetic Data Generator v2.0",
-    }
+    ARCHITECTURE (v3 — Latent Ability Model):
+    Each student carries three shared latent abilities drawn once per student.
+    These latent variables create natural within-student cross-indicator
+    correlations (target r ≈ 0.50–0.65 within tier, 0.20–0.35 cross-tier),
+    matching real educational measurement patterns.
+
+        cultural_latent  → ROOT tier (1–3) + TRUNK (4–5)   shared driver
+        academic_latent  → TRUNK_KULIA (6) + LEAF_ACAD (7–9)
+        social_latent    → LEAF social (10–13)
+        FRUIT (14)       → weighted composite of all latent signals
+
+    Per-indicator noise std is reduced to 6 so the shared signal is
+    visible (previously std=12–15 buried the signal at 94% noise).
+
+    Causal map (programme participation effects on top of latent base):
+      is_hawaiian_language  → ROOT_IKE +4, ROOT_ALOHA +1.5, LEAF_GLOBAL +2.2
+      is_hālau_hula         → ROOT_IKE +2.8, ROOT_ALOHA +2.2, TRUNK_MALAMA +2.5,
+                               LEAF_COLLAB +2.8, LEAF_INNOV +1.8
+      is_pbl_participant    → TRUNK_MALAMA +1.5, TRUNK_ALAKAI +2.2,
+                               LEAF_ACAD +1.5, LEAF_PROBLEM +3.5,
+                               LEAF_INNOV +2.2, LEAF_COLLAB +2.5, LEAF_GLOBAL +1.5
+      aina_connection_score → ROOT_ALOHA ×1.0, ROOT_IKE ×0.5,
+                               TRUNK_MALAMA ×0.35, ROOT_KUPONO ×0.25
+      has_hoku_scholarship  → LEAF_ACAD +10, TRUNK_KULIA +6.5,
+                               LEAF_MINDSET +4, LEAF_EFFICACY +3.5
+      grade_level           → TRUNK_ALAKAI ×0.8, LEAF_ACAD ×1.2,
+                               LEAF_PROBLEM ×0.8
+      ethnicity (Native HI) → cultural indicators ×0.8
+    """
+    is_hawaiian_language = bool(student_profile.get("is_hawaiian_language", False))
+    is_hālau_hula        = bool(student_profile.get("is_hālau_hula", False))
+    is_pbl_participant   = bool(student_profile.get("is_pbl_participant", False))
+    aina_connection      = int(student_profile.get("aina_connection_score", 3))
+    has_hoku_scholarship = bool(student_profile.get("has_hoku_scholarship", False))
+    grade_level          = int(student_profile.get("grade_level", 6))
+    ethnicity            = student_profile.get("ethnicity_category", "")
+
+    # ── Shared latent abilities (drawn once per student) ──────────────────────
+    # These represent the student's underlying capacity in each domain.
+    # std=8 chosen so latent signal is ~60% of total variance per indicator,
+    # yielding within-tier r ≈ 0.55–0.65 before programme effects.
+    cultural_latent = np.random.normal(0, 8)   # cultural knowledge & identity
+    academic_latent = np.random.normal(0, 7)   # academic & intellectual capacity
+    social_latent   = np.random.normal(0, 6)   # collaborative & social capacity
+
+    # ── Observable attribute effects ─────────────────────────────────────────
+    grade_boost      = (grade_level - 6) * 0.7
+    aina_boost       = (aina_connection - 3) * 3.5
+    ethnicity_boost  = random.gauss(2.0, 0.8) if "Native Hawaiian" in ethnicity else 0.0
+
+    # Per-indicator residual noise (std=6, down from 12–15)
+    # Together with latent std=8: total variance ≈ 64+36=100, std≈10
+    N = lambda: np.random.normal(0, 6)
+
+    # ── ROOT TIER (Cultural Foundation) ───────────────────────────────────────
+    # cultural_latent is the primary shared driver; all three ROOT indicators
+    # should correlate at r ≈ 0.55–0.65 with each other.
+
+    # 1. ROOT_IKE — 'Ike Kūpuna
+    s1 = 75 + cultural_latent + N()
+    if is_hawaiian_language: s1 += random.gauss(4.0, 1.5)
+    if is_hālau_hula:        s1 += random.gauss(2.8, 1.2)
+    s1 += aina_boost * 0.5 + ethnicity_boost * 0.8
+    scores = {1: _clip_score(s1)}
+
+    # 2. ROOT_ALOHA — Aloha ʻĀina
+    s2 = 78 + cultural_latent + N()
+    s2 += aina_boost * 1.0
+    if is_hālau_hula:        s2 += random.gauss(2.2, 1.0)
+    if is_hawaiian_language: s2 += random.gauss(1.5, 0.9)
+    s2 += ethnicity_boost * 0.6
+    scores[2] = _clip_score(s2)
+
+    # 3. ROOT_KUPONO — Kūpono (Integrity)
+    s3 = 76 + cultural_latent + N()
+    s3 += aina_boost * 0.25
+    if is_hawaiian_language or is_hālau_hula: s3 += random.gauss(1.2, 1.0)
+    scores[3] = _clip_score(s3)
+
+    # ── TRUNK TIER (Identity Formation) ───────────────────────────────────────
+    # Mix of cultural + social latent (bridge between roots and leaves).
+
+    # 4. TRUNK_MALAMA — Mālama & Kuleana
+    s4 = 76 + cultural_latent * 0.6 + social_latent * 0.4 + N()
+    if is_hālau_hula:        s4 += random.gauss(2.5, 1.0)
+    if is_hawaiian_language: s4 += random.gauss(1.5, 1.0)
+    if is_pbl_participant:   s4 += random.gauss(1.5, 1.0)
+    s4 += aina_boost * 0.35
+    scores[4] = _clip_score(s4)
+
+    # 5. TRUNK_ALAKAI — Alaka'i Lawelawe (Servant Leadership)
+    s5 = 74 + cultural_latent * 0.4 + social_latent * 0.6 + N()
+    s5 += grade_boost * 0.8
+    if is_pbl_participant: s5 += random.gauss(2.2, 1.2)
+    if is_hālau_hula:      s5 += random.gauss(1.5, 1.0)
+    scores[5] = _clip_score(s5)
+
+    # 6. TRUNK_KULIA — Kūlia (Excellence)
+    s6 = 74 + academic_latent * 0.7 + cultural_latent * 0.3 + N()
+    s6 += grade_boost
+    if has_hoku_scholarship: s6 += random.gauss(6.5, 2.0)
+    scores[6] = _clip_score(s6)
+
+    # ── LEAF TIER (Action & Skills) ───────────────────────────────────────────
+    # Academic cluster (7–9): academic_latent dominant → r ≈ 0.55–0.60
+    # Social cluster  (10–13): social_latent dominant  → r ≈ 0.50–0.60
+
+    # 7. LEAF_ACAD — Academic Competence
+    s7 = 72 + academic_latent + N()
+    s7 += grade_boost * 1.2
+    if has_hoku_scholarship: s7 += random.gauss(10.0, 2.0)
+    if is_pbl_participant:   s7 += random.gauss(1.5, 1.0)
+    scores[7] = _clip_score(s7)
+
+    # 8. LEAF_MINDSET — Growth Mindset
+    s8 = 74 + academic_latent * 0.8 + N()
+    if has_hoku_scholarship: s8 += random.gauss(4.0, 1.5)
+    if is_pbl_participant:   s8 += random.gauss(2.0, 1.0)
+    scores[8] = _clip_score(s8)
+
+    # 9. LEAF_EFFICACY — Self-efficacy
+    s9 = 74 + academic_latent * 0.7 + N()
+    if has_hoku_scholarship: s9 += random.gauss(3.5, 1.5)
+    scores[9] = _clip_score(s9)
+
+    # 10. LEAF_PROBLEM — Problem Solving
+    s10 = 74 + social_latent * 0.8 + academic_latent * 0.2 + N()
+    s10 += grade_boost * 0.8
+    if is_pbl_participant: s10 += random.gauss(3.5, 1.2)
+    scores[10] = _clip_score(s10)
+
+    # 11. LEAF_INNOV — Innovation & Creativity
+    s11 = 72 + social_latent + N()
+    if is_pbl_participant: s11 += random.gauss(2.2, 1.2)
+    if is_hālau_hula:      s11 += random.gauss(1.8, 1.0)
+    scores[11] = _clip_score(s11)
+
+    # 12. LEAF_COLLAB — Collaboration
+    s12 = 74 + social_latent + N()
+    if is_pbl_participant:   s12 += random.gauss(2.5, 1.0)
+    if is_hālau_hula:        s12 += random.gauss(2.8, 1.0)
+    if is_hawaiian_language: s12 += random.gauss(1.2, 0.8)
+    scores[12] = _clip_score(s12)
+
+    # 13. LEAF_GLOBAL — Global Competence
+    s13 = 72 + social_latent * 0.7 + cultural_latent * 0.3 + N()
+    s13 += aina_boost * 0.3 + ethnicity_boost * 0.4
+    if is_hawaiian_language: s13 += random.gauss(2.2, 1.0)
+    if is_pbl_participant:   s13 += random.gauss(1.5, 1.0)
+    scores[13] = _clip_score(s13)
+
+    # 14. FRUIT_WELLBEING — Holistic Well-Being
+    #     Weighted blend of all three latent abilities + residual noise
+    #     Correlates moderately with every indicator (r ≈ 0.35–0.50)
+    s14 = (70
+           + cultural_latent * 0.40
+           + academic_latent * 0.35
+           + social_latent   * 0.25
+           + N())
+    scores[14] = _clip_score(s14)
+
+    # -------------------------------------------------------------------------
+    # Build output records
+    # -------------------------------------------------------------------------
+    results = []
+    for indicator_key, score in scores.items():
+        used_date = assessment_date
+
+        # Dirty data injection (only for designated dirty students)
+        if is_dirty:
+            if indicator_key == 1 and random.random() < 0.3:
+                score = float(random.randint(101, 150))  # score > 100
+            if random.random() < 0.3:
+                used_date = "2027-06-15"                 # future date
+
+        results.append({
+            "student_key": student_key,
+            "indicator_key": indicator_key,
+            "assessment_type_key": random.randint(1, 7),
+            "date_key": int(used_date.replace("-", "")),
+            "raw_score": score,
+            "normalized_score": min(100.0, score),
+            "proficiency_level": _proficiency(score),
+            "percentile_rank": min(
+                99, max(1, int(stats.percentileofscore([50, 60, 70, 80, 90], score)))
+            ),
+            "assessment_date": used_date,
+            "source_system": "Synthetic Data Generator v3.0",
+        })
+
+    return results
 
 
 def generate_cultural_activities(student_key):
@@ -667,17 +828,13 @@ def init_database(db_path="e_ola_enterprise.db"):
     conn = sqlite3.connect(db_path)
 
     # Read and execute schema
+    # executescript() handles semicolons inside comments and trigger BEGIN..END blocks
+    # correctly, unlike naive split(';') which broke on comments like
+    # "Only ADMIN role can modify; AUDITOR role can view"
     with open("schema/v1_1_enterprise_schema.sql", "r") as f:
         schema = f.read()
 
-    statements = [s.strip() for s in schema.split(";") if s.strip()]
-    for statement in statements:
-        try:
-            conn.execute(statement)
-        except sqlite3.Error as e:
-            pass
-
-    conn.commit()
+    conn.executescript(schema)
     return conn
 
 
@@ -849,19 +1006,19 @@ def main():
                 student_key = insert_student_masked(conn, student)
                 student_keys[student["student_uuid"]] = student_key
 
-                # Generate outcomes for 14 indicators
+                # Generate outcomes for all 14 indicators (student-profile-aware)
                 assessment_date = (
                     datetime.now() - timedelta(days=random.randint(1, 90))
                 ).strftime("%Y-%m-%d")
                 is_dirty_score = i in dirty_score_indices
 
-                for indicator_key in range(1, 15):
-                    outcome = generate_e_ola_outcomes(
-                        student_key,
-                        indicator_key,
-                        assessment_date,
-                        is_dirty=(is_dirty_score and indicator_key == 1),
-                    )
+                outcomes = generate_student_scores(
+                    student_profile=student,
+                    student_key=student_key,
+                    assessment_date=assessment_date,
+                    is_dirty=is_dirty_score,
+                )
+                for outcome in outcomes:
                     insert_outcome(conn, outcome)
 
                 # Generate cultural activities
